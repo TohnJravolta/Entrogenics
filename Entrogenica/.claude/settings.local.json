@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(powershell:*)",
+      "Read(//c/Users/jarde/Documents/projects/ASK/ask.report/repo/research-knowledge-hub/**)",
+      "Read(//c/Users/jarde/Documents/projects/ASK/ask.report/repo/CORE/**)",
+      "Bash(python:*)",
+      "Read(//c/Users/jarde/Documents/projects/ASK/ask.report/repo/**)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

@@ -1,0 +1,48 @@
+# Entrogenics CORE - Git Attributes
+
+# Enforce UTF-8 encoding for all text files to preserve symbolic glyphs (✡, ☉)
+* text=auto eol=lf
+
+# Markdown files
+*.md text diff=markdown
+
+# HTML files
+*.html text diff=html
+
+# CSS files
+*.css text diff=css
+
+# JavaScript files
+*.js text diff=javascript
+
+# JSON files
+*.json text
+
+# Plain text files
+*.txt text
+
+# SVG files (treat as text for proper diff)
+*.svg text
+
+# Binary files
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.pdf binary
+*.woff binary
+*.woff2 binary
+*.ttf binary
+*.otf binary
+*.eot binary
+
+# Archives
+*.zip binary
+*.tar binary
+*.gz binary
+*.rar binary
+
+# Ensure critical Entrogenic symbol files are never mangled
+*.md linguist-language=Markdown
+CORE_THESIS.md linguist-language=Markdown

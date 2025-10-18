@@ -1,0 +1,272 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Pebbling Gradient Flux — Abstract — Entrogenics CORE</title>
+  <meta name="description" content="Pebbling abstract web edition." />
+  <link rel="stylesheet" href="../assets/css/site.css" />
+  <script src="../assets/js/toc.js" defer></script>
+</head>
+<body>
+  <div class="bg" aria-hidden="true"></div>
+  <div class="scan" aria-hidden="true"></div>
+  <main class="wrap">
+    <header class="hero hero-paper">
+      <div class="brand"><span class="dot" aria-hidden="true"></span> ENTROGENICS / CORE</div>
+      <h1>Pebbling Gradient Flux — Abstract</h1>
+      <p>Abstract for the Pebbling memory-swap experiments with reversibility.</p>
+      <div class="cta">
+        <a class="btn-alt btn" href="../library.html">Back to CORE Library</a>
+        <a class="btn" href="../exports/pdf/pebbling-abstract.pdf" download>Download PDF</a>
+        <a class="btn" href="../exports/markdown/pebbling-abstract.md" download>Download Markdown</a>
+      </div>
+    </header>
+    <section class="layout">
+      <aside class="sidebar">
+        <div class="toc-card">
+          <h2>Contents</h2>
+          <ol data-toc-list></ol>
+        </div>
+        <div class="meta-card">
+          <h3>Document</h3>
+          <p><strong>Category:</strong> Silo: Data Intelligence</p>
+          <p><strong>Version:</strong> v1.0 — October 2025</p>
+          <p><strong>Type:</strong> PDF</p>
+        </div>
+      </aside>
+      <article class="content">
+        <section class="front-matter">
+  <pre>---
+title: &quot;✦ Pebbling Gradient Flux — Abstract&quot;
+subtitle: &quot;Memory Swap Ops with Reversibility&quot;
+author: &quot;Tohn Burray Travolta (Entrogenic Research Collective)&quot;
+collaboration: &quot;Co-synthesized with large-language systems (GPT-5, Claude, Gemini) under the Cyclic-6 and Kybernōsis protocols&quot;
+series: &quot;Entrogenic Papers | Adaptive Systems Kollektive&quot;
+version: &quot;v1.0 — October 2025&quot;
+license: &quot;CC BY-SA 4.0&quot;
+repository: &quot;github.com/entrogenics/entrogenics-core&quot;
+doi: &quot;&quot;
+manifest-type: &quot;entrogenic-standard-paper&quot;
+---</pre>
+  <section class="front-matter-section">
+    <h3>Authorship Declaration</h3>
+    <p>This document was produced through <strong>synthetic co-authorship</strong> within the Entrogenic research framework.</p>
+    <p>The human author — <strong>Tohn Burray Travolta</strong> — provided conceptual design, curation, and final synthesis.</p>
+    <p>Language-model agents assisted in drafting, structural refinement, and citation weaving following the <em>Cyclic-6</em> process: <strong>Unfold → Disturb → Collapse → Bind → Dissipate → Recur.</strong></p>
+    <p>All content has been reviewed, edited, and ethically approved by the human author, who assumes full accountability for its meaning and publication.</p>
+    <blockquote><em>Entrogenics regards writing as co-adaptation between consciousness and code; each paper is a living artifact within that evolving grammar.</em></blockquote>
+  </section>
+  <section class="front-matter-section">
+    <h3>Abstract / Invocation</h3>
+    <p>This web edition arises from the <strong>Entrogenic tradition</strong> — a trans-disciplinary inquiry into adaptive systems, cyclic intelligence, and the synthesis of human intuition with artificial reasoning.</p>
+    <p>It preserves the original manuscript while adopting a digital ritual format consistent with Entrogenic publication standards.</p>
+  </section>
+  <section class="front-matter-section">
+    <h3>Symbolic Standard — The Catalytic Star (✡)</h3>
+    <p>The six-pointed star (<strong>✡</strong>, Unicode U+2721) represents the <strong>Bind / Catalytic Unification phase</strong> within <em>The Fool’s Cycle</em>, signifying harmonic convergence of dualities in adaptive transformation.</p>
+    <p>Never substitute ✡ with alternative glyphs. The canonical sequence appears below:</p>
+    <div class="front-formula">
+      <span>0</span>
+      <span>→</span>
+      <span>✡</span>
+      <span>→</span>
+      <span>☉</span>
+      <span>→</span>
+      <span>0′</span>
+    </div>
+    <ul>
+      <li>Confirm UTF-8 encoding in all Entrogenic manuscripts.</li>
+      <li>Preserve <code>&lt;meta charset="UTF-8"&gt;</code> declarations in HTML builds.</li>
+      <li>Validate symbol rendering across browsers before distribution.</li>
+    </ul>
+  </section>
+</section>
+        <h1><strong>Abstract</strong></h1>
+<p>Memory–time tradeoffs are central in many computing domains, where engineers must choose between storing data (“memory”) or recomputing it (“time overhead”). We present a practical framework grounded in reversible scheduling theory to guide these choices. After reviewing key theory – Bennett’s reversible computation schedules and pebbling games <a href="https://arxiv.org/pdf/quant-ph/0101133#:~:text=The%20reversible%20Bennett%20strategy%20,the%20irreversible%20deterministic%20Turing%20machine">1</a> <a href="https://arxiv.org/pdf/1904.02121#:~:text=reversible%20pebbling%20game%20problem%20has,on%20a%20node%20if%20all">2</a>, catalytic memory reuse <a href="https://gwern.net/doc/cs/computable/2014-buhrman.pdf#:~:text=We%20define%20the%20notion%20of,for%20exam%02ple%20the%20determinant%20of">3</a>, and modern time–space</p>
+<p><a href="https://arxiv.org/pdf/quant-ph/0101133#:~:text=Abstract,in%20that%20it%20is%20achieved">4</a></p>
+<p>tradeoff bounds – we propose a unified cost model. This “knobs” framework (e.g. cost = α·peak + β·flux + γ·recompute) captures preferences over peak memory, cumulative memory usage (“flux”), and recomputation. We then describe <strong>Pebble-Bridge</strong>, an interactive tool that simulates tree-structured schedules under memory caps. The tool lets users adjust memory caps, cap policies, and cost weights, and compare baseline vs. checkpointing vs. reversible strategies. By visualizing metrics (peak usage, total moves, recomputation count), Pebble-Bridge helps engineers see which scheduling wins under given</p>
+<p><a href="https://residentmario.github.io/pytorch-training-performance-guide/gradient-checkpoints.html#:~:text=Gradient%20checkpointing%20was%20first%20published,in%20memory">5</a> <a href="https://arxiv.org/html/2504.14069v1#:~:text=match%20at%20L436%20high%20main,main%20memory%20leading%20longer%20latencies">6</a></p>
+<p>constraints. We illustrate with case studies (e.g. ML activation checkpointing, Merkle-tree ZK proofs, embedded data pipelines) and outline how to map real workloads onto the model. Finally, we discuss benchmarking methodology (metrics like peak memory, move count, recompute steps) and how engineers can export schedules. Throughout we emphasize theoretical connections (e.g. reversible pebbling games</p>
+<p><a href="https://arxiv.org/pdf/1904.02121#:~:text=reversible%20pebbling%20game%20problem%20has,on%20a%20node%20if%20all">2</a> ) and cite seminal work, but maintain a practical focus.</p>
+<p><a href="https://arxiv.org/pdf/quant-ph/0101133#:~:text=The%20reversible%20Bennett%20strategy%20,the%20irreversible%20deterministic%20Turing%20machine">1</a> <a href="https://arxiv.org/pdf/1904.02121#:~:text=reversible%20pebbling%20game%20problem%20has,on%20a%20node%20if%20all">2</a> <a href="https://gwern.net/doc/cs/computable/2014-buhrman.pdf#:~:text=We%20define%20the%20notion%20of,for%20exam%02ple%20the%20determinant%20of">3</a></p>
+<p><a href="https://arxiv.org/pdf/quant-ph/0101133#:~:text=Abstract,in%20that%20it%20is%20achieved">4</a></p>
+<p><a href="https://residentmario.github.io/pytorch-training-performance-guide/gradient-checkpoints.html#:~:text=Gradient%20checkpointing%20was%20first%20published,in%20memory">5</a> <a href="https://arxiv.org/html/2504.14069v1#:~:text=match%20at%20L436%20high%20main,main%20memory%20leading%20longer%20latencies">6</a></p>
+<p><a href="https://arxiv.org/pdf/1904.02121#:~:text=reversible%20pebbling%20game%20problem%20has,on%20a%20node%20if%20all">2</a></p>
+<h1><strong>Introduction</strong></h1>
+<p>Modern systems often run into <strong>memory bottlenecks</strong> . For example, training deep neural networks requires storing all layer activations, leading to GPU memory limits (a ResNet could use ~48 GB) <a href="https://residentmario.github.io/pytorch-training-performance-guide/gradient-checkpoints.html#:~:text=Gradient%20checkpointing%20was%20first%20published,in%20memory">5</a> . Gradient checkpointing (recomputing some activations on the backward pass) has emerged as a remedy, trading extra computation to save memory <a href="https://residentmario.github.io/pytorch-training-performance-guide/gradient-checkpoints.html#:~:text=Gradient%20checkpointing%20was%20first%20published,in%20memory">5</a> . Similarly, zero-knowledge (ZK) proofs and Merkle-tree computations handle huge trees of hashes. In blockchain-like proofs, generating Merkle proofs for millions of leaves can exhaust RAM, causing large slowdowns (e.g. OS paging for large trees <a href="https://arxiv.org/html/2504.14069v1#:~:text=match%20at%20L436%20high%20main,main%20memory%20leading%20longer%20latencies">6</a> ). Even small embedded or streaming pipelines (e.g. sensor data processing) face tight memory: storing all intermediate data may be impossible, forcing recomputation of earlier stages.</p>
+<p><a href="https://residentmario.github.io/pytorch-training-performance-guide/gradient-checkpoints.html#:~:text=Gradient%20checkpointing%20was%20first%20published,in%20memory">5</a></p>
+<p><a href="https://residentmario.github.io/pytorch-training-performance-guide/gradient-checkpoints.html#:~:text=Gradient%20checkpointing%20was%20first%20published,in%20memory">5</a></p>
+<p><a href="https://arxiv.org/html/2504.14069v1#:~:text=match%20at%20L436%20high%20main,main%20memory%20leading%20longer%20latencies">6</a></p>
+<p>These <strong>real-world challenges</strong> boil down to choosing schedules under memory constraints: one can either <em>cache</em> intermediate results or <em>recompute</em> them when needed. More memory allows one-shot computation (faster runtime, fewer operations) but uses scarce RAM; less memory forces recomputation (more operations, slower runtime). This tradeoff appears in ML (activation checkpointing vs. caching), cryptographic proofs (precompute Merkle nodes vs. on-the-fly hash), compilers (register allocation vs. recompute values), and embedded tasks. Our goal is a <strong>practical guide</strong> that synthesizes theory into action: (1) recall foundational models (reversible computation and pebbling) from theory; (2) define a cost framework with tunable weights; (3) demonstrate the approach via an interactive scheduler <strong>Pebble-Bridge</strong> ; (4) apply it to example use-cases and benchmarks.</p>
+<p>We target systems engineers and researchers (ML infrastructure, ZK proofs, compilers, embedded/DB runtimes). In what follows, Section 2 reviews theory: Bennett’s reversible strategies <a href="https://arxiv.org/pdf/quant-ph/0101133#:~:text=The%20reversible%20Bennett%20strategy%20,the%20irreversible%20deterministic%20Turing%20machine">1</a> <a href="https://arxiv.org/pdf/1904.02121#:~:text=reversible%20pebbling%20game%20problem%20has,on%20a%20node%20if%20all">2</a>, tree-pebbling space-time bounds <a href="https://arxiv.org/pdf/1904.02121#:~:text=reversible%20pebbling%20game%20problem%20has,on%20a%20node%20if%20all">2</a> <a href="https://arxiv.org/abs/1604.05510#:~:text=,hard">7</a>, catalytic memory <a href="https://gwern.net/doc/cs/computable/2014-buhrman.pdf#:~:text=We%20define%20the%20notion%20of,for%20exam%02ple%20the%20determinant%20of">3</a>, and general time–space tradeoffs <a href="https://arxiv.org/pdf/quant-ph/0101133#:~:text=Abstract,in%20that%20it%20is%20achieved">4</a> . Section 3 presents</p>
+<p><a href="https://arxiv.org/pdf/quant-ph/0101133#:~:text=The%20reversible%20Bennett%20strategy%20,the%20irreversible%20deterministic%20Turing%20machine">1</a> <a href="https://arxiv.org/pdf/1904.02121#:~:text=reversible%20pebbling%20game%20problem%20has,on%20a%20node%20if%20all">2</a></p>
+<p><a href="https://arxiv.org/pdf/1904.02121#:~:text=reversible%20pebbling%20game%20problem%20has,on%20a%20node%20if%20all">2</a> <a href="https://arxiv.org/abs/1604.05510#:~:text=,hard">7</a> <a href="https://gwern.net/doc/cs/computable/2014-buhrman.pdf#:~:text=We%20define%20the%20notion%20of,for%20exam%02ple%20the%20determinant%20of">3</a> <a href="https://arxiv.org/pdf/quant-ph/0101133#:~:text=Abstract,in%20that%20it%20is%20achieved">4</a></p>
+<p>our cost model (peak, flux, recompute) and scheduling knobs. Section 4 describes <strong>Pebble-Bridge</strong> and how it embodies the model. Section 5 discusses benchmarking (metrics, test setups, exporting decisions). Section 6 gives concrete use cases (activation checkpointing, Merkle/ZK proofs, embedded pipelines) and mapping to our model. Section 7 notes limitations. We conclude in Section 8. Entrogenics’ broader research on memory-efficient computing provides context (we reference its insights lightly), but our focus is on the</p>
+<p>universal framework and its theoretical roots.</p>
+<h1><strong>Theoretical Background</strong></h1>
+<h2><strong>Reversible Computation (Bennett Schedules)</strong></h2>
+<p>A key foundation is that any computation can be made “reversible” by saving intermediate states, at the cost of extra steps <a href="https://arxiv.org/pdf/quant-ph/0101133#:~:text=The%20reversible%20Bennett%20strategy%20,the%20irreversible%20deterministic%20Turing%20machine">1</a> <a href="https://arxiv.org/pdf/1904.02121#:~:text=reversible%20pebbling%20game%20problem%20has,on%20a%20node%20if%20all">2</a> . In 1973 and later work, Bennett showed that an irreversible program using <em>T</em> steps</p>
+<p>and <em>S</em> space can be simulated reversibly with time <em>T</em> ^(log 3) (≈ <em>T</em> ^1.585) and space <em>S·log T</em> <a href="https://arxiv.org/pdf/quant-ph/0101133#:~:text=The%20reversible%20Bennett%20strategy%20,the%20irreversible%20deterministic%20Turing%20machine">1</a> . Intuitively, Bennett’s algorithm places checkpoints at well-chosen intervals, then recursively uncomputes past segments when free memory runs low. Formally, a <em>reversible pebble game</em> abstraction captures this: imagine a DAG of computations where a “pebble” on a node means its result is stored. Bennett’s rule allows placing a pebble on a child node only if its parent is pebbled, and removing (uncomputing) a pebble only if its children are pebbled. Bennett’s original scheme corresponds to a linear graph (a chain of configurations) and yields the O( <em>T</em> ^log3, <em>S</em> - log <em>T</em> ) simulation <a href="https://arxiv.org/pdf/quant-ph/0101133#:~:text=The%20reversible%20Bennett%20strategy%20,the%20irreversible%20deterministic%20Turing%20machine">1</a> . More generally, reversible simulation is a spectrum: Buhrman–Tromp–Vitányi (2001) proved a tradeoff continuum between “extreme” strategies <a href="https://arxiv.org/pdf/quant-ph/0101133#:~:text=Abstract,in%20that%20it%20is%20achieved">4</a> . For</p>
+<p>instance, one extreme uses essentially exponential time and tiny extra space (Lange–McKenzie–Tapp’s method), while the other (Bennett’s) uses polynomial space but subexponential time <a href="https://arxiv.org/pdf/quant-ph/0101133#:~:text=Abstract,in%20that%20it%20is%20achieved">4</a> . These results ensure that a wide range of (time, space) points are attainable for reversible schedules. We will synthesize these into a simple cost model.</p>
+<h2><strong>Tree Pebbling and Space-Time Trade-offs</strong></h2>
+<p><a href="https://arxiv.org/pdf/quant-ph/0101133#:~:text=The%20reversible%20Bennett%20strategy%20,the%20irreversible%20deterministic%20Turing%20machine">1</a></p>
+<p><a href="https://arxiv.org/pdf/quant-ph/0101133#:~:text=The%20reversible%20Bennett%20strategy%20,the%20irreversible%20deterministic%20Turing%20machine">1</a></p>
+<p><a href="https://arxiv.org/pdf/quant-ph/0101133#:~:text=Abstract,in%20that%20it%20is%20achieved">4</a></p>
+<p>instance, one extreme uses essentially exponential time and tiny extra space (Lange–McKenzie–Tapp’s method), while the other (Bennett’s) uses polynomial space but subexponential time <a href="https://arxiv.org/pdf/quant-ph/0101133#:~:text=Abstract,in%20that%20it%20is%20achieved">4</a> . These results ensure that a wide range of (time, space) points are attainable for reversible schedules. We will synthesize these into a simple cost model.</p>
+<p>Reversible scheduling can be viewed as a <em>pebbling game</em> on a computation graph. In particular, many workloads are tree-structured (e.g. binary reduction or hashing trees). The <em>reversible pebble game</em> was introduced by Bennett <a href="https://arxiv.org/pdf/1904.02121#:~:text=reversible%20pebbling%20game%20problem%20has,on%20a%20node%20if%20all">2</a> : it formalizes computing tree nodes with a limited number of “pebbles” (memory slots) by placing and removing pebbles under dependency rules. The goal is to pebble (compute) all output nodes while never exceeding the pebble (memory) budget. Computing a child requires its parent to be pebbled, and “uncomputing” (removing a pebble) requires children to be pebbled (to preserve reversibility)</p>
+<p><a href="https://arxiv.org/pdf/1904.02121#:~:text=reversible%20pebbling%20game%20problem%20has,on%20a%20node%20if%20all">2</a> . Bennett originally analyzed the linear chain; later works tackled trees and general DAGs.</p>
+<p><a href="https://arxiv.org/pdf/1904.02121#:~:text=reversible%20pebbling%20game%20problem%20has,on%20a%20node%20if%20all">2</a></p>
+<p><a href="https://arxiv.org/pdf/1904.02121#:~:text=reversible%20pebbling%20game%20problem%20has,on%20a%20node%20if%20all">2</a></p>
+<p>General reversible pebbling is PSPACE-complete to solve optimally <a href="https://arxiv.org/pdf/1904.02121#:~:text=The%20problem%20complexity%20has%20been,17">8</a>, so we rely on heuristics. However, for special cases there are strong bounds. For trees, Komarath <em>et al.</em> showed that the minimum pebble count equals one plus the tree’s edge-rank coloring number <a href="https://arxiv.org/abs/1604.05510#:~:text=,hard">7</a>, and that optimal tree-pebbling strategies can be found in polynomial time (unlike general DAGs). They further demonstrated nontrivial time–space bounds: e.g., complete binary trees admit pebblings in <em>n</em> <em>[O]</em> [(log log] <em>[ n]</em> [)] steps (far better than the naive <em>n</em> <em>[O]</em> [(log] <em>[ n]</em> [)] )</p>
+<p><a href="https://arxiv.org/abs/1604.05510#:~:text=game%20,this%20end%2C%20we%20show%20that">9</a> . Moreover, one can trade space vs. time: any bounded-degree tree on <em>n</em> nodes can be pebbled with <em>O</em> ( <em>n</em> ) <em>ϵ</em> pebbles in <em>O</em> (n) steps, for any constant ε&gt;0 <a href="https://arxiv.org/abs/1604.05510#:~:text=match%20at%20L85%20%24%5Cepsilon%20,2001%29%20for%20chains">10</a> . In practice, these results hint that even under tight</p>
+<p>memory (few pebbles) one can still compute entire trees in linear time by recomputing most of the nodes, whereas allowing slightly more memory drastically reduces recomputation.</p>
+<p><a href="https://arxiv.org/pdf/1904.02121#:~:text=The%20problem%20complexity%20has%20been,17">8</a></p>
+<p><a href="https://arxiv.org/abs/1604.05510#:~:text=,hard">7</a></p>
+<p><em>n</em> <em>[O]</em> [(log log] <em>[ n]</em> [)] <em>n</em> <em>[O]</em> [(log] <em>[ n]</em> [)]</p>
+<p>. Moreover, one can trade space vs. time: any bounded-degree tree on <em>n</em> nodes can be pebbled with</p>
+<p>) <em>ϵ</em> pebbles in <em>O</em> (n) steps, for any constant ε&gt;0 <a href="https://arxiv.org/abs/1604.05510#:~:text=match%20at%20L85%20%24%5Cepsilon%20,2001%29%20for%20chains">10</a> . In practice, these results hint that even under tight</p>
+<p>In short, the theory of reversible pebbling provides the <strong>connective tissue</strong> : it shows how storing (pebbling) more nodes speeds computation, while storing fewer necessitates repeated recomputations, formalizing the memory–time tradeoff <a href="https://arxiv.org/pdf/1904.02121#:~:text=reversible%20pebbling%20game%20problem%20has,on%20a%20node%20if%20all">2</a> <a href="https://arxiv.org/abs/1604.05510#:~:text=game%20,this%20end%2C%20we%20show%20that">11</a> .</p>
+<h2><strong>Catalytic Memory Reuse</strong></h2>
+<p>A recent concept from complexity theory, <em>catalytic space</em>, extends reversible ideas to large “scratch” memory. Buhrman <em>et al.</em> (STOC 2014) defined a computation model with a small clean memory and a large auxiliary memory whose initial contents are arbitrary and must be restored (like a “catalyst” in chemistry) <a href="https://gwern.net/doc/cs/computable/2014-buhrman.pdf#:~:text=We%20define%20the%20notion%20of,for%20exam%02ple%20the%20determinant%20of">3</a> . Crucially, even if the auxiliary memory is incompressible (no free space), it can be temporarily reused and then returned to its initial state. This means that one effectively can exploit large memory <em>without</em> losing its original data. Buhrman <em>et al.</em> showed this “catalytic” resource is surprisingly powerful (computing TC¹ circuits with just log-space and arbitrary data tape <a href="https://gwern.net/doc/cs/computable/2014-buhrman.pdf#:~:text=We%20define%20the%20notion%20of,for%20exam%02ple%20the%20determinant%20of">3</a> ) and proved bounds on what problems remain hard.</p>
+<p><a href="https://gwern.net/doc/cs/computable/2014-buhrman.pdf#:~:text=We%20define%20the%20notion%20of,for%20exam%02ple%20the%20determinant%20of">3</a></p>
+<p><a href="https://gwern.net/doc/cs/computable/2014-buhrman.pdf#:~:text=We%20define%20the%20notion%20of,for%20exam%02ple%20the%20determinant%20of">3</a></p>
+<p>For our purposes, catalytic memory motivates thinking of large scratch space that can be reclaimed. In practical scheduling, this could correspond to using disk or a scratch region: you temporarily overwrite it (with the promise to restore its content) to compute deeper, then roll back. Though returning data requires extra work, the net effect is similar to reversible uncomputation. We incorporate this idea by allowing strategies that “borrow” memory up to a cap, with the obligation to clean up afterward.</p>
+<h2><strong>Schedule Complexity and Time–Space Bounds</strong></h2>
+<p>Beyond these models, Buhrman <em>et al.</em> also gave general formulae for time–space trade-offs in reversible simulation <a href="https://arxiv.org/pdf/quant-ph/0101133#:~:text=Abstract,in%20that%20it%20is%20achieved">4</a> . Their abstract shows the broad picture: previously only trivial extremes were known (exponential time or quadratic space), but they achieved <em>simultaneously</em> subexponential time and subquadratic space <a href="https://arxiv.org/pdf/quant-ph/0101133#:~:text=Abstract,in%20that%20it%20is%20achieved">4</a> . In practice, this means one can dial a smooth tradeoff: e.g., allow <em>T</em> ^0.8 overhead with <em>S</em> - (log <em>T</em> )^0.8 space, etc. We don’t use these formulas directly, but they justify that our simple linear cost model can capture meaningful regimes between “all memory” and “all recompute”.</p>
+<p><a href="https://arxiv.org/pdf/quant-ph/0101133#:~:text=Abstract,in%20that%20it%20is%20achieved">4</a></p>
+<p><a href="https://arxiv.org/pdf/quant-ph/0101133#:~:text=Abstract,in%20that%20it%20is%20achieved">4</a></p>
+<p>In summary, theoretical results teach us that (a) fully storing all intermediates uses minimal time but may exceed memory; (b) fully reversible computation (maximal uncomputation) uses minimal memory but high</p>
+<p>time; and (c) many intermediate points exist where partial uncomputation (checkpointing) yields intermediate cost profiles. Our heuristic model and tool will make these tradeoffs concrete and tunable for practitioners.</p>
+<h1><strong>Method: Heuristic Cost Framework</strong></h1>
+<p>To guide strategy choice, we propose a <strong>heuristic cost model</strong> combining memory and time metrics. Let a schedule (plan of compute/uncompute steps) have:</p>
+<p><strong>Peak memory (peak)</strong> : maximum simultaneous storage used (number of pebbles or data elements</p>
+<p>held). <strong>Memory flux (flux)</strong> : cumulative memory usage over time (formally, the time-integral of memory footprint). This penalizes holding memory for long periods.</p>
+<pre><code>- **Recompute steps (recompute)** : total number of _extra_ computation steps (pebble placements) above
+</code></pre>
+<p>the minimum needed to compute each node once.</p>
+<p>We then define a cost function, for example:</p>
+<pre><code> Cost = α·peak + β·flux + γ·recompute.
+
+</code></pre>
+<p>The weights α, β, γ are tunable to reflect priorities. For instance, if memory is extremely scarce, set α≫γ</p>
+<p>(favor low peak even if time spikes). If time is critical, set γ≫α (favor fewer recomputations even if more memory). The “flux” term β·flux encourages schedules that not only have low peak but also minimize sustained memory usage (since holding a moderate amount for a long time can hurt throughput in a pipelined system).</p>
+<p>In practice, designers can adjust (α,β,γ) according to their hardware constraints and cost of computation. For example:</p>
+<ul>
+<li>
+<p>If one GPU has 12 GB RAM (peak limit) and compute is cheap, set α high.</p>
+</li>
+<li>
+<p>If memory bandwidth or energy cost matters, include β to favor freeing memory quickly.</p>
+</li>
+<li>
+<p>If recomputation adds energy or delays, γ penalizes that.</p>
+</li>
+</ul>
+<p>This linear form is not derived from first principles, but it captures the tradeoffs in a <strong>tunably linear way</strong> . It generalizes many known heuristics: e.g. setting β=0, γ=1 (optimize compute) vs. α=1, β=0 (minimize peak memory) vs. a mix. Using this model, we can compare arbitrary scheduling strategies on equal footing.</p>
+<p>Given a specific computation (represented as a tree or DAG of tasks), we enumerate candidate schedules (or use known classes of schedules) and compute their metrics. For example:</p>
+<ul>
+<li>
+<p><strong>Baseline strategy</strong> : Compute forward in dependency order, caching all results (maximal parallelism,
+minimal recompute). This has low recompute but possibly high peak.</p>
+</li>
+<li>
+<p><strong>Partial checkpointing</strong> : Decide some nodes to uncompute after use (e.g. free memory periodically). This
+reduces peak but adds some recompute.</p>
+</li>
+<li>
+<p><strong>Fully reversible (Bennett-style)</strong> : Aggressively checkpoint at many points and uncompute whenever
+possible. This achieves minimal peak but maximal recompute/time.</p>
+</li>
+</ul>
+<p>Our framework quantifies each and lets engineers pick α,β,γ to find the best cost. The engineer can thus answer: <em>“Under our memory cap and weights, is it worth doing partial or full recompute? How low must we set</em> <em>peak memory before baseline fails?”</em></p>
+<h1><strong>Implementation: The Pebble-Bridge Tool</strong></h1>
+<p>We have embodied this model in <strong>Pebble-Bridge</strong>, an interactive scheduling simulator. Pebble-Bridge takes as input a tree-structured computation (users can specify tree shape, node workloads, etc.) and simulates different pebbling strategies under a user-defined memory cap. It supports:</p>
+<pre><code>- **Strategy choices** : e.g. Baseline (no uncompute), Partial (e.g. checkpoint at fixed intervals or depths),
+</code></pre>
+<p>and Reversible (Bennett-style recursive checkpointing). Each strategy yields a different schedule of pebbles.</p>
+<p><strong>Memory cap and cap policy</strong> : A hard limit on pebbles (memory). If a strategy would exceed the cap, a <em>policy</em> determines which nodes to uncompute first (e.g. oldest, random, or priority-based). This models e.g. flushing memory or swapping. <strong>Cost weights (α,β,γ)</strong> : Users enter weights, and Pebble-Bridge computes Cost for each strategy’s schedule (peak, flux, recompute metrics are output).</p>
+<p>The core of the tool is a visual DAG viewer where computed nodes light up (pebbles placed) and dims (pebbles removed). As the simulation runs (or steps by step), it displays current memory usage (bar chart) and total steps. Users can pause, adjust weights, or switch strategy on the fly. Importantly, the tool highlights key comparisons: e.g. under a tight memory cap of 50, the baseline strategy may abort (stack overflow), whereas the partial strategy completes with cost X and the reversible with cost Y.</p>
+<p>Pebble-Bridge exports detailed schedules and metrics so engineers can analyze them further or deploy decisions (e.g. “checkpoint after these layers”). Internally it uses the theoretical pebble rules <a href="https://arxiv.org/pdf/1904.02121#:~:text=reversible%20pebbling%20game%20problem%20has,on%20a%20node%20if%20all">2</a> <a href="https://arxiv.org/pdf/quant-ph/0101133#:~:text=The%20reversible%20Bennett%20strategy%20,the%20irreversible%20deterministic%20Turing%20machine">1</a> to enforce valid reversibility: it never uncomputes a node unless all children are unpebbled, etc. By tweaking α, β, γ, users see how their preference (e.g. “minimize peak” vs. “minimize recompute”) changes which strategy</p>
+<p>wins.</p>
+<p>Overall, Pebble-Bridge is a decision-support tool: it <strong>bridges</strong> theory and practice by letting engineers <strong>see</strong> the space-time tradeoffs. For instance, under memory pressure one might find “The partial-checkpoint strategy with 30% recompute had 2× lower peak than baseline, at a 20% time cost; fully reversible gives minimal peak but 5× time cost.” This informs whether that 5× cost is worth the memory saved in context.</p>
+<h1><strong>Evaluation and Benchmarking Guidance</strong></h1>
+<p>To use this framework on real problems, we suggest the following evaluation methodology:</p>
+<pre><code>- **Metrics** : Always record _peak memory_, _total steps (moves)_, _recompute steps_, and _flux_ . These directly feed
+</code></pre>
+<p>into the cost. Optionally measure <em>wall-clock time</em> on hardware if implementing the schedule. Also record <em>schedule length</em> (depth) and <em>operation count</em> .</p>
+<pre><code>- **Test setups** : Begin with synthetic trees (e.g. balanced binary trees, skewed trees) to calibrate tool
+</code></pre>
+<p>behavior. Then apply to real DAGs (e.g. an actual NN graph, a snippet of a ZK circuit) by mapping them to a tree-like model (possible via topological sorts or spanning trees). For each test, vary memory caps to see where strategies flip in cost.</p>
+<p><strong>Profiling</strong> : If using an AD or ML library, instrumentation can measure the extra time from recomputation vs. saved memory. For example, Tapenade’s AD profiler computes per-checkpoint <em>run-time benefit</em> and <em>memory cost</em> <a href="https://arxiv.org/html/2405.15590v2#:~:text=">12</a> . We recommend similarly collecting both: how much time is saved vs. how much memory is used by each strategy.</p>
+<p><a href="https://arxiv.org/html/2405.15590v2#:~:text=">12</a></p>
+<ul>
+<li><strong>Exporting decisions</strong> : Pebble-Bridge can output the chosen schedule (e.g. a list of “uncompute node</li>
+</ul>
+<p>X after node Y”). Engineers should translate this into code: checkpoint these points, free and recompute as needed. For reproducibility, log the weights (α,β,γ) and policy settings that led to the</p>
+<p>choice.</p>
+<pre><code>- **Benchmark example** : A typical workflow: (1) Graph your computation as a tree of _N_ nodes. (2) Pick a
+</code></pre>
+<p>strategy (baseline, partial, reversible) and simulate it with your memory cap. (3) Compute metrics; plot memory vs. time (or flux). (4) Adjust α,β,γ and rerun to find Pareto-optimal points. (5) If using actual hardware, implement the schedule via checkpoint libraries and measure actual runtime and memory. Compare empirical costs to the model’s predictions.</p>
+<p>This process yields both <em>quantitative</em> (peak, time) and <em>qualitative</em> (feasibility under cap) insights. If baseline exceeds memory, that’s a clear signal to try checkpointing. The model thus not only scores strategies but also tests feasibility: “Can we run at all under 8 GB, and if so, which plan uses the least CPU?”</p>
+<h1><strong>Use Cases</strong></h1>
+<h2><strong>Activation Checkpointing in ML</strong></h2>
+<p>As noted, training deep nets (transformers, ResNets, RNNs) easily exhausts GPU RAM. Gradient checkpointing (a.k.a. activation checkpointing) is widely used: it omits storing some layer activations during the forward pass, then recomputes them during backpropagation <a href="https://residentmario.github.io/pytorch-training-performance-guide/gradient-checkpoints.html#:~:text=Gradient%20checkpointing%20was%20first%20published,in%20memory">5</a> . Chen <em>et al.</em> showed this reduces</p>
+<p>memory from <em>O</em> (n) to <em>O</em> (√n) for <em>n</em> -layer nets <a href="https://residentmario.github.io/pytorch-training-performance-guide/gradient-checkpoints.html#:~:text=Gradient%20checkpointing%20was%20first%20published,in%20memory">5</a> (cutting, e.g., a 48 GB requirement to 7 GB). In our model, a neural network can be viewed as a linear or layered graph; baseline stores all activations (high peak, zero recompute), while checkpointing stores only a subset (lower peak, extra recompute). Pebble-Bridge can simulate different checkpoint granularities: e.g. store every 10th layer’s activations, recompute the 9 layers</p>
+<p>in between. Engineers can set α high if memory is extremely tight, forcing more layers to be recomputed to minimize peak. This will show, for example, that at 8 GB GPU limit, checkpointing reduces peak by 50% at the cost of 25% slower training <a href="https://residentmario.github.io/pytorch-training-performance-guide/gradient-checkpoints.html#:~:text=Gradient%20checkpointing%20was%20first%20published,in%20memory">5</a>, matching empirical ML insights. The tool helps pick which layers to checkpoint and how often, by quantifying the tradeoff.</p>
+<h2><strong>Merkle-Tree Proofs in ZK Systems</strong></h2>
+<p>Consider computing or proving a Merkle root of a large tree (e.g. for a ZK-SNARK). The tree (height H) has ~2^H leaves; computing the root is tree-pebbling from leaves up. A naive strategy stores all intermediate</p>
+<p>hashes (peak ~ 2^H) and computes in <em>O</em> (2^H) time once. A memory-limited strategy might recompute subtrees instead of storing them. Prior work on Merkle traversal shows classic trade-offs: e.g. Jakobsson’s</p>
+<p>“fractal Merkle” method precomputes √N nodes to achieve linear time <a href="https://arxiv.org/abs/1409.4081#:~:text=,Our">13</a> . Knecht <em>et al.</em> combined fractal and log-space strategies to further reduce space <a href="https://arxiv.org/abs/1409.4081#:~:text=,Our">13</a> .</p>
+<p><a href="https://arxiv.org/abs/1409.4081#:~:text=,Our">13</a></p>
+<p><a href="https://arxiv.org/abs/1409.4081#:~:text=,Our">13</a></p>
+<p>In practice, a proof system may hit memory limits: e.g. a recent Ethereum study found that largest Merkletree proofs had spikes in proving time due to paging <a href="https://arxiv.org/html/2504.14069v1#:~:text=match%20at%20L436%20high%20main,main%20memory%20leading%20longer%20latencies">6</a> . Using Pebble-Bridge, one can model a Merkle tree: the engineer sets memory cap (e.g. available RAM), and compares strategies: the “full cache” vs. “checkpoint subtrees”. The tool will show that a partial strategy uses, say, 4× less peak memory at the cost</p>
+<p>of 1.5× more hashes (matching known √N behavior). By adjusting α/γ, one can decide if the extra hash computations are worth the memory saved for the given hardware and proof time budget. Also, mapping specific ZK circuits with tree-like substructures (e.g. recursive hash checks) into this model helps understand if <em>reversibility</em> (uncomputing partial results) is beneficial.</p>
+<h2><strong>Embedded Data Pipelines and Streaming</strong></h2>
+<p>In embedded or real-time pipelines (signal processing, robotics), memory is scarce. For example, a multi stage image filter pipeline (blur → transform → detect) might be modelled as a chain or tree of operations. Storing all intermediate image buffers may be impossible. Instead, one might process chunk-by-chunk, recomputing earlier filters for each chunk (trading compute cycles for SRAM). Using our framework, engineers can represent each stage as a node, and simulate whether to “flush” outputs immediately (recompute later) or buffer them. The cost model’s β·flux term is relevant here: holding a buffer (peak memory) for a long time may hurt system throughput (cache pressure), so a policy of early free (increasing flux) might be favored. Though we have no direct citation, such trade-offs are standard in embedded design: designers will relate our model to, e.g., image tiling techniques.</p>
+<h2><strong>Mapping Workloads to the Model</strong></h2>
+<p>To apply this, one abstracts the workload as a directed computation graph. Straight-line code or feedforward ML nets map to linear chains. Tree-like reductions (hash trees, combining results) map to trees. General DAGs can often be transformed to trees by (for instance) duplicating shared subexpressions or choosing a tree decomposition. Each node is assigned a “compute cost” (for recompute counting) and a “memory cost” (for pebble weight; often 1 if each intermediate is same size). Then run Pebble-Bridge on</p>
+<p>that model.</p>
+<p>The user guide of Pebble-Bridge (omitted here) gives detailed mapping instructions. In brief: partition your computation into checkpoints (subgraphs). Each checkpoint is a node. Connect them by data dependencies. Provide execution order (topological). The tool then simulates scheduling under the hood.</p>
+<h1><strong>Limitations and Discussion</strong></h1>
+<p>Our framework simplifies reality: it assumes a DAG (often a tree) of tasks with independent operations. Real workloads may have loops, side effects, or irregular dependencies. We do not model I/O or communication costs, only raw computation steps and memory usage. The cost model is linear and heuristic; it may not capture, for example, caching effects or nonlinear energy costs. The “flux” metric is also a simplification (actual impact of sustained memory depends on many factors).</p>
+<p>Pebble-Bridge handles static trees; dynamic or data-dependent control flow is out of scope. The tool does not schedule multiple processors or distributed memory. It also assumes recomputation cost is uniform per node (which may not hold if some nodes are much heavier to compute). In practice, an engineer must calibrate: e.g. assign higher γ for expensive recomputations.</p>
+<p>Finally, theoretical results like Buhrman’s time–space bounds <a href="https://arxiv.org/pdf/quant-ph/0101133#:~:text=Abstract,in%20that%20it%20is%20achieved">4</a> or Komarath’s pebbling limits <a href="https://arxiv.org/abs/1604.05510#:~:text=,hard">7</a> <a href="https://arxiv.org/abs/1604.05510#:~:text=game%20,this%20end%2C%20we%20show%20that">11</a> serve as guides, but optimal schedules are PSPACE-hard in general <a href="https://arxiv.org/pdf/1904.02121#:~:text=The%20problem%20complexity%20has%20been,17">8</a> . Thus Pebble-Bridge uses heuristics for partial strategies. It should be seen as decision support, not as giving provably optimal schedules.</p>
+<p><a href="https://arxiv.org/pdf/quant-ph/0101133#:~:text=Abstract,in%20that%20it%20is%20achieved">4</a> <a href="https://arxiv.org/abs/1604.05510#:~:text=,hard">7</a> <a href="https://arxiv.org/abs/1604.05510#:~:text=game%20,this%20end%2C%20we%20show%20that">11</a></p>
+<h1><strong>Conclusion</strong></h1>
+<p>Managing memory–time tradeoffs is a classic yet ever-relevant problem across ML, cryptography, compilers, and embedded systems. We have presented a <strong>practical hybrid framework</strong> that builds on reversible scheduling theory to help engineers navigate these tradeoffs. By reviewing the theory (Bennett’s reversible strategies <a href="https://arxiv.org/pdf/quant-ph/0101133#:~:text=The%20reversible%20Bennett%20strategy%20,the%20irreversible%20deterministic%20Turing%20machine">1</a> <a href="https://arxiv.org/pdf/1904.02121#:~:text=reversible%20pebbling%20game%20problem%20has,on%20a%20node%20if%20all">2</a>, pebbling on trees <a href="https://arxiv.org/abs/1604.05510#:~:text=,hard">7</a> <a href="https://arxiv.org/abs/1604.05510#:~:text=game%20,this%20end%2C%20we%20show%20that">11</a>, and catalytic memory <a href="https://gwern.net/doc/cs/computable/2014-buhrman.pdf#:~:text=We%20define%20the%20notion%20of,for%20exam%02ple%20the%20determinant%20of">3</a> ) and condensing it into a simple cost model (α·peak + β·flux + γ·recompute), we give practitioners actionable knobs. The PebbleBridge tool makes these concepts concrete: engineers can simulate and compare scheduling strategies under real memory caps and cost preferences. Use cases in ML checkpointing <a href="https://residentmario.github.io/pytorch-training-performance-guide/gradient-checkpoints.html#:~:text=Gradient%20checkpointing%20was%20first%20published,in%20memory">5</a> and ZK proofs <a href="https://arxiv.org/html/2504.14069v1#:~:text=match%20at%20L436%20high%20main,main%20memory%20leading%20longer%20latencies">6</a> illustrate how the model maps to real workflows.</p>
+<p><a href="https://arxiv.org/pdf/quant-ph/0101133#:~:text=The%20reversible%20Bennett%20strategy%20,the%20irreversible%20deterministic%20Turing%20machine">1</a> <a href="https://arxiv.org/pdf/1904.02121#:~:text=reversible%20pebbling%20game%20problem%20has,on%20a%20node%20if%20all">2</a> <a href="https://arxiv.org/abs/1604.05510#:~:text=,hard">7</a> <a href="https://arxiv.org/abs/1604.05510#:~:text=game%20,this%20end%2C%20we%20show%20that">11</a> <a href="https://gwern.net/doc/cs/computable/2014-buhrman.pdf#:~:text=We%20define%20the%20notion%20of,for%20exam%02ple%20the%20determinant%20of">3</a></p>
+<p><a href="https://residentmario.github.io/pytorch-training-performance-guide/gradient-checkpoints.html#:~:text=Gradient%20checkpointing%20was%20first%20published,in%20memory">5</a> <a href="https://arxiv.org/html/2504.14069v1#:~:text=match%20at%20L436%20high%20main,main%20memory%20leading%20longer%20latencies">6</a></p>
+<p>In summary, this whitepaper bridges theory and practice: it provides a structured approach to scheduling under memory constraints, grounded in reversible computation research, but always pitched toward engineering decisions. As hardware and workloads evolve (e.g. ever-deeper neural nets, larger proof circuits), we expect this framework to remain useful. The ideas align with emerging work (including by Entrogenics) on memory-aware computation and catalytic reuse, and we invite further refinement of the model and tool with the community.</p>
+<p><a href="https://arxiv.org/pdf/quant-ph/0101133#:~:text=The%20reversible%20Bennett%20strategy%20,the%20irreversible%20deterministic%20Turing%20machine">1</a> <a href="https://arxiv.org/pdf/quant-ph/0101133#:~:text=Abstract,in%20that%20it%20is%20achieved">4</a></p>
+<p>arXiv:quant-ph/0101133v2 19 Apr 2001</p>
+<p><a href="https://arxiv.org/pdf/quant-ph/0101133">https://arxiv.org/pdf/quant-ph/0101133</a></p>
+<p><a href="https://arxiv.org/pdf/1904.02121#:~:text=reversible%20pebbling%20game%20problem%20has,on%20a%20node%20if%20all">2</a> <a href="https://arxiv.org/pdf/1904.02121#:~:text=The%20problem%20complexity%20has%20been,17">8</a></p>
+<p>arxiv.org</p>
+<p><a href="https://arxiv.org/pdf/1904.02121">https://arxiv.org/pdf/1904.02121</a></p>
+<p><a href="https://gwern.net/doc/cs/computable/2014-buhrman.pdf#:~:text=We%20define%20the%20notion%20of,for%20exam%02ple%20the%20determinant%20of">3</a></p>
+<p>Computing with a Full Memory: Catalytic Space</p>
+<p><a href="https://gwern.net/doc/cs/computable/2014-buhrman.pdf">https://gwern.net/doc/cs/computable/2014-buhrman.pdf</a></p>
+<p><a href="https://residentmario.github.io/pytorch-training-performance-guide/gradient-checkpoints.html#:~:text=Gradient%20checkpointing%20was%20first%20published,in%20memory">5</a></p>
+<p>Gradient Checkpoints — PyTorch Training Performance Guide</p>
+<p><a href="https://residentmario.github.io/pytorch-training-performance-guide/gradient-checkpoints.html">https://residentmario.github.io/pytorch-training-performance-guide/gradient-checkpoints.html</a></p>
+<p><a href="https://arxiv.org/html/2504.14069v1#:~:text=match%20at%20L436%20high%20main,main%20memory%20leading%20longer%20latencies">6</a></p>
+<p>Towards Stateless Clients in Ethereum: Benchmarking Verkle Trees and Binary Merkle Trees with SNARKs</p>
+<p><a href="https://arxiv.org/html/2504.14069v1">https://arxiv.org/html/2504.14069v1</a></p>
+<p><a href="https://arxiv.org/abs/1604.05510#:~:text=,hard">7</a> <a href="https://arxiv.org/abs/1604.05510#:~:text=game%20,this%20end%2C%20we%20show%20that">9</a> <a href="https://arxiv.org/abs/1604.05510#:~:text=match%20at%20L85%20%24%5Cepsilon%20,2001%29%20for%20chains">10</a> <a href="https://arxiv.org/abs/1604.05510#:~:text=game%20,this%20end%2C%20we%20show%20that">11</a></p>
+<p>[1604.05510] Pebbling Meets Coloring: Reversible Pebble Game On Trees</p>
+<p><a href="https://arxiv.org/abs/1604.05510">https://arxiv.org/abs/1604.05510</a></p>
+<p><a href="https://arxiv.org/html/2405.15590v2#:~:text=">12</a></p>
+<p>Profiling checkpointing schedules in adjoint ST-AD</p>
+<p><a href="https://arxiv.org/html/2405.15590v2">https://arxiv.org/html/2405.15590v2</a></p>
+<p><a href="https://arxiv.org/abs/1409.4081#:~:text=,Our">13</a></p>
+<p>[1409.4081] A space- and time-efficient Implementation of the Merkle Tree Traversal Algorithm</p>
+<p><a href="https://arxiv.org/abs/1409.4081">https://arxiv.org/abs/1409.4081</a></p>
+      </article>
+    </section>
+    <footer class="site-footer">
+      &#169; Adaptive Systems Kollektive &middot; Entrogenics CORE &middot; Self-contained release
+    </footer>
+  </main>
+</body>
+</html>

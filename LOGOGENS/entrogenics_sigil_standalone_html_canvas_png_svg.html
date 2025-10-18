@@ -1,0 +1,276 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Entrogenics Sigil — Canvas & SVG Export</title>
+  <style>
+    :root{
+      --bg:#0b0b0f; --panel:#121217; --ink:#e6e7ea; --muted:#272733;
+      --btn-bg:#e6e7ea; --btn-fg:#0b0b0f; --ink-2:#c9cbd1;
+    }
+    html,body{height:100%}
+    body{margin:0; background:var(--bg); color:var(--ink); font:14px/1.35 system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Arial}
+    .wrap{min-height:100vh; display:flex; flex-direction:column; align-items:center; gap:16px; padding:24px}
+    h1{font-size:24px; font-weight:650; letter-spacing:.2px; margin:0}
+    .panel{background:var(--panel); border:1px solid var(--muted); border-radius:12px; padding:12px}
+    .row{display:flex; flex-wrap:wrap; align-items:center; gap:12px}
+    .label{display:flex; align-items:center; gap:8px; color:var(--ink-2)}
+    input[type="number"], .input{background:#0f0f14; color:var(--ink); border:1px solid #2e2e3a; border-radius:8px; padding:6px 8px}
+    .btn{padding:8px 12px; border-radius:10px; border:1px solid #2e2e3a; background:var(--btn-bg); color:var(--btn-fg); cursor:pointer}
+    .btn.alt{background:#191a20; color:#d0d2d8}
+    .canvasWrap{border-radius:20px}
+    details{max-width:760px; color:var(--ink-2)}
+    summary{cursor:pointer; color:var(--ink)}
+    .error{color:#ffb4b4; font-size:13px}
+    .spacer{height:2px}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>Entrogenics Sigil — Canvas & SVG Export</h1>
+
+    <div class="panel">
+      <div class="row">
+        <label class="label">Size
+          <input id="size" type="number" class="input" value="1024" min="256" max="4096" step="64" />
+        </label>
+        <label class="label">Accent
+          <input id="accent" type="color" value="#22aaff" />
+        </label>
+        <label class="label">Stroke
+          <input id="fg" type="color" value="#0f0f14" />
+        </label>
+        <label class="label">Ecology
+          <input id="muted" type="color" value="#7f9aa7" />
+        </label>
+        <label class="label">Background
+          <input id="bg" type="color" value="#ffffff" />
+          <button id="bgClear" class="btn alt" title="Set transparent">transparent</button>
+        </label>
+        <label class="label">Animate
+          <input id="animate" type="checkbox" />
+        </label>
+        <button id="dlPng" class="btn">Download PNG</button>
+        <button id="dlSvg" class="btn">Download SVG</button>
+      </div>
+      <div id="err" class="error"></div>
+    </div>
+
+    <div class="panel canvasWrap">
+      <canvas id="sigil"></canvas>
+    </div>
+
+    <details>
+      <summary>Geometry Notes</summary>
+      <div class="spacer"></div>
+      <div>
+        <p><b>Radii</b>: r_spirit=0.12L; r_silos=0.33L; r_cycle=0.36L; ouro=0.47–0.50L; node_r=0.035L.</p>
+        <p><b>Angles</b>: θ_k=k·60°; chevrons at θ_k+30°; tangent=a+90°; optional animation offsets mid-angles.</p>
+        <p><b>Semantics</b>: Center (Spirit), six nodes (Silos), ring (adaptive loop), outer donut + head (Ecology/feedback).</p>
+      </div>
+    </details>
+  </div>
+
+  <script>
+    (()=>{
+      const $ = (id)=> document.getElementById(id);
+      const canvas = $("sigil");
+      const sizeEl = $("size");
+      const accentEl = $("accent");
+      const fgEl = $("fg");
+      const mutedEl = $("muted");
+      const bgEl = $("bg");
+      const bgClear = $("bgClear");
+      const animateEl = $("animate");
+      const errEl = $("err");
+      const dlPng = $("dlPng");
+      const dlSvg = $("dlSvg");
+
+      let cycleAngle = 0;
+      let raf = 0;
+
+      function paramsFromL(L){
+        return {
+          L,
+          r_spirit: 0.12 * L,
+          r_silos: 0.33 * L,
+          r_cycle: 0.36 * L,
+          r_ouro_outer: 0.50 * L,
+          r_ouro_inner: 0.47 * L,
+          node_r: 0.035 * L,
+          strokeWide: Math.max(2, 0.012 * L),
+          strokeWider: Math.max(2, 0.018 * L),
+          accentStroke: Math.max(2, 0.014 * L),
+        };
+      }
+
+      function draw(){
+        errEl.textContent = "";
+        const ctx = canvas.getContext && canvas.getContext('2d');
+        if(!ctx){ errEl.textContent = 'Canvas 2D context unavailable.'; return; }
+
+        const L = parseInt(sizeEl.value || '1024', 10);
+        const accent = accentEl.value;
+        const fg = fgEl.value;
+        const muted = mutedEl.value;
+        const bg = bgEl.dataset.transparent === '1' ? '#ffffff00' : bgEl.value;
+
+        const dpr = window.devicePixelRatio || 1;
+        canvas.width = L * dpr;
+        canvas.height = L * dpr;
+        canvas.style.width = L + 'px';
+        canvas.style.height = L + 'px';
+
+        if (ctx.setTransform) ctx.setTransform(1,0,0,1,0,0);
+        if (ctx.reset) try{ ctx.reset(); } catch{}
+        ctx.scale(dpr, dpr);
+
+        if (bg && bg !== '#ffffff00') {
+          ctx.fillStyle = bg;
+          ctx.fillRect(0,0,L,L);
+        } else {
+          ctx.clearRect(0,0,L,L);
+        }
+
+        ctx.translate(L/2, L/2);
+        const P = paramsFromL(L);
+
+        // OUROBOROS (donut)
+        ctx.save();
+        ctx.fillStyle = muted;
+        ctx.beginPath();
+        ctx.arc(0,0,P.r_ouro_outer,0,Math.PI*2);
+        ctx.moveTo(P.r_ouro_inner,0);
+        ctx.arc(0,0,P.r_ouro_inner,0,Math.PI*2,true);
+        ctx.fill('evenodd');
+        // head at -15°
+        ctx.rotate(-15 * Math.PI/180);
+        ctx.beginPath();
+        const headR = P.r_ouro_outer - P.strokeWider;
+        ctx.moveTo(-0.035 * P.L, -headR);
+        ctx.lineTo(0, -headR + 0.035 * P.L);
+        ctx.lineTo(0.035 * P.L, -headR);
+        ctx.closePath();
+        ctx.fill();
+        ctx.restore();
+
+        // SPIRIT
+        ctx.save();
+        ctx.strokeStyle = accent;
+        ctx.lineWidth = P.accentStroke;
+        ctx.beginPath();
+        ctx.arc(0,0,P.r_spirit,0,Math.PI*2);
+        ctx.stroke();
+        ctx.fillStyle = accent;
+        ctx.beginPath();
+        ctx.arc(0,0,Math.max(2,0.006*P.L),0,Math.PI*2);
+        ctx.fill();
+        ctx.restore();
+
+        // SIX SILOS
+        ctx.save();
+        ctx.strokeStyle = fg;
+        ctx.lineWidth = P.strokeWide;
+        ctx.lineCap = 'round';
+        ctx.lineJoin = 'round';
+        for(let k=0;k<6;k++){
+          const th = k*Math.PI/3;
+          const x = P.r_silos*Math.cos(th);
+          const y = P.r_silos*Math.sin(th);
+          ctx.beginPath();
+          ctx.arc(x,y,P.node_r,0,Math.PI*2);
+          ctx.stroke();
+        }
+        ctx.restore();
+
+        // FOOL'S CYCLE
+        ctx.save();
+        ctx.strokeStyle = fg;
+        ctx.lineWidth = P.strokeWide;
+        ctx.beginPath();
+        ctx.arc(0,0,P.r_cycle,0,Math.PI*2);
+        ctx.stroke();
+
+        ctx.lineWidth = P.strokeWide*0.8;
+        const chevLen = 0.04 * P.L;
+        const chevWidth = 0.028 * P.L;
+        for(let k=0;k<6;k++){
+          const a = k*Math.PI/3 + Math.PI/6 + cycleAngle;
+          const cx = P.r_cycle*Math.cos(a);
+          const cy = P.r_cycle*Math.sin(a);
+          const t = a + Math.PI/2;
+          ctx.save();
+          ctx.translate(cx,cy);
+          ctx.rotate(t);
+          ctx.beginPath();
+          ctx.moveTo(-chevLen/2,0);
+          ctx.lineTo(0,chevWidth);
+          ctx.lineTo(chevLen/2,0);
+          ctx.stroke();
+          ctx.restore();
+        }
+        ctx.restore();
+      }
+
+      function tick(){
+        if(animateEl.checked){
+          cycleAngle = (cycleAngle + 0.01) % (Math.PI*2);
+          draw();
+          raf = requestAnimationFrame(tick);
+        }
+      }
+
+      function start(){
+        cancelAnimationFrame(raf);
+        if(animateEl.checked){ raf = requestAnimationFrame(tick); }
+      }
+
+      // Exports
+      dlPng.addEventListener('click', ()=>{
+        try{
+          const link = document.createElement('a');
+          const L = parseInt(sizeEl.value||'1024',10);
+          link.download = `entrogenics-sigil-${L}.png`;
+          link.href = canvas.toDataURL('image/png');
+          link.click();
+        }catch(e){ errEl.textContent = `PNG export failed: ${e && e.message || e}`; }
+      });
+
+      dlSvg.addEventListener('click', ()=>{
+        try{
+          const fg = fgEl.value, muted = mutedEl.value, accent = accentEl.value;
+          const P = paramsFromL(1024);
+          const svg = `<?xml version="1.0" encoding="UTF-8"?>\n`+
+            `<svg xmlns="http://www.w3.org/2000/svg" viewBox="-512 -512 1024 1024">\n`+
+            `<defs><style><![CDATA[.fg{stroke:${fg};fill:none;stroke-width:${(P.strokeWide/P.L)*1024};stroke-linecap:round;stroke-linejoin:round}.muted{stroke:${muted};fill:none;stroke-width:${(P.strokeWider/P.L)*1024}}.accent{fill:none;stroke:${accent};stroke-width:${(P.accentStroke/P.L)*1024}}.dot{fill:${accent}}]]></style></defs>\n`+
+            `<g>\n  <circle r="${(P.r_spirit/P.L)*1024}" class="accent"/>\n  <circle r="${Math.max(2,(0.006*P.L))/P.L*1024}" class="dot"/>\n</g>\n`+
+            `<g>\n  <path d="M 0 -${(P.r_ouro_outer/P.L)*1024} a ${(P.r_ouro_outer/P.L)*1024} ${(P.r_ouro_outer/P.L)*1024} 0 1 1 -0.1 0" class="muted"/>\n  <path d="M 0 -${(P.r_ouro_outer/P.L)*1024} a ${(P.r_ouro_outer/P.L)*1024} ${(P.r_ouro_outer/P.L)*1024} 0 1 1 -0.1 0" class="muted" stroke-width="${(P.strokeWider/P.L)*1024}"/>\n  <g transform="rotate(-15)">\n    <path d="M -${0.035*1024} -${(P.r_ouro_outer- P.strokeWider)/P.L*1024} L 0 -${(P.r_ouro_outer- P.strokeWider - 0.035*P.L)/P.L*1024} L ${0.035*1024} -${(P.r_ouro_outer- P.strokeWider)/P.L*1024} Z" fill="${muted}"/>\n  </g>\n</g>\n`+
+            `<g class="fg">\n  ${[0,60,120,180,240,300].map(a=>`<g transform="rotate(${a}) translate(${(P.r_silos/P.L)*1024} 0)"><circle r="${(P.node_r/P.L)*1024}"/></g>`).join("\n  ")}\n</g>\n`+
+            `<g class="fg">\n  <circle r="${(P.r_cycle/P.L)*1024}" fill="none"/>\n  ${[30,90,150,210,270,330].map(a=>`<g transform="rotate(${a}) translate(${(P.r_cycle/P.L)*1024} 0) rotate(90)"><path d="M -${0.04*1024/2} 0 L 0 ${0.028*1024} L ${0.04*1024/2} 0"/></g>`).join("\n  ")}\n</g>\n`+
+            `</svg>`;
+          const blob = new Blob([svg], {type:'image/svg+xml'});
+          const url = URL.createObjectURL(blob);
+          const a = document.createElement('a');
+          a.href = url; a.download = 'entrogenics-sigil.svg'; document.body.appendChild(a); a.click(); a.remove();
+          URL.revokeObjectURL(url);
+        }catch(e){ errEl.textContent = `SVG export failed: ${e && e.message || e}`; }
+      });
+
+      // Controls
+      function onChange(){ draw(); if(animateEl.checked && !raf) start(); }
+      sizeEl.addEventListener('input', onChange);
+      accentEl.addEventListener('input', onChange);
+      fgEl.addEventListener('input', onChange);
+      mutedEl.addEventListener('input', onChange);
+      bgEl.addEventListener('input', ()=>{ bgEl.dataset.transparent='0'; onChange(); });
+      bgClear.addEventListener('click', ()=>{ bgEl.dataset.transparent='1'; draw(); });
+      animateEl.addEventListener('change', ()=>{ if(animateEl.checked){ start(); } else { cancelAnimationFrame(raf); raf=0; } });
+
+      // Initialize
+      bgEl.dataset.transparent='1';
+      draw();
+    })();
+  </script>
+</body>
+</html>

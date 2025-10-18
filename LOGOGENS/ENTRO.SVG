@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-512 -512 1024 1024">
+  <!-- ====== PARAMS (change these once) ====== -->
+  <defs>
+    <g id="node"><circle r="36"></circle></g>
+    <style>
+      :root { --fg:#0f0f14; --muted:#8aa; --accent:#22aaff; }
+      .fg{stroke:var(--fg); fill:none; stroke-width:12; stroke-linecap:round; stroke-linejoin:round}
+      .muted{stroke:var(--muted); fill:none; stroke-width:18}
+      .accent{fill:none; stroke:var(--accent); stroke-width:14}
+      .fill-accent{fill:var(--accent)}
+    </style>
+  </defs>
+
+  <!-- ====== RADII (derived from L=1024) ====== -->
+  <!-- spirit r=0.12L=122.9; silos r=0.33L=337.9; cycle r=0.36L=368.6; ouro 0.47–0.50L -->
+  <!-- SPIRIT -->
+  <circle r="123" class="accent"></circle>
+  <circle r="6" class="fill-accent"></circle>
+
+  <!-- ECOLOGY OUROBOROS (ring) -->
+  <g transform="rotate(-15)">
+    <circle r="512" fill="none"></circle>
+    <path d="
+      M 0 -512
+      a 512 512 0 1 1 -0.1 0
+      " class="muted"></path>
+    <!-- ring thickness by stroking twice -->
+    <path d="M 0 -512 a 512 512 0 1 1 -0.1 0" stroke-width="32" class="muted"></path>
+    <!-- head wedge -->
+    <path d="M -18 -504 L 0 -472 L 18 -504 Z" fill="var(--muted)"></path>
+  </g>
+
+  <!-- SIX SILOS (nodes at 60°) -->
+  <g class="fg">
+    <!-- positions using rotate+translate for clarity -->
+    <g transform="rotate(0) translate(338 0)"><use href="#node"></use></g>
+    <g transform="rotate(60) translate(338 0)"><use href="#node"></use></g>
+    <g transform="rotate(120) translate(338 0)"><use href="#node"></use></g>
+    <g transform="rotate(180) translate(338 0)"><use href="#node"></use></g>
+    <g transform="rotate(240) translate(338 0)"><use href="#node"></use></g>
+    <g transform="rotate(300) translate(338 0)"><use href="#node"></use></g>
+  </g>
+
+  <!-- FOOL'S CYCLE (six-point loop with direction chevrons) -->
+  <g class="fg">
+    <!-- polygonal cycle (perfect circle would hide the chevrons; this is a hexalobe) -->
+    <path d="
+      M 369 0
+      A 369 369 0 0 1 184.5 320
+      A 369 369 0 0 1 -184.5 320
+      A 369 369 0 0 1 -369 0
+      A 369 369 0 0 1 -184.5 -320
+      A 369 369 0 0 1 184.5 -320
+      A 369 369 0 0 1 369 0
+    "></path>
+    <!-- chevrons at each segment mid -->
+    <g>
+      <g transform="rotate(30) translate(369 0) rotate(90)">
+        <path d="M -20 0 L 0 20 L 20 0"></path>
+      </g>
+      <g transform="rotate(90) translate(369 0) rotate(150)">
+        <path d="M -20 0 L 0 20 L 20 0"></path>
+      </g>
+      <g transform="rotate(150) translate(369 0) rotate(210)">
+        <path d="M -20 0 L 0 20 L 20 0"></path>
+      </g>
+      <g transform="rotate(210) translate(369 0) rotate(270)">
+        <path d="M -20 0 L 0 20 L 20 0"></path>
+      </g>
+      <g transform="rotate(270) translate(369 0) rotate(330)">
+        <path d="M -20 0 L 0 20 L 20 0"></path>
+      </g>
+      <g transform="rotate(330) translate(369 0) rotate(30)">
+        <path d="M -20 0 L 0 20 L 20 0"></path>
+      </g>
+    </g>
+  </g>
+
+  <!-- OPTIONAL: labels as <title> for accessibility -->
+  <title>Entrogenics Sigil — Spirit • Six Silos • Ecology Ouroboros • Six-Phase Cycle</title>
+</svg>

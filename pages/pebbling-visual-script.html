@@ -1,0 +1,807 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Pebbling Gradient Flux Visual Script — Entrogenics CORE</title>
+  <meta name="description" content="Pebbling visual script with annotated code block." />
+  <link rel="stylesheet" href="../assets/css/site.css" />
+  <script src="../assets/js/toc.js" defer></script>
+</head>
+<body>
+  <div class="bg" aria-hidden="true"></div>
+  <div class="scan" aria-hidden="true"></div>
+  <main class="wrap">
+    <header class="hero hero-paper">
+      <div class="brand"><span class="dot" aria-hidden="true"></span> ENTROGENICS / CORE</div>
+      <h1>Pebbling Gradient Flux Visual Script</h1>
+      <p>Annotated JSX visualization script for tree pebbling gradient flux friction.</p>
+      <div class="cta">
+        <a class="btn-alt btn" href="../library.html">Back to CORE Library</a>
+        <a class="btn" href="../Silo/data_intelegence/Pebbling_memory-swap-2-ops-w-reversibility/tree_pebbling_gradient_flux_friction_ask_mini_visual(3).jsx" download>Download Source</a>
+      </div>
+    </header>
+    <section class="layout">
+      <aside class="sidebar">
+        <div class="toc-card">
+          <h2>Contents</h2>
+          <ol data-toc-list></ol>
+        </div>
+        <div class="meta-card">
+          <h3>Document</h3>
+          <p><strong>Category:</strong> Silo: Data Intelligence</p>
+          <p><strong>Version:</strong> v1.0 — October 2025</p>
+          <p><strong>Type:</strong> CODE</p>
+        </div>
+      </aside>
+      <article class="content">
+        <section class="front-matter">
+  <pre>---
+title: &quot;✦ Pebbling Gradient Flux Visual Script&quot;
+subtitle: &quot;Mini Visual JSX&quot;
+author: &quot;Tohn Burray Travolta (Entrogenic Research Collective)&quot;
+collaboration: &quot;Co-synthesized with large-language systems (GPT-5, Claude, Gemini) under the Cyclic-6 and Kybernōsis protocols&quot;
+series: &quot;Entrogenic Papers | Adaptive Systems Kollektive&quot;
+version: &quot;v1.0 — October 2025&quot;
+license: &quot;CC BY-SA 4.0&quot;
+repository: &quot;github.com/entrogenics/entrogenics-core&quot;
+doi: &quot;&quot;
+manifest-type: &quot;entrogenic-standard-paper&quot;
+---</pre>
+  <section class="front-matter-section">
+    <h3>Authorship Declaration</h3>
+    <p>This document was produced through <strong>synthetic co-authorship</strong> within the Entrogenic research framework.</p>
+    <p>The human author — <strong>Tohn Burray Travolta</strong> — provided conceptual design, curation, and final synthesis.</p>
+    <p>Language-model agents assisted in drafting, structural refinement, and citation weaving following the <em>Cyclic-6</em> process: <strong>Unfold → Disturb → Collapse → Bind → Dissipate → Recur.</strong></p>
+    <p>All content has been reviewed, edited, and ethically approved by the human author, who assumes full accountability for its meaning and publication.</p>
+    <blockquote><em>Entrogenics regards writing as co-adaptation between consciousness and code; each paper is a living artifact within that evolving grammar.</em></blockquote>
+  </section>
+  <section class="front-matter-section">
+    <h3>Abstract / Invocation</h3>
+    <p>This web edition arises from the <strong>Entrogenic tradition</strong> — a trans-disciplinary inquiry into adaptive systems, cyclic intelligence, and the synthesis of human intuition with artificial reasoning.</p>
+    <p>It preserves the original manuscript while adopting a digital ritual format consistent with Entrogenic publication standards.</p>
+  </section>
+  <section class="front-matter-section">
+    <h3>Symbolic Standard — The Catalytic Star (✡)</h3>
+    <p>The six-pointed star (<strong>✡</strong>, Unicode U+2721) represents the <strong>Bind / Catalytic Unification phase</strong> within <em>The Fool’s Cycle</em>, signifying harmonic convergence of dualities in adaptive transformation.</p>
+    <p>Never substitute ✡ with alternative glyphs. The canonical sequence appears below:</p>
+    <div class="front-formula">
+      <span>0</span>
+      <span>→</span>
+      <span>✡</span>
+      <span>→</span>
+      <span>☉</span>
+      <span>→</span>
+      <span>0′</span>
+    </div>
+    <ul>
+      <li>Confirm UTF-8 encoding in all Entrogenic manuscripts.</li>
+      <li>Preserve <code>&lt;meta charset="UTF-8"&gt;</code> declarations in HTML builds.</li>
+      <li>Validate symbol rendering across browsers before distribution.</li>
+    </ul>
+  </section>
+</section>
+        <h2>Source Code</h2><pre><code>import React, { useEffect, useMemo, useRef, useState } from &quot;react&quot;;
+
+// =============================================================
+// Tree Pebbling — Gradient × Flux ÷ Friction (ask Mini-visual)
+// Slimmed single-page demo: Single mode + Compare + Presets +
+// Share/Export + Self-tests + Zoomable canvas.
+// =============================================================
+
+// -------------------- Types --------------------
+type NodeT = { id: number; depth: number; x: number; y: number };
+type EdgeT = { from: number; to: number };
+
+type Step = { type: &quot;place&quot; | &quot;remove&quot; | &quot;compute&quot;; node: number; note: string };
+
+type CapPolicy = &quot;evict&quot; | &quot;strict&quot; | &quot;none&quot;;
+
+type Built = {
+  nodes: NodeT[];
+  edges: EdgeT[];
+  childrenMap: Map&lt;number, number[]&gt;;
+  schedules: Record&lt;ScheduleKey, Step[]&gt;;
+};
+
+type ScheduleKey = &quot;reversible&quot; | &quot;baseline&quot; | &quot;partial&quot;;
+
+type PresetKey =
+  | &quot;balanced&quot;
+  | &quot;gpu_training&quot;
+  | &quot;external_sort&quot;
+  | &quot;zk_proving&quot;
+  | &quot;embedded_edge&quot;
+  | &quot;throughput_server&quot;;
+
+// -------------------- Layout --------------------
+function layoutTree(h: number) {
+  const nodes: NodeT[] = [];
+  const edges: EdgeT[] = [];
+  let id = 0;
+  function build(depth: number, x: number, y: number): number {
+    const myId = id++;
+    nodes.push({ id: myId, depth, x, y });
+    if (depth &lt; h) {
+      const dx = 220 / (depth + 1);
+      const dy = 110;
+      const leftId = build(depth + 1, x - dx, y + dy);
+      const rightId = build(depth + 1, x + dx, y + dy);
+      edges.push({ from: myId, to: leftId });
+      edges.push({ from: myId, to: rightId });
+    }
+    return myId;
+  }
+  build(0, 300, 30);
+  return { nodes, edges };
+}
+
+function deriveChildren(nodes: NodeT[], edges: EdgeT[]) {
+  const children = new Map&lt;number, number[]&gt;();
+  for (const n of nodes) children.set(n.id, []);
+  for (const e of edges) children.get(e.from)!.push(e.to);
+  return children;
+}
+
+// -------------------- Schedule generators --------------------
+function buildSchedules(children: Map&lt;number, number[]&gt;, root = 0): Record&lt;ScheduleKey, Step[]&gt; {
+  const rev: Step[] = [];
+  const base: Step[] = [];
+  const partial: Step[] = [];
+
+  function genReversible(id: number) {
+    const kids = children.get(id) || [];
+    if (kids.length === 0) {
+      rev.push({ type: &quot;place&quot;, node: id, note: `Leaf ${id}` });
+      return;
+    }
+    genReversible(kids[0]);
+    genReversible(kids[1]);
+    rev.push({ type: &quot;compute&quot;, node: id, note: `Compute ${id} from ${kids[0]},${kids[1]}` });
+    rev.push({ type: &quot;remove&quot;, node: kids[0], note: `Uncompute ${kids[0]}` });
+    rev.push({ type: &quot;remove&quot;, node: kids[1], note: `Uncompute ${kids[1]}` });
+  }
+
+  function genBaseline(id: number) {
+    const kids = children.get(id) || [];
+    if (kids.length === 0) {
+      base.push({ type: &quot;place&quot;, node: id, note: `Leaf ${id}` });
+      return;
+    }
+    genBaseline(kids[0]);
+    genBaseline(kids[1]);
+    base.push({ type: &quot;compute&quot;, node: id, note: `Compute ${id} from ${kids[0]},${kids[1]}` });
+    // no cleanup → higher peak space
+  }
+
+  function genPartial(id: number) {
+    const kids = children.get(id) || [];
+    if (kids.length === 0) {
+      partial.push({ type: &quot;place&quot;, node: id, note: `Leaf ${id}` });
+      return;
+    }
+    genPartial(kids[0]);
+    genPartial(kids[1]);
+    partial.push({ type: &quot;compute&quot;, node: id, note: `Compute ${id} from ${kids[0]},${kids[1]}` });
+    // partial cleanup: drop only left child to show middle ground
+    partial.push({ type: &quot;remove&quot;, node: kids[0], note: `Uncompute ${kids[0]}` });
+  }
+
+  genReversible(root);
+  genBaseline(root);
+  genPartial(root);
+
+  // optional root cleanup in reversible
+  const kidsOfRoot = children.get(root) || [];
+  if (kidsOfRoot.length === 2) {
+    rev.push({ type: &quot;remove&quot;, node: kidsOfRoot[0], note: `Clean ${kidsOfRoot[0]}` });
+    rev.push({ type: &quot;remove&quot;, node: kidsOfRoot[1], note: `Clean ${kidsOfRoot[1]}` });
+  }
+
+  return { reversible: rev, baseline: base, partial };
+}
+
+// -------------------- Simulator for tests/metrics --------------------
+function depthMap(nodes: NodeT[]) {
+  const m = new Map&lt;number, number&gt;();
+  for (const n of nodes) m.set(n.id, n.depth);
+  return m;
+}
+
+function simulateSchedule(
+  schedule: Step[],
+  nodes: NodeT[],
+  edges: EdgeT[],
+  K: number,
+  capPolicy: CapPolicy
+) {
+  const children = deriveChildren(nodes, edges);
+  const dmap = depthMap(nodes);
+  const pebbled = new Set&lt;number&gt;();
+  const computed = new Set&lt;number&gt;();
+  let flux = 0;
+  let recomputeCount = 0;
+  let capOK = true;
+  let childrenOK = true;
+  let peak = 0;
+  const seen = new Set&lt;number&gt;();
+
+  const deepestOf = () =&gt; [...pebbled].sort((a, b) =&gt; dmap.get(b)! - dmap.get(a)!)[0];
+
+  const ensureCapacity = (needed = 1) =&gt; {
+    if (capPolicy === &quot;none&quot;) return;
+    while (pebbled.size + needed &gt; K) {
+      if (capPolicy === &quot;strict&quot;) {
+        capOK = false;
+        return;
+      }
+      const deepest = deepestOf();
+      if (deepest === undefined) return;
+      pebbled.delete(deepest);
+    }
+  };
+
+  for (const s of schedule) {
+    flux++;
+    if (s.type === &quot;place&quot;) {
+      if (seen.has(s.node)) recomputeCount++;
+      seen.add(s.node);
+      ensureCapacity(1);
+      pebbled.add(s.node);
+    } else if (s.type === &quot;remove&quot;) {
+      pebbled.delete(s.node);
+      computed.delete(s.node);
+    } else if (s.type === &quot;compute&quot;) {
+      const kids = children.get(s.node) || [];
+      if (kids.length &gt; 0) for (const k of kids) if (!pebbled.has(k)) childrenOK = false;
+      ensureCapacity(1);
+      pebbled.add(s.node);
+      computed.add(s.node);
+    }
+    if (capPolicy !== &quot;none&quot; &amp;&amp; pebbled.size &gt; K) capOK = false;
+    peak = Math.max(peak, pebbled.size);
+  }
+
+  const leavesClear = nodes.every((n) =&gt; (children.get(n.id) || []).length === 0 ? !pebbled.has(n.id) : true);
+  const rootComputed = computed.has(0);
+
+  return { flux, capOK, childrenOK, leavesClear, rootComputed, peak, recomputeCount };
+}
+
+function simulatePrefix(
+  schedule: Step[],
+  nodes: NodeT[],
+  edges: EdgeT[],
+  K: number,
+  capPolicy: CapPolicy,
+  upto: number
+) {
+  const dmap = depthMap(nodes);
+  const pebbled = new Set&lt;number&gt;();
+  const computed = new Set&lt;number&gt;();
+  let step = 0;
+  const deepestOf = () =&gt; [...pebbled].sort((a, b) =&gt; dmap.get(b)! - dmap.get(a)!)[0];
+  for (const s of schedule) {
+    if (step &gt;= upto) break;
+    step++;
+    if (s.type === &quot;place&quot;) {
+      if (capPolicy !== &quot;none&quot; &amp;&amp; pebbled.size &gt;= K &amp;&amp; deepestOf() !== undefined) pebbled.delete(deepestOf());
+      pebbled.add(s.node);
+    } else if (s.type === &quot;remove&quot;) {
+      pebbled.delete(s.node);
+      computed.delete(s.node);
+    } else if (s.type === &quot;compute&quot;) {
+      if (capPolicy !== &quot;none&quot; &amp;&amp; pebbled.size &gt;= K &amp;&amp; deepestOf() !== undefined) pebbled.delete(deepestOf());
+      pebbled.add(s.node);
+      computed.add(s.node);
+    }
+  }
+  return { pebbled, computed };
+}
+
+// -------------------- React App --------------------
+export default function App() {
+  // Height
+  const [H, setH] = useState(2);
+
+  // Build tree + schedules
+  const built: Built = useMemo(() =&gt; {
+    const { nodes, edges } = layoutTree(H);
+    const childrenMap = deriveChildren(nodes, edges);
+    const schedules = buildSchedules(childrenMap, 0);
+    return { nodes, edges, childrenMap, schedules };
+  }, [H]);
+
+  const { nodes, edges, childrenMap, schedules } = built;
+
+  // Settings
+  const [K, setK] = useState(3);
+  const [capPolicy, setCapPolicy] = useState&lt;CapPolicy&gt;(&quot;evict&quot;);
+  const [alpha, setAlpha] = useState(1);
+  const [beta, setBeta] = useState(0.2);
+  const [gamma, setGamma] = useState(0.1);
+
+  const PRESETS: Record&lt;PresetKey, { alpha: number; beta: number; gamma: number; blurb: string }&gt; = {
+    balanced: { alpha: 0.8, beta: 0.5, gamma: 0.4, blurb: &quot;General-purpose balance of space/time/recompute.&quot; },
+    gpu_training: { alpha: 1.2, beta: 0.3, gamma: 0.5, blurb: &quot;VRAM tight; recompute acceptable (checkpointing).&quot; },
+    external_sort: { alpha: 0.9, beta: 0.2, gamma: 1.3, blurb: &quot;IO/rehash costly; penalize recompute.&quot; },
+    zk_proving: { alpha: 1.1, beta: 0.4, gamma: 1.0, blurb: &quot;Memory + re-derivations are expensive.&quot; },
+    embedded_edge: { alpha: 1.5, beta: 0.2, gamma: 0.3, blurb: &quot;Tiny RAM; accept more moves.&quot; },
+    throughput_server: { alpha: 0.3, beta: 1.2, gamma: 0.3, blurb: &quot;Moves (latency) dominate cost.&quot; },
+  };
+  const [preset, setPreset] = useState&lt;PresetKey&gt;(&quot;balanced&quot;);
+
+  function applyPreset(key: PresetKey) {
+    setPreset(key);
+    const p = PRESETS[key];
+    setAlpha(p.alpha);
+    setBeta(p.beta);
+    setGamma(p.gamma);
+  }
+
+  // Single-run state
+  const [scheduleKey, setScheduleKey] = useState&lt;ScheduleKey&gt;(&quot;reversible&quot;);
+  const activeSchedule = schedules[scheduleKey];
+  const [stepIdx, setStepIdx] = useState(0);
+  const [running, setRunning] = useState(false);
+  const [speedMs] = useState(800);
+
+  // Shareable URL params
+  useEffect(() =&gt; {
+    try {
+      const q = new URLSearchParams(window.location.search);
+      const h = parseInt(q.get(&quot;H&quot;) || &quot;&quot;);
+      if (!isNaN(h)) setH(Math.max(2, Math.min(8, h)));
+      const k = parseInt(q.get(&quot;K&quot;) || &quot;&quot;);
+      if (!isNaN(k)) setK(Math.max(2, Math.min(64, k)));
+      const cap = q.get(&quot;cap&quot;) as CapPolicy | null;
+      if (cap === &quot;evict&quot; || cap === &quot;strict&quot; || cap === &quot;none&quot;) setCapPolicy(cap);
+      const sk = q.get(&quot;schedule&quot;) as ScheduleKey | null;
+      if (sk &amp;&amp; (sk === &quot;reversible&quot; || sk === &quot;baseline&quot; || sk === &quot;partial&quot;)) setScheduleKey(sk);
+      const pr = q.get(&quot;preset&quot;) as PresetKey | null;
+      if (pr &amp;&amp; PRESETS[pr]) applyPreset(pr);
+      const pa = parseFloat(q.get(&quot;alpha&quot;) || &quot;&quot;);
+      const pb = parseFloat(q.get(&quot;beta&quot;) || &quot;&quot;);
+      const pg = parseFloat(q.get(&quot;gamma&quot;) || &quot;&quot;);
+      if (!isNaN(pa)) setAlpha(pa);
+      if (!isNaN(pb)) setBeta(pb);
+      if (!isNaN(pg)) setGamma(pg);
+    } catch {}
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  function buildParams() {
+    const qp = new URLSearchParams();
+    qp.set(&quot;H&quot;, String(H));
+    qp.set(&quot;K&quot;, String(K));
+    qp.set(&quot;cap&quot;, capPolicy);
+    qp.set(&quot;preset&quot;, preset);
+    qp.set(&quot;alpha&quot;, String(alpha));
+    qp.set(&quot;beta&quot;, String(beta));
+    qp.set(&quot;gamma&quot;, String(gamma));
+    qp.set(&quot;schedule&quot;, scheduleKey);
+    return qp;
+  }
+
+  const [copied, setCopied] = useState&lt;string | null&gt;(null);
+  async function copyShareURL() {
+    const url = `${window.location.origin}${window.location.pathname}?${buildParams().toString()}`;
+    try {
+      await navigator.clipboard.writeText(url);
+      setCopied(&quot;Link copied!&quot;);
+      setTimeout(() =&gt; setCopied(null), 1500);
+    } catch {
+      setCopied(&quot;Copy failed&quot;);
+      setTimeout(() =&gt; setCopied(null), 1500);
+    }
+  }
+
+  async function copyDecisionMarkdown() {
+    const lines: string[] = [];
+    lines.push(`# Pebble-Bridge Decision`);
+    lines.push(&quot;&quot;);
+    lines.push(`Tree height **H=${H}**, K=**${K}**, cap=**${capPolicy}**.`);
+    lines.push(`Weights: α=${alpha}, β=${beta}, γ=${gamma} (preset: ${preset}).`);
+    lines.push(&quot;&quot;);
+    const m = simulateSchedule(activeSchedule, nodes, edges, K, capPolicy);
+    const cost = alpha * m.peak + beta * m.flux + gamma * m.recomputeCount;
+    lines.push(`Schedule **${scheduleKey.toUpperCase()}**`);
+    lines.push(&quot;&quot;);
+    lines.push(`- Peak: **${m.peak}**\n- Flux: **${m.flux}**\n- Recomputation: **${m.recomputeCount}**\n- Children OK: ${m.childrenOK ? &quot;✅&quot; : &quot;❌&quot;}\n- Root computed: ${m.rootComputed ? &quot;✅&quot; : &quot;❌&quot;}`);
+    lines.push(&quot;&quot;);
+    lines.push(`**Cost** = α·peak + β·flux + γ·recompute = **${cost.toFixed(2)}**`);
+    lines.push(&quot;&quot;);
+    lines.push(`Cyclic_6: Seed → Couple → Pump → Spill → Uncompute → Certify.`);
+    lines.push(`Cost model: cost = α·peak + β·flux + γ·recompute.`);
+    try {
+      await navigator.clipboard.writeText(lines.join(&quot;\n&quot;));
+      setCopied(&quot;Summary copied!&quot;);
+      setTimeout(() =&gt; setCopied(null), 1500);
+    } catch {
+      setCopied(&quot;Copy failed&quot;);
+      setTimeout(() =&gt; setCopied(null), 1500);
+    }
+  }
+
+  // Playback
+  useEffect(() =&gt; setStepIdx(0), [H, scheduleKey, capPolicy, K]);
+  useEffect(() =&gt; {
+    if (!running) return;
+    const id = window.setInterval(() =&gt; setStepIdx((s) =&gt; Math.min(s + 1, activeSchedule.length)), 800);
+    return () =&gt; window.clearInterval(id);
+  }, [running, activeSchedule.length]);
+
+  // Metrics (current schedule)
+  const singleMetrics = useMemo(() =&gt; simulateSchedule(activeSchedule, nodes, edges, K, capPolicy), [activeSchedule, nodes, edges, K, capPolicy]);
+  const singleCost = useMemo(() =&gt; alpha * singleMetrics.peak + beta * singleMetrics.flux + gamma * singleMetrics.recomputeCount, [singleMetrics, alpha, beta, gamma]);
+
+  // Leaderboard across all schedules at current K/cap
+  const M_rev = useMemo(() =&gt; simulateSchedule(schedules.reversible, nodes, edges, K, capPolicy), [schedules.reversible, nodes, edges, K, capPolicy]);
+  const M_base = useMemo(() =&gt; simulateSchedule(schedules.baseline, nodes, edges, K, capPolicy), [schedules.baseline, nodes, edges, K, capPolicy]);
+  const M_part = useMemo(() =&gt; simulateSchedule(schedules.partial, nodes, edges, K, capPolicy), [schedules.partial, nodes, edges, K, capPolicy]);
+  const C_rev = alpha * M_rev.peak + beta * M_rev.flux + gamma * M_rev.recomputeCount;
+  const C_base = alpha * M_base.peak + beta * M_base.flux + gamma * M_base.recomputeCount;
+  const C_part = alpha * M_part.peak + beta * M_part.flux + gamma * M_part.recomputeCount;
+  const leaderboard = useMemo(() =&gt; {
+    const arr = [
+      { key: &quot;reversible&quot; as ScheduleKey, cost: C_rev },
+      { key: &quot;baseline&quot; as ScheduleKey, cost: C_base },
+      { key: &quot;partial&quot; as ScheduleKey, cost: C_part },
+    ].sort((a, b) =&gt; a.cost - b.cost);
+    return { winner: arr[0].key, rows: arr };
+  }, [C_rev, C_base, C_part]);
+
+  // Visual prefix state
+  const { pebbled: Psingle, computed: Csingle } = useMemo(() =&gt; simulatePrefix(activeSchedule, nodes, edges, K, capPolicy, stepIdx), [activeSchedule, nodes, edges, K, capPolicy, stepIdx]);
+
+  // -------------------- Self-tests --------------------
+  const tests = useMemo(() =&gt; {
+    const t = simulateSchedule(activeSchedule, nodes, edges, K, capPolicy);
+    const baselineNC = simulateSchedule(schedules.baseline, nodes, edges, 9999, &quot;none&quot;);
+    const reversibleNC = simulateSchedule(schedules.reversible, nodes, edges, 9999, &quot;none&quot;);
+    return [
+      { name: `Children pebbled before compute (${scheduleKey}, K=${K}, ${capPolicy})`, pass: t.childrenOK, detail: `${t.childrenOK}` },
+      { name: `Cap respected (${scheduleKey}, K=${K}, ${capPolicy})`, pass: t.capOK, detail: `${t.capOK}` },
+      { name: `No leaves pebbled at end (${scheduleKey})`, pass: t.leavesClear, detail: `${t.leavesClear}` },
+      { name: `Root computed (${scheduleKey})`, pass: t.rootComputed, detail: `${t.rootComputed}` },
+      { name: `Reversible peak ≤ Baseline peak (no cap)`, pass: reversibleNC.peak &lt;= baselineNC.peak, detail: `${reversibleNC.peak} ≤ ${baselineNC.peak}` },
+      { name: `Flux equals schedule length`, pass: t.flux === activeSchedule.length, detail: `${t.flux}/${activeSchedule.length}` },
+    ];
+  }, [activeSchedule, nodes, edges, K, capPolicy, scheduleKey, schedules]);
+
+  // -------------------- Render --------------------
+  return (
+    &lt;div className=&quot;min-h-screen w-full bg-gradient-to-br from-stone-900 via-zinc-900 to-slate-900 text-zinc-100 p-6&quot;&gt;
+      &lt;div className=&quot;max-w-[1200px] mx-auto flex flex-col gap-6&quot;&gt;
+        &lt;header className=&quot;space-y-3&quot;&gt;
+          &lt;h1 className=&quot;text-xl sm:text-2xl font-semibold tracking-tight&quot;&gt;Tree Pebbling • &lt;span className=&quot;text-emerald-300&quot;&gt;Gradient × Flux ÷ Friction&lt;/span&gt;&lt;/h1&gt;
+          &lt;p className=&quot;text-sm opacity-80&quot;&gt;Tune your memory budget (&lt;strong&gt;K&lt;/strong&gt;) and cost weights (&lt;strong&gt;α&lt;/strong&gt; space, &lt;strong&gt;β&lt;/strong&gt; moves, &lt;strong&gt;γ&lt;/strong&gt; recompute). Compare schedules and export a decision summary.&lt;/p&gt;
+          &lt;div className=&quot;flex flex-wrap items-center gap-2&quot;&gt;
+            &lt;button onClick={copyShareURL} className=&quot;px-3 py-2 rounded-xl bg-zinc-800 border border-zinc-700 hover:bg-zinc-700&quot;&gt;Share link&lt;/button&gt;
+            &lt;button onClick={copyDecisionMarkdown} className=&quot;px-3 py-2 rounded-xl bg-zinc-800 border border-zinc-700 hover:bg-zinc-700&quot;&gt;Export decision (md)&lt;/button&gt;
+            {copied &amp;&amp; &lt;span className=&quot;text-xs opacity-80 ml-2&quot;&gt;{copied}&lt;/span&gt;}
+          &lt;/div&gt;
+        &lt;/header&gt;
+
+        {/* Controls */}
+        &lt;div className=&quot;rounded-2xl p-4 bg-zinc-900/70 border border-zinc-800 shadow-lg grid md:grid-cols-2 gap-4&quot;&gt;
+          &lt;div className=&quot;flex flex-wrap items-center gap-4&quot;&gt;
+            &lt;Label&gt;Height&lt;/Label&gt;
+            &lt;Select value={H} onChange={(v)=&gt; setH(v)} options={[2,3,4,5,6]} /&gt;
+
+            &lt;Label&gt;Cap policy&lt;/Label&gt;
+            &lt;NativeSelect value={capPolicy} setValue={setCapPolicy} options={[&quot;evict&quot;,&quot;strict&quot;,&quot;none&quot;]} /&gt;
+
+            &lt;div className=&quot;flex items-center gap-3 ml-auto&quot;&gt;
+              &lt;Label&gt;K&lt;/Label&gt;
+              &lt;input type=&quot;range&quot; min={2} max={16} step={1} value={K} onChange={(e) =&gt; setK(parseInt(e.target.value))} /&gt;
+              &lt;span className=&quot;font-mono text-sm&quot;&gt;{K}&lt;/span&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+
+          &lt;div className=&quot;flex flex-wrap items-center gap-3&quot;&gt;
+            &lt;Label&gt;Weights&lt;/Label&gt;
+            &lt;NumberInput label=&quot;α (space)&quot; value={alpha} setValue={setAlpha} /&gt;
+            &lt;NumberInput label=&quot;β (moves)&quot; value={beta} setValue={setBeta} /&gt;
+            &lt;NumberInput label=&quot;γ (recompute)&quot; value={gamma} setValue={setGamma} /&gt;
+            &lt;div className=&quot;flex items-center gap-2 ml-auto&quot;&gt;
+              &lt;Label&gt;Preset&lt;/Label&gt;
+              &lt;NativeSelect value={preset} setValue={(v)=&gt; applyPreset(v as PresetKey)} options={[&quot;balanced&quot;,&quot;gpu_training&quot;,&quot;external_sort&quot;,&quot;zk_proving&quot;,&quot;embedded_edge&quot;,&quot;throughput_server&quot;] as any} /&gt;
+            &lt;/div&gt;
+            &lt;div className=&quot;text-xs opacity-70 basis-full&quot;&gt;cost = α·peak + β·flux + γ·recompute — {PRESETS[preset].blurb}&lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+
+        {/* Single panel */}
+        &lt;div className=&quot;grid xl:grid-cols-3 gap-6&quot;&gt;
+          &lt;div className=&quot;xl:col-span-2 rounded-2xl p-3 bg-zinc-900/70 border border-zinc-800&quot;&gt;
+            &lt;div className=&quot;flex items-center gap-3 mb-2&quot;&gt;
+              &lt;Label&gt;Schedule&lt;/Label&gt;
+              &lt;NativeSelect value={scheduleKey} setValue={setScheduleKey} options={[&quot;reversible&quot;,&quot;baseline&quot;,&quot;partial&quot;]} /&gt;
+              &lt;div className=&quot;ml-auto flex items-center gap-2&quot;&gt;
+                &lt;button onClick={() =&gt; setRunning((r) =&gt; !r)} className=&quot;px-3 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 shadow&quot;&gt;{running ? &quot;Pause&quot; : &quot;Play&quot;}&lt;/button&gt;
+                &lt;button onClick={() =&gt; setStepIdx((s)=&gt;Math.min(s+1, activeSchedule.length))} className=&quot;px-3 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-500 shadow&quot;&gt;Step&lt;/button&gt;
+                &lt;button onClick={() =&gt; setStepIdx(0)} className=&quot;px-3 py-2 rounded-xl bg-zinc-700 hover:bg-zinc-600 shadow&quot;&gt;Reset&lt;/button&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;NodeCanvas
+              title={`${scheduleKey.toUpperCase()} (H=${H}, K=${K})`}
+              nodes={nodes}
+              edges={edges}
+              childrenMap={childrenMap}
+              currentStep={activeSchedule[Math.min(stepIdx, activeSchedule.length-1)]}
+              pebbled={Psingle}
+              computed={Csingle}
+              speedMs={800}
+            /&gt;
+          &lt;/div&gt;
+
+          &lt;div className=&quot;rounded-2xl p-4 bg-zinc-900/70 border border-zinc-800 flex flex-col gap-4&quot;&gt;
+            &lt;div className=&quot;grid grid-cols-3 gap-3&quot;&gt;
+              &lt;Metric label=&quot;Peak&quot; value={singleMetrics.peak} /&gt;
+              &lt;Metric label=&quot;Flux&quot; value={singleMetrics.flux} /&gt;
+              &lt;Metric label=&quot;Recompute&quot; value={singleMetrics.recomputeCount} /&gt;
+            &lt;/div&gt;
+            &lt;div className=&quot;grid grid-cols-3 gap-3&quot;&gt;
+              &lt;Metric label=&quot;Children OK&quot; value={singleMetrics.childrenOK ? &quot;✅&quot; : &quot;❌&quot;} /&gt;
+              &lt;Metric label=&quot;Cap respected&quot; value={singleMetrics.capOK ? &quot;✅&quot; : &quot;❌&quot;} /&gt;
+              &lt;Metric label=&quot;Root&quot; value={singleMetrics.rootComputed ? &quot;✔&quot; : &quot;…&quot;} /&gt;
+            &lt;/div&gt;
+            &lt;div className=&quot;rounded-xl bg-zinc-800/50 border border-zinc-700 p-3&quot;&gt;
+              &lt;div className=&quot;text-xs uppercase tracking-wide opacity-70 mb-2&quot;&gt;Your cost&lt;/div&gt;
+              &lt;div className=&quot;text-2xl font-semibold&quot;&gt;{singleCost.toFixed(2)}&lt;/div&gt;
+            &lt;/div&gt;
+
+            {/* Winner across all schedules */}
+            &lt;div className=&quot;rounded-xl bg-zinc-800/50 border border-zinc-700 p-3&quot;&gt;
+              &lt;div className=&quot;text-xs uppercase tracking-wide opacity-70 mb-2&quot;&gt;Winner (by your weights)&lt;/div&gt;
+              &lt;div className=&quot;text-lg font-semibold&quot;&gt;
+                {leaderboard.winner.toUpperCase()}
+              &lt;/div&gt;
+              &lt;div className=&quot;text-xs opacity-70 mt-1 font-mono&quot;&gt;
+                R:{C_rev.toFixed(2)} • P:{C_part.toFixed(2)} • B:{C_base.toFixed(2)}
+              &lt;/div&gt;
+            &lt;/div&gt;
+
+            &lt;ExplainBlock /&gt;
+            &lt;TestsPanel tests={tests} /&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+
+        {/* Compare panel */}
+        &lt;div className=&quot;rounded-2xl p-4 bg-zinc-900/70 border border-zinc-800&quot;&gt;
+          &lt;ComparePanel nodes={nodes} edges={edges} K={K} schedules={schedules} /&gt;
+        &lt;/div&gt;
+
+      &lt;/div&gt;
+    &lt;/div&gt;
+  );
+}
+
+// -------------------- Canvas &amp; UI Bits --------------------
+function NodeCanvas({
+  title,
+  nodes,
+  edges,
+  childrenMap,
+  currentStep,
+  pebbled,
+  computed,
+  speedMs,
+}: {
+  title: string;
+  nodes: NodeT[];
+  edges: EdgeT[];
+  childrenMap: Map&lt;number, number[]&gt;;
+  currentStep?: Step;
+  pebbled: Set&lt;number&gt;;
+  computed: Set&lt;number&gt;;
+  speedMs: number;
+}) {
+  const [zoom, setZoom] = useState(1);
+  const frameRef = useRef&lt;HTMLDivElement | null&gt;(null);
+  const [view, setView] = useState({ width: 800, height: 420 });
+
+  useEffect(() =&gt; {
+    function measure() {
+      if (!frameRef.current) return;
+      const r = frameRef.current.getBoundingClientRect();
+      setView({ width: Math.max(300, r.width), height: Math.max(220, r.height) });
+    }
+    measure();
+    window.addEventListener(&quot;resize&quot;, measure);
+    return () =&gt; window.removeEventListener(&quot;resize&quot;, measure);
+  }, []);
+
+  const bounds = useMemo(() =&gt; {
+    const minX = Math.min(...nodes.map(n=&gt;n.x));
+    const maxX = Math.max(...nodes.map(n=&gt;n.x));
+    const minY = Math.min(...nodes.map(n=&gt;n.y));
+    const maxY = Math.max(...nodes.map(n=&gt;n.y));
+    return { minX, maxX, minY, maxY, w: maxX-minX+80, h: maxY-minY+80 };
+  }, [nodes]);
+
+  const fit = () =&gt; {
+    const s = Math.min(view.width / bounds.w, view.height / bounds.h) * 0.95;
+    setZoom(Number.isFinite(s) ? Math.max(0.2, Math.min(3, s)) : 1);
+  };
+
+  useEffect(() =&gt; { fit(); }, [view.width, view.height, bounds.w, bounds.h]);
+
+  return (
+    &lt;div className=&quot;flex flex-col gap-2&quot;&gt;
+      &lt;div className=&quot;flex items-center gap-3&quot;&gt;
+        &lt;div className=&quot;text-sm opacity-80 font-medium&quot;&gt;{title}&lt;/div&gt;
+        &lt;div className=&quot;ml-auto flex items-center gap-2&quot;&gt;
+          &lt;button onClick={() =&gt; setZoom((z)=&gt; Math.min(3, z*1.15))} className=&quot;px-2 py-1 rounded-lg bg-zinc-800 border border-zinc-700&quot;&gt;＋&lt;/button&gt;
+          &lt;button onClick={() =&gt; setZoom((z)=&gt; Math.max(0.2, z/1.15))} className=&quot;px-2 py-1 rounded-lg bg-zinc-800 border border-zinc-700&quot;&gt;－&lt;/button&gt;
+          &lt;button onClick={fit} className=&quot;px-2 py-1 rounded-lg bg-zinc-800 border border-zinc-700&quot;&gt;Fit&lt;/button&gt;
+          &lt;span className=&quot;text-xs opacity-70 font-mono&quot;&gt;{(zoom*100).toFixed(0)}%&lt;/span&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div ref={frameRef} className=&quot;relative h-[420px] rounded-2xl overflow-auto bg-zinc-950/50 border border-zinc-800&quot;&gt;
+        &lt;div style={{ width: bounds.w, height: bounds.h, transform: `scale(${zoom})`, transformOrigin: &quot;0 0&quot; }}&gt;
+          &lt;svg viewBox={`${bounds.minX-40} ${bounds.minY-40} ${bounds.w} ${bounds.h}`} width={bounds.w} height={bounds.h}&gt;
+            {/* edges */}
+            {edges.map((e, i) =&gt; {
+              const a = nodes.find((n) =&gt; n.id === e.from)!;
+              const b = nodes.find((n) =&gt; n.id === e.to)!;
+              const active = currentStep?.type === &quot;compute&quot; &amp;&amp; currentStep?.node === e.from;
+              return (
+                &lt;line key={i} x1={a.x} y1={a.y} x2={b.x} y2={b.y} stroke={active ? &quot;#a78bfa&quot; : &quot;#52525b&quot;} strokeWidth={active ? 4 : 2} strokeOpacity={active ? 0.95 : 0.7} /&gt;
+              );
+            })}
+
+            {/* nodes */}
+            {nodes.map((n) =&gt; {
+              const isTarget = currentStep?.type === &quot;compute&quot; &amp;&amp; currentStep.node === n.id;
+              return (
+                &lt;g key={n.id}&gt;
+                  {isTarget &amp;&amp; (
+                    &lt;circle cx={n.x} cy={n.y} r={26} fill=&quot;none&quot; stroke=&quot;#a78bfa&quot; strokeWidth={2} strokeOpacity={0.6}&gt;
+                      &lt;animate attributeName=&quot;r&quot; from=&quot;22&quot; to=&quot;30&quot; dur=&quot;0.45s&quot; repeatCount=&quot;1&quot; fill=&quot;freeze&quot; /&gt;
+                      &lt;animate attributeName=&quot;stroke-opacity&quot; from=&quot;0.8&quot; to=&quot;0.0&quot; dur=&quot;0.45s&quot; repeatCount=&quot;1&quot; fill=&quot;freeze&quot; /&gt;
+                    &lt;/circle&gt;
+                  )}
+                  &lt;circle cx={n.x} cy={n.y} r={18} fill={pebbled.has(n.id)?&quot;#34d399&quot;:(computed.has(n.id)?&quot;#818cf8&quot;:&quot;#3f3f46&quot;)} stroke=&quot;#e4e4e7&quot; strokeWidth={1.5} /&gt;
+                  &lt;text x={n.x} y={n.y + 4} textAnchor=&quot;middle&quot; fill=&quot;#fafafa&quot; fontSize=&quot;12&quot; fontWeight={500}&gt;{n.id}&lt;/text&gt;
+                &lt;/g&gt;
+              );
+            })}
+
+            {/* flow dots on compute: children → parent */}
+            {currentStep?.type === &quot;compute&quot; &amp;&amp; (childrenMap.get(currentStep.node) || []).map((cid, idx) =&gt; {
+              const c = nodes.find((n) =&gt; n.id === cid)!;
+              const p = nodes.find((n) =&gt; n.id === currentStep.node)!;
+              return &lt;TransferDot key={idx} from={c} to={p} speedMs={Math.max(300, Math.min(1200, speedMs))} /&gt;;
+            })}
+          &lt;/svg&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  );
+}
+
+function ComparePanel({ nodes, edges, K, schedules }: { nodes: NodeT[]; edges: EdgeT[]; K: number; schedules: Record&lt;ScheduleKey, Step[]&gt; }) {
+  const rv = useMemo(() =&gt; simulateSchedule(schedules.reversible, nodes, edges, Math.max(2, K), &quot;evict&quot;), [nodes, edges, K, schedules]);
+  const bl = useMemo(() =&gt; simulateSchedule(schedules.baseline, nodes, edges, 99, &quot;none&quot;), [nodes, edges, schedules]);
+  const pt = useMemo(() =&gt; simulateSchedule(schedules.partial, nodes, edges, Math.max(2, K), &quot;evict&quot;), [nodes, edges, K, schedules]);
+  return (
+    &lt;div&gt;
+      &lt;div className=&quot;text-xs uppercase tracking-wide opacity-70 mb-2&quot;&gt;Quick Compare (control vs variants)&lt;/div&gt;
+      &lt;div className=&quot;overflow-x-auto&quot;&gt;
+        &lt;table className=&quot;w-full text-sm&quot;&gt;
+          &lt;thead className=&quot;text-xs opacity-70&quot;&gt;
+            &lt;tr&gt;
+              &lt;th className=&quot;text-left&quot;&gt;Metric&lt;/th&gt;
+              &lt;th className=&quot;text-left&quot;&gt;Baseline (no cap)&lt;/th&gt;
+              &lt;th className=&quot;text-left&quot;&gt;Partial (K={K})&lt;/th&gt;
+              &lt;th className=&quot;text-left&quot;&gt;Reversible (K={K})&lt;/th&gt;
+            &lt;/tr&gt;
+          &lt;/thead&gt;
+          &lt;tbody&gt;
+            &lt;tr&gt;&lt;td&gt;Peak pebbles&lt;/td&gt;&lt;td className=&quot;font-mono&quot;&gt;{bl.peak}&lt;/td&gt;&lt;td className=&quot;font-mono&quot;&gt;{pt.peak}&lt;/td&gt;&lt;td className=&quot;font-mono&quot;&gt;{rv.peak}&lt;/td&gt;&lt;/tr&gt;
+            &lt;tr&gt;&lt;td&gt;Flux (moves)&lt;/td&gt;&lt;td className=&quot;font-mono&quot;&gt;{schedules.baseline.length}&lt;/td&gt;&lt;td className=&quot;font-mono&quot;&gt;{schedules.partial.length}&lt;/td&gt;&lt;td className=&quot;font-mono&quot;&gt;{schedules.reversible.length}&lt;/td&gt;&lt;/tr&gt;
+            &lt;tr&gt;&lt;td&gt;Recomputes&lt;/td&gt;&lt;td className=&quot;font-mono&quot;&gt;{bl.recomputeCount}&lt;/td&gt;&lt;td className=&quot;font-mono&quot;&gt;{pt.recomputeCount}&lt;/td&gt;&lt;td className=&quot;font-mono&quot;&gt;{rv.recomputeCount}&lt;/td&gt;&lt;/tr&gt;
+            &lt;tr&gt;&lt;td&gt;Children OK at compute&lt;/td&gt;&lt;td&gt;{bl.childrenOK ? &quot;✅&quot; : &quot;❌&quot;}&lt;/td&gt;&lt;td&gt;{pt.childrenOK ? &quot;✅&quot; : &quot;❌&quot;}&lt;/td&gt;&lt;td&gt;{rv.childrenOK ? &quot;✅&quot; : &quot;❌&quot;}&lt;/td&gt;&lt;/tr&gt;
+            &lt;tr&gt;&lt;td&gt;Root computed&lt;/td&gt;&lt;td&gt;{bl.rootComputed ? &quot;✅&quot; : &quot;❌&quot;}&lt;/td&gt;&lt;td&gt;{pt.rootComputed ? &quot;✅&quot; : &quot;❌&quot;}&lt;/td&gt;&lt;td&gt;{rv.rootComputed ? &quot;✅&quot; : &quot;❌&quot;}&lt;/td&gt;&lt;/tr&gt;
+          &lt;/tbody&gt;
+        &lt;/table&gt;
+      &lt;/div&gt;
+      &lt;div className=&quot;text-xs opacity-70 mt-2&quot;&gt;
+        &lt;p&gt;&lt;strong&gt;Reading this:&lt;/strong&gt; Reversible should reduce peak relative to Baseline; Partial sits between. Flux often grows as you clean more, showing the classic space↔time trade.&lt;/p&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  );
+}
+
+// -------------------- Explainers &amp; UI helpers --------------------
+function ExplainBlock() {
+  return (
+    &lt;div className=&quot;rounded-xl bg-zinc-800/50 border border-zinc-700 p-3 text-sm leading-relaxed space-y-2&quot;&gt;
+      &lt;p&gt;&lt;strong&gt;ELI5:&lt;/strong&gt; You only have a few clips (K). To stand on a branch, both child branches need clips and you place one on the parent while you compute. With cleanup (reversible), you take clips back to reuse them—lower peak clips, more steps.&lt;/p&gt;
+      &lt;p&gt;&lt;strong&gt;Why care?&lt;/strong&gt; Many workloads (sorts, Merkle trees, checkpointing) trade space for time. Reversible schedules cut &lt;em&gt;peak space&lt;/em&gt; at the cost of more &lt;em&gt;moves&lt;/em&gt;. Use α/β/γ to reflect your costs.&lt;/p&gt;
+    &lt;/div&gt;
+  );
+}
+
+function TestsPanel({ tests }: { tests: { name: string; pass: boolean; detail: string }[] }) {
+  return (
+    &lt;div className=&quot;mt-2 rounded-xl bg-zinc-800/50 border border-zinc-700 p-3&quot;&gt;
+      &lt;div className=&quot;text-xs uppercase tracking-wide opacity-70 mb-2&quot;&gt;Self-tests (live)&lt;/div&gt;
+      &lt;ul className=&quot;text-sm space-y-1&quot;&gt;
+        {tests.map((t, i) =&gt; (
+          &lt;li key={i} className=&quot;flex items-center gap-2&quot;&gt;
+            &lt;span aria-hidden&gt;{t.pass ? &quot;✅&quot; : &quot;❌&quot;}&lt;/span&gt;
+            &lt;span&gt;{t.name}&lt;/span&gt;
+            &lt;span className=&quot;ml-auto opacity-70 font-mono text-xs&quot;&gt;{t.detail}&lt;/span&gt;
+          &lt;/li&gt;
+        ))}
+      &lt;/ul&gt;
+      &lt;div className=&quot;text-xs opacity-70 mt-2&quot;&gt;
+        &lt;p&gt;&lt;strong&gt;Tip:&lt;/strong&gt; If “Children pebbled…” is ❌, try K≥3 or Cap=none.&lt;/p&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  );
+}
+
+function TransferDot({ from, to, speedMs }: { from: {x:number;y:number}; to:{x:number;y:number}; speedMs:number }) {
+  const [p, setP] = useState(0);
+  useEffect(() =&gt; {
+    setP(0);
+    const t = setTimeout(() =&gt; setP(1), 10);
+    const done = setTimeout(() =&gt; setP(1), speedMs);
+    return () =&gt; { clearTimeout(t); clearTimeout(done); };
+  }, [from.x, from.y, to.x, to.y, speedMs]);
+  const x = from.x + (to.x - from.x) * p;
+  const y = from.y + (to.y - from.y) * p;
+  return &lt;circle cx={x} cy={y} r={4} fill=&quot;#fafafa&quot; style={{ transition: `all ${speedMs}ms linear` }} opacity={0.9} /&gt;;
+}
+
+function Label({ children }: { children: React.ReactNode }) {
+  return &lt;span className=&quot;text-sm opacity-80&quot;&gt;{children}&lt;/span&gt;;
+}
+
+function Select({ value, onChange, options }: { value: number; onChange: (v:number)=&gt;void; options: number[] }) {
+  return (
+    &lt;select className=&quot;bg-zinc-800 rounded-lg px-2 py-1 border border-zinc-700&quot; value={value} onChange={(e)=&gt; onChange(parseInt(e.target.value))}&gt;
+      {options.map((o)=&gt; &lt;option key={o} value={o}&gt;{o}&lt;/option&gt;)}
+    &lt;/select&gt;
+  );
+}
+
+function NativeSelect&lt;T extends string&gt;({ value, setValue, options }: { value: T; setValue: (v:T)=&gt;void; options: T[] }) {
+  return (
+    &lt;select className=&quot;bg-zinc-800 rounded-lg px-2 py-1 border border-zinc-700&quot; value={value} onChange={(e)=&gt; setValue(e.target.value as T)}&gt;
+      {options.map((o)=&gt; &lt;option key={o} value={o}&gt;{o}&lt;/option&gt;)}
+    &lt;/select&gt;
+  );
+}
+
+function NumberInput({ label, value, setValue }: { label:string; value:number; setValue:(v:number)=&gt;void }) {
+  return (
+    &lt;label className=&quot;flex items-center gap-2 text-sm&quot;&gt;
+      &lt;span className=&quot;opacity-80&quot;&gt;{label}&lt;/span&gt;
+      &lt;input type=&quot;number&quot; value={value} onChange={(e)=&gt; setValue(parseFloat(e.target.value))} className=&quot;w-20 bg-zinc-800 border border-zinc-700 rounded px-2 py-1&quot; step=&quot;0.1&quot; /&gt;
+    &lt;/label&gt;
+  );
+}
+
+function Metric({ label, value, sub }: { label: string; value: React.ReactNode; sub?: string }) {
+  return (
+    &lt;div className=&quot;bg-zinc-800/60 border border-zinc-700 rounded-2xl px-3 py-2&quot;&gt;
+      &lt;div className=&quot;text-[11px] uppercase tracking-wider opacity-70&quot;&gt;{label}&lt;/div&gt;
+      &lt;div className=&quot;text-lg font-semibold&quot;&gt;{value}&lt;/div&gt;
+      {sub ? &lt;div className=&quot;text-[11px] opacity-60&quot;&gt;{sub}&lt;/div&gt; : null}
+    &lt;/div&gt;
+  );
+}
+</code></pre>
+      </article>
+    </section>
+    <footer class="site-footer">
+      &#169; Adaptive Systems Kollektive &middot; Entrogenics CORE &middot; Self-contained release
+    </footer>
+  </main>
+</body>
+</html>

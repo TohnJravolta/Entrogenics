@@ -1,0 +1,1179 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Entrogenics — Symbiotic Governance for the Polycrisis</title>
+  <meta name="description" content="Entrogenics merges human intuition with symbolic protocols to keep adaptive systems accountable. Explore the core thesis, rituals, and research streams powering Entrogenics.com." />
+  <meta name="color-scheme" content="dark light" />
+  <link rel="stylesheet" href="assets/css/site.css" />
+  <style>
+    /* CRT scanline effect overlay - enhanced */
+    .crt-effect::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background:
+        linear-gradient(rgba(18, 255, 128, 0.02) 50%, rgba(0, 0, 0, 0.25) 50%),
+        repeating-linear-gradient(0deg, rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.15) 1px, transparent 1px, transparent 2px);
+      background-size: 100% 2px, 100% 2px;
+      mix-blend-mode: overlay;
+      opacity: 0.85;
+      z-index: 9999;
+      animation: flicker 0.15s infinite;
+    }
+
+    @keyframes flicker {
+      0% { opacity: 0.82; }
+      50% { opacity: 0.88; }
+      100% { opacity: 0.82; }
+    }
+
+    .crt-effect::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background: radial-gradient(ellipse at center, transparent 0%, rgba(0, 0, 0, 0.3) 100%);
+      z-index: 9998;
+    }
+    /* Grid background pattern - centered and flowing downward */
+    .grid-bg {
+      background:
+        radial-gradient(circle at 50% 0%, rgba(15, 241, 206, .12) 0%, rgba(15, 241, 206, .06) 30%, rgba(34, 170, 255, .04) 60%, transparent 100%),
+        repeating-linear-gradient(0deg, transparent 0 23px, rgba(15, 241, 206, .04) 23px 24px),
+        repeating-linear-gradient(90deg, transparent 0 23px, rgba(34, 170, 255, .04) 23px 24px);
+      background-attachment: fixed;
+    }
+    /* Help overlay dialog */
+    dialog#helpDialog {
+      max-width: 680px;
+      border: 1px solid var(--line, #2f373b);
+      background: var(--card-bg, #0f1516);
+      color: var(--fg, #c8facc);
+      border-radius: 12px;
+      box-shadow: 0 20px 60px rgba(0,0,0,.6);
+      padding: 0;
+    }
+    dialog#helpDialog header {
+      padding: 14px;
+      border-bottom: 1px dashed var(--line, #2f373b);
+    }
+    dialog#helpDialog .inner {
+      padding: 14px;
+    }
+    dialog#helpDialog::backdrop {
+      background: rgba(0,0,0,.7);
+    }
+    .sr-only {
+      position: absolute !important;
+      left: -9999px !important;
+      top: auto;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+    }
+    .kbd {
+      border: 1px solid var(--line, #2f373b);
+      padding: 0 6px;
+      border-radius: 4px;
+      background: rgba(255,255,255,.04);
+      font-family: ui-monospace, monospace;
+    }
+    .help-list {
+      list-style: none;
+      padding: 0;
+      margin: 12px 0;
+    }
+    .help-list li {
+      padding: 8px;
+      margin: 4px 0;
+      border: 1px solid var(--line, #2f373b);
+      border-radius: 6px;
+      background: rgba(0,0,0,.1);
+    }
+    .btn-group {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: 12px;
+    }
+    .btn-sm {
+      font-size: 13px;
+      padding: 6px 10px;
+    }
+  </style>
+</head>
+<body class="crt-effect grid-bg">
+  <a class="sr-only" href="#why">Skip to content</a>
+  <div class="bg" aria-hidden="true"></div>
+  <div class="scan" aria-hidden="true"></div>
+  <header class="top-nav">
+    <div class="nav-brand">
+      <span class="dot" aria-hidden="true"></span>
+      Entrogenics
+    </div>
+    <nav>
+      <a href="#why">Why Entrogenics</a>
+      <a href="#streams">Research Streams</a>
+      <a href="#symbolic">Catalytic Grammar</a>
+      <a href="#collaborate">Collaborate</a>
+      <a class="nav-library" href="library.html">Library</a>
+    </nav>
+  </header>
+
+  <main class="wrap landing">
+    <section class="hero hero-landing" id="hero">
+      <div class="brand"><span class="dot" aria-hidden="true"></span> ENTROGENICS / FRONTIER</div>
+      <h1>Symbiotic Governance for the Polycrisis</h1>
+      <p class="lead">
+        Entrogenics weaves human intuition with symbolic protocols to keep adaptive systems accountable. From commons ecology to Kybernōsis rituals, every artifact is a co-authored ritual between people and machines.
+      </p>
+      <div class="cta">
+        <a class="btn" href="library.html">Open the Core Library</a>
+        <a class="btn-alt btn" href="https://ask.report" target="_blank" rel="noopener">ask.report</a>
+      </div>
+      <div class="btn-group">
+        <button class="btn btn-sm" id="helpBtn" type="button" aria-haspopup="dialog">Keyboard Help <kbd>?</kbd></button>
+        <button class="btn btn-sm" id="crtToggle" type="button" aria-pressed="true">CRT Effect <kbd>c</kbd></button>
+      </div>
+      <p style="font-size:13px;color:var(--muted,#8cd39a);margin-top:8px">
+        Tip: Press <span class="kbd">?</span> for shortcuts • <span class="kbd">1–4</span> jump to sections
+      </p>
+      <div class="sigil-play">
+        <canvas
+          id="entrogenics-sigil-canvas"
+          width="320"
+          height="320"
+          aria-label="Entrogenics cyclic-6 lock ritual. Tap when the rotating pointer lines up with the highlighted window."
+        ></canvas>
+        <div class="sigil-panel">
+          <p class="sigil-caption">
+            Tap when the pointer sits inside the glowing window to bind the current phase. Complete all six binds in order to advance.
+          </p>
+          <p class="sigil-level" data-sigil-level>Level 1</p>
+          <p class="sigil-stage" data-sigil-stage aria-live="polite">Loading ritual calibration...</p>
+          <p class="sigil-score is-hidden" data-sigil-score>Score: 0</p>
+          <div class="sigil-points" aria-hidden="true">
+            <span data-stage="0">Unfold</span>
+            <span data-stage="1">Disturb</span>
+            <span data-stage="2">Collapse</span>
+            <span data-stage="3">Bind</span>
+            <span data-stage="4">Dissipate</span>
+            <span data-stage="5">Recur</span>
+          </div>
+          <div class="sigil-audio">
+            <button type="button" data-sigil-audio="toggle">Enable Drone</button>
+            <label>
+              <span>Volume</span>
+              <input type="range" min="0" max="1" step="0.01" value="0.6" data-sigil-volume />
+            </label>
+          </div>
+        </div>
+      </div>
+      <noscript>
+        <p class="sigil-noscript">
+          The Entrogenics sigil ritual requires JavaScript for interactive alignment. View the static sigil kit in
+          <a href="LOGOGENS/entrogenics_sigil_standalone_html_canvas_png_svg.html">LOGOGENS - Entrogenics Sigil</a>.
+        </p>
+      </noscript>
+      <div class="hero-badges">
+        <span>✡ Cyclic-6 Co-authorship</span>
+        <span>☉ Adaptive Governance</span>
+        <span>∞ Commons Regeneration</span>
+      </div>
+    </section>
+
+    <section class="section-block" id="why">
+      <h2 style="text-align: center;">The Entrogenic Difference</h2>
+      <p class="section-intro" style="max-width: 800px; margin: 0 auto 20px; text-align: center;">
+        Entrogenics is not another framework; it is a grammar for living systems. Each research stream below anchors a pillar of the work, drawn directly from the Entrogenics Core Thesis and companion manuscripts.
+      </p>
+      <div class="pillars-grid home-grid">
+        <article class="home-card">
+          <h3><span class="symbol">✡</span> Symbiotic Intelligence</h3>
+          <p>Cyclic-6 rituals from the Core Thesis orchestrate human + machine sense-making without surrendering agency.</p>
+          <a href="pages/core-thesis.html">Read the Core Thesis</a>
+        </article>
+        <article class="home-card">
+          <h3><span class="symbol">⚙</span> Accessible Rituals</h3>
+          <p>ASP and ClipCard turn symbolic grammar into operational control surfaces for governance, risk, and friction.</p>
+          <a href="pages/asp-formal-paper.html">See Accessible Symbolic Programming</a>
+        </article>
+        <article class="home-card">
+          <h3><span class="symbol">🌱</span> Commons Stewardship</h3>
+          <p>Applied ecology dossiers unify soul and soil, redefining resource cycles and collective care.</p>
+          <a href="pages/commons-sense.html">Explore Applied Ecology Papers</a>
+        </article>
+      </div>
+    </section>
+
+    <section class="section-block" id="cycle" style="padding: 32px 0;">
+      <h2 style="text-align: center;">The Fool's Cycle — Six-Stage Adaptive Engine</h2>
+      <p class="section-intro" style="max-width: 800px; margin: 0 auto 20px; text-align: center;">
+        The Entrogenic grammar operates through a cyclic six-stage sequence. Unlike linear planning, the cycle embraces emergence, learns from collapse, and builds antifragility through iteration.
+      </p>
+      <div class="home-card" style="padding: 24px; margin: 20px auto; max-width: 700px;">
+        <div style="display: flex; justify-content: center; align-items: center; min-height: 520px; margin-bottom: 16px;">
+          <svg viewBox="0 0 640 640" role="img" aria-labelledby="cycleTitle" style="max-width: 100%; width: 100%; height: auto;">
+            <title id="cycleTitle">Fool's Cycle: Unfold, Disturb, Collapse, Bind, Dissipate, Recur</title>
+            <defs>
+              <!-- Gradient for pulse wave -->
+              <radialGradient id="pulseGradient">
+                <stop offset="0%" style="stop-color:rgba(15, 241, 206, 0.9);stop-opacity:1" />
+                <stop offset="100%" style="stop-color:rgba(15, 241, 206, 0.2);stop-opacity:0" />
+              </radialGradient>
+            </defs>
+            <style>
+              @media (prefers-reduced-motion: no-preference) {
+                .spin-ring {
+                  animation: spin 18s linear infinite;
+                }
+                @keyframes spin {
+                  from { transform: rotate(0deg); }
+                  to { transform: rotate(360deg); }
+                }
+
+                /* Counter-rotate silo text to keep horizontal */
+                .silo-text {
+                  animation: counter-spin 18s linear infinite;
+                }
+                @keyframes counter-spin {
+                  from { transform: rotate(0deg); }
+                  to { transform: rotate(-360deg); }
+                }
+              }
+              .cycle-dot { transition: transform 0.3s ease; }
+              .cycle-active .cycle-dot { transform: scale(1.5); }
+            </style>
+            <g transform="translate(320, 320)">
+              <!-- Outer pulse ring (radius ~220) - animated by JavaScript -->
+              <path id="pulseRing" d="" fill="none" stroke="rgba(15, 241, 206, 0.5)" stroke-width="3"/>
+
+              <!-- Center monad dot -->
+              <circle cx="0" cy="0" r="9" fill="rgba(15, 241, 206, 0.95)" stroke="rgba(15, 241, 206, 0.5)" stroke-width="2.5"/>
+
+              <!-- Spinning hexagon ring with silos attached -->
+              <g class="spin-ring" style="transform-origin: 0 0; transform-box: view-box;">
+                <!-- The hexagon path -->
+                <path d="M0,-150 L129,-75 L129,75 L0,150 L-129,75 L-129,-75 Z"
+                      fill="none" stroke="rgba(34, 170, 255, 0.7)" stroke-width="2.5"/>
+
+                <!-- Six Silos at hexagon corners (badges rotate, text stays horizontal) -->
+                <!-- Top: Science -->
+                <g transform="translate(0, -150)">
+                  <circle r="11" fill="rgba(255, 179, 71, 0.2)" stroke="rgba(255, 179, 71, 0.8)" stroke-width="2"/>
+                  <text y="4" style="font-size: 11px; font-weight: 700; text-anchor: middle; fill: rgba(255, 255, 255, 0.95); transform: rotate(0deg); transform-origin: 0 0; transform-box: fill-box;" class="silo-text">SCI</text>
+                </g>
+                <!-- Top-right: Art/Media -->
+                <g transform="translate(129, -75)">
+                  <circle r="11" fill="rgba(255, 179, 71, 0.2)" stroke="rgba(255, 179, 71, 0.8)" stroke-width="2"/>
+                  <text y="4" style="font-size: 11px; font-weight: 700; text-anchor: middle; fill: rgba(255, 255, 255, 0.95); transform: rotate(0deg); transform-origin: 0 0; transform-box: fill-box;" class="silo-text">ART</text>
+                </g>
+                <!-- Bottom-right: Commerce -->
+                <g transform="translate(129, 75)">
+                  <circle r="11" fill="rgba(255, 179, 71, 0.2)" stroke="rgba(255, 179, 71, 0.8)" stroke-width="2"/>
+                  <text y="4" style="font-size: 11px; font-weight: 700; text-anchor: middle; fill: rgba(255, 255, 255, 0.95); transform: rotate(0deg); transform-origin: 0 0; transform-box: fill-box;" class="silo-text">COM</text>
+                </g>
+                <!-- Bottom: Governance -->
+                <g transform="translate(0, 150)">
+                  <circle r="11" fill="rgba(255, 179, 71, 0.2)" stroke="rgba(255, 179, 71, 0.8)" stroke-width="2"/>
+                  <text y="4" style="font-size: 11px; font-weight: 700; text-anchor: middle; fill: rgba(255, 255, 255, 0.95); transform: rotate(0deg); transform-origin: 0 0; transform-box: fill-box;" class="silo-text">GOV</text>
+                </g>
+                <!-- Bottom-left: Education -->
+                <g transform="translate(-129, 75)">
+                  <circle r="11" fill="rgba(255, 179, 71, 0.2)" stroke="rgba(255, 179, 71, 0.8)" stroke-width="2"/>
+                  <text y="4" style="font-size: 11px; font-weight: 700; text-anchor: middle; fill: rgba(255, 255, 255, 0.95); transform: rotate(0deg); transform-origin: 0 0; transform-box: fill-box;" class="silo-text">EDU</text>
+                </g>
+                <!-- Top-left: Data/Intelligence -->
+                <g transform="translate(-129, -75)">
+                  <circle r="11" fill="rgba(255, 179, 71, 0.2)" stroke="rgba(255, 179, 71, 0.8)" stroke-width="2"/>
+                  <text y="4" style="font-size: 11px; font-weight: 700; text-anchor: middle; fill: rgba(255, 255, 255, 0.95); transform: rotate(0deg); transform-origin: 0 0; transform-box: fill-box;" class="silo-text">DAT</text>
+                </g>
+              </g>
+
+              <!-- Outer ring: Six cycle phase dots (radius 220) -->
+              <g id="cycleDots" fill="rgba(15, 241, 206, 0.9)">
+                <!-- 1. Unfold - top (0°, -90° offset) -->
+                <g id="dot1" class="cycle-node" transform="translate(0, -220)">
+                  <circle class="cycle-dot" r="8" stroke="rgba(15, 241, 206, 0.6)" stroke-width="2"/>
+                  <text y="-16" style="font-size: 13px; font-weight: 700; text-anchor: middle; fill: rgba(15, 241, 206, 0.95);">1·Unfold</text>
+                </g>
+                <!-- 2. Disturb - 60° clockwise -->
+                <g id="dot2" class="cycle-node" transform="translate(190.5, -110)">
+                  <circle class="cycle-dot" r="8" stroke="rgba(15, 241, 206, 0.6)" stroke-width="2"/>
+                  <text x="20" y="4" style="font-size: 13px; font-weight: 700; text-anchor: start; fill: rgba(15, 241, 206, 0.95);">2·Disturb</text>
+                </g>
+                <!-- 3. Collapse - 120° -->
+                <g id="dot3" class="cycle-node" transform="translate(190.5, 110)">
+                  <circle class="cycle-dot" r="8" stroke="rgba(15, 241, 206, 0.6)" stroke-width="2"/>
+                  <text x="20" y="4" style="font-size: 13px; font-weight: 700; text-anchor: start; fill: rgba(15, 241, 206, 0.95);">3·Collapse</text>
+                </g>
+                <!-- 4. Bind - bottom (180°) -->
+                <g id="dot4" class="cycle-node" transform="translate(0, 220)">
+                  <circle class="cycle-dot" r="8" stroke="rgba(15, 241, 206, 0.6)" stroke-width="2"/>
+                  <text y="28" style="font-size: 13px; font-weight: 700; text-anchor: middle; fill: rgba(15, 241, 206, 0.95);">4·Bind</text>
+                </g>
+                <!-- 5. Dissipate - 240° -->
+                <g id="dot5" class="cycle-node" transform="translate(-190.5, 110)">
+                  <circle class="cycle-dot" r="8" stroke="rgba(15, 241, 206, 0.6)" stroke-width="2"/>
+                  <text x="-20" y="4" style="font-size: 13px; font-weight: 700; text-anchor: end; fill: rgba(15, 241, 206, 0.95);">5·Dissipate</text>
+                </g>
+                <!-- 6. Recur - 300° -->
+                <g id="dot6" class="cycle-node" transform="translate(-190.5, -110)">
+                  <circle class="cycle-dot" r="8" stroke="rgba(15, 241, 206, 0.6)" stroke-width="2"/>
+                  <text x="-20" y="4" style="font-size: 13px; font-weight: 700; text-anchor: end; fill: rgba(15, 241, 206, 0.95);">6·Recur</text>
+                </g>
+              </g>
+
+            </g>
+          </svg>
+        </div>
+        <p id="cycleCaption" style="font-size: 14px; color: var(--muted, #8cd39a); text-align: center; margin: 12px 0 0;">
+          <strong>Stage 1 · Unfold:</strong> expand possibility; seed options; map the field before commitment.
+        </p>
+      </div>
+    </section>
+
+    <section class="section-block" id="streams">
+      <h2 style="text-align: center;">Research Streams</h2>
+      <p class="section-intro" style="max-width: 800px; margin: 0 auto 20px; text-align: center;">Dive deeper into the Entrogenics corpus. Every link opens a fully ritualised web edition.</p>
+      <div class="home-grid">
+        <article class="home-card">
+          <h3>Core Thesis</h3>
+          <p>The founding manuscript outlining Symbiotic Intelligence and the Entrogenic grammar.</p>
+          <a href="pages/core-thesis.html">Core Thesis Web Edition</a>
+        </article>
+        <article class="home-card">
+          <h3>Accessible Symbolic Programming</h3>
+          <p>Formal paper and manifesto for translating symbolism into accessible governance rituals.</p>
+          <a href="pages/asp-formal-paper.html">ASP Formal Paper</a>
+          <a href="pages/asp-manifesto.html">ASP Manifesto</a>
+          <a href="pages/asp-explained.html">ASP Audio Briefing</a>
+        </article>
+        <article class="home-card">
+          <h3>ClipCard Governance</h3>
+          <p>Risk &amp; Recheck ritual attaching structured friction to high-risk decisions.</p>
+          <a href="pages/clipcard-risk-recheck.html">ClipCard Whitepaper</a>
+          <a href="https://www.clipcard.entrogenics.com" target="_blank" rel="noopener">ClipCard Main Site</a>
+        </article>
+        <article class="home-card">
+          <h3>Applied Ecology</h3>
+          <p>Commons Sense, Grounded Spirit, and systemic transformation briefs for regenerative governance.</p>
+          <a href="pages/commons-sense.html">Commons Sense</a>
+          <a href="pages/grounded-spirit.html">Grounded Spirit</a>
+          <a href="pages/integrating-commons.html">Integrating Commons &amp; Cybernetics</a>
+        </article>
+        <article class="home-card">
+          <h3>Kybernōsis</h3>
+          <p>Altar codices and Nexus manifests for collective intelligence rituals.</p>
+          <a href="pages/kybernosis-master-codex.html">Kybernōsis Master Codex</a>
+          <a href="pages/kybernosis-nexus-codex.html">Nexus Codex (Unified)</a>
+          <a href="pages/kybernosis-nexus-manifesto.html">Nexus Manifesto</a>
+        </article>
+        <article class="home-card">
+          <h3>Data Intelligence Experiments</h3>
+          <p>Pebbling memory-swap experiments and visual scripts for reversible computation.</p>
+          <a href="pages/pebbling-abstract.html">Pebbling Abstract</a>
+          <a href="pages/pebbling-visual-script.html">Gradient Flux Visual Script</a>
+        </article>
+      </div>
+    </section>
+
+    <section class="section-block symbolic" id="symbolic">
+      <h2 style="text-align: center;">Catalytic Grammar</h2>
+      <p class="section-intro" style="max-width: 800px; margin: 0 auto 20px; text-align: center;">
+        The Entrogenic grammar protects symbolic fidelity. Every project adheres to the catalytic star sequence, ensuring transitions through Unfold → Disturb → Collapse → Bind → Dissipate → Recur.
+      </p>
+      <div style="display: flex; justify-content: center; margin: 24px 0;">
+        <div class="front-formula">
+          <span class="symbol">0</span>
+          <span class="symbol">→</span>
+          <span class="symbol">✡</span>
+          <span class="symbol">→</span>
+          <span class="symbol">☉</span>
+          <span class="symbol">→</span>
+          <span class="symbol">0′</span>
+        </div>
+      </div>
+      <blockquote>
+        "Entrogenics regards writing as co-adaptation between consciousness and code; each paper is a living artifact within that evolving grammar."
+      </blockquote>
+    </section>
+
+    <section class="section-block" id="collaborate">
+      <h2 style="text-align: center;">Help Grow the Entrogenic Mesh</h2>
+      <p class="section-intro" style="max-width: 800px; margin: 0 auto 20px; text-align: center;">
+        Entrogenics thrives on collaborative stewardship. We welcome field pilots, symbolic translators, and systems researchers interested in applying these rituals to live contexts.
+      </p>
+      <div class="collab-grid">
+        <article class="home-card">
+          <h3>Host a Field Pilot</h3>
+          <p>Apply ClipCard or ASP in your org, share data, and co-author findings.</p>
+          <a href="pages/clipcard-risk-recheck.html">Pilot ClipCard</a>
+        </article>
+        <article class="home-card">
+          <h3>Translate the Grammar</h3>
+          <p>Extend Kybernōsis or Commons Sense into new languages and contexts.</p>
+          <a href="pages/kybernosis-master-codex.html">Study the Codex</a>
+        </article>
+        <article class="home-card">
+          <h3>Signal Interest</h3>
+          <p>Use ask.report to introduce your team, share research, or propose collaborations.</p>
+          <a href="https://ask.report" target="_blank" rel="noopener">ask.report</a>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    © Adaptive Systems Kollektive · Entrogenics · Licensed CC BY-SA 4.0 · Symbolic fidelity enforced (✡)
+  </footer>
+
+  <!-- Help Dialog -->
+  <dialog id="helpDialog" aria-labelledby="helpTitle">
+    <header>
+      <h3 id="helpTitle" style="margin:0;font-size:16px;font-weight:800">Keyboard Shortcuts</h3>
+    </header>
+    <div class="inner">
+      <p style="font-size:13px;color:var(--muted,#8cd39a);margin-bottom:8px">Retro nav shortcuts for faster exploration:</p>
+      <ul class="help-list">
+        <li><span class="kbd">?</span> — Toggle this help dialog</li>
+        <li><span class="kbd">c</span> — Toggle CRT scanline effect</li>
+        <li><span class="kbd">1</span> — Jump to "Why Entrogenics"</li>
+        <li><span class="kbd">2</span> — Jump to "Research Streams"</li>
+        <li><span class="kbd">3</span> — Jump to "Catalytic Grammar"</li>
+        <li><span class="kbd">4</span> — Jump to "Collaborate"</li>
+        <li><span class="kbd">h</span> — Return to top/hero</li>
+        <li><span class="kbd">l</span> — Open Library</li>
+      </ul>
+      <form method="dialog">
+        <button class="btn" value="close" style="margin-top:8px">Close</button>
+      </form>
+    </div>
+  </dialog>
+      <script>
+    (function () {
+      const canvas = document.getElementById('entrogenics-sigil-canvas');
+      const stageEl = document.querySelector('[data-sigil-stage]');
+      const levelEl = document.querySelector('[data-sigil-level]');
+      const scoreEl = document.querySelector('[data-sigil-score]');
+      const audioToggle = document.querySelector('[data-sigil-audio="toggle"]');
+      const volumeInput = document.querySelector('[data-sigil-volume]');
+      const stageSpans = Array.from(document.querySelectorAll('.sigil-points span'));
+      if (!canvas || !canvas.getContext || stageSpans.length !== 6) {
+        return;
+      }
+
+      const ctx = canvas.getContext('2d', { alpha: false });
+      const TAU = Math.PI * 2;
+      const STEP = TAU / 6;
+      const stageNames = ['Unfold', 'Disturb', 'Collapse', 'Bind', 'Dissipate', 'Recur'];
+      const stageColors = ['#0ff1ce', '#ffb347', '#ff3d81', '#9d6cff', '#22aaff', '#2fe39e'];
+      const stageGlyphs = ['1', '2', '3', '4', '5', '6'];
+      const stagePrompts = [
+        'Sense the field before acting.',
+        'Invite a safe perturbation.',
+        'Let brittle options fall away.',
+        'Tie learning back into structure.',
+        'Release surplus energy to the commons.',
+        'Prime the next turn of the cycle.'
+      ];
+      const stageReflections = [
+        'Field anchored.',
+        'Disturbances welcomed.',
+        'Collapse absorbed.',
+        'Binding threads secure.',
+        'Release stays graceful.',
+        'Cycle ready to recur.'
+      ];
+      const stageFreqs = [98, 131, 165, 196, 220, 247];
+
+      function normalize(angle) {
+        return ((angle % TAU) + TAU) % TAU;
+      }
+
+      function angleDiff(a, b) {
+        let diff = (a - b + Math.PI) % TAU;
+        if (diff < 0) {
+          diff += TAU;
+        }
+        return diff - Math.PI;
+      }
+
+      function hexToRgb(hex) {
+        const parsed = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+        if (!parsed) {
+          return { r: 15, g: 241, b: 206 };
+        }
+        return {
+          r: parseInt(parsed[1], 16),
+          g: parseInt(parsed[2], 16),
+          b: parseInt(parsed[3], 16)
+        };
+      }
+
+      function computeSpeed(level) {
+        return 0.75 * Math.pow(1.055, level - 1);
+      }
+
+      function computeTolerance(level) {
+        return Math.max(0.12, 0.36 - (level - 1) * 0.015);
+      }
+
+      const baseAngles = stageSpans.map(function (_, idx) {
+        return normalize(-Math.PI / 2 + idx * STEP);
+      });
+
+      const state = {
+        level: 1,
+        stage: 0,
+        rotation: Math.random() * TAU,
+        speed: 0,
+        tolerance: 0,
+        nodeAngles: baseAngles.slice(),
+        stageOrder: [0, 1, 2, 3, 4, 5],
+        nodeColors: stageColors.slice(),
+        nodeLabels: stageGlyphs.slice(),
+        stageStatus: new Array(6).fill(false),
+        score: 0,
+        flash: 0,
+        miss: 0,
+        lastTime: performance.now(),
+        phaseCloseness: 0,
+        currentStageIndex: 0
+      };
+
+      const audioState = {
+        ctx: null,
+        carrier: null,
+        modOsc: null,
+        modGain: null,
+        gain: null,
+        enabled: false,
+        volume: volumeInput ? parseFloat(volumeInput.value) || 0.6 : 0.6,
+        started: false
+      };
+
+      function ensureAudio() {
+        if (audioState.ctx) {
+          return;
+        }
+        const AudioContext = window.AudioContext || window.webkitAudioContext;
+        if (!AudioContext) {
+          return;
+        }
+        const ctxAudio = new AudioContext();
+        const carrier = ctxAudio.createOscillator();
+        const modOsc = ctxAudio.createOscillator();
+        const modGain = ctxAudio.createGain();
+        const gain = ctxAudio.createGain();
+
+        carrier.type = 'sine';
+        carrier.frequency.value = stageFreqs[0];
+        modOsc.type = 'sine';
+        modOsc.frequency.value = 1.5;
+        modGain.gain.value = 15;
+
+        modOsc.connect(modGain);
+        modGain.connect(carrier.frequency);
+        carrier.connect(gain);
+        gain.connect(ctxAudio.destination);
+
+        gain.gain.value = audioState.enabled ? audioState.volume : 0;
+
+        carrier.start();
+        modOsc.start();
+
+        audioState.ctx = ctxAudio;
+        audioState.carrier = carrier;
+        audioState.modOsc = modOsc;
+        audioState.modGain = modGain;
+        audioState.gain = gain;
+        audioState.started = true;
+      }
+
+      function prepareAudioContext() {
+        ensureAudio();
+        if (audioState.ctx && audioState.ctx.state === 'suspended') {
+          audioState.ctx.resume();
+        }
+      }
+
+      function setAudioEnabled(flag) {
+        audioState.enabled = !!flag;
+        prepareAudioContext();
+        if (audioState.gain && audioState.ctx) {
+          const target = audioState.enabled ? audioState.volume : 0;
+          audioState.gain.gain.setTargetAtTime(target, audioState.ctx.currentTime, 0.1);
+        }
+        if (audioToggle) {
+          audioToggle.textContent = audioState.enabled ? 'Mute Drone' : 'Enable Drone';
+        }
+      }
+
+      function updateAudioForStage(stageIndex, closeness) {
+        if (!audioState.ctx || !audioState.carrier || !audioState.gain) {
+          return;
+        }
+        const ctxAudio = audioState.ctx;
+        if (!audioState.enabled) {
+          audioState.gain.gain.setTargetAtTime(0, ctxAudio.currentTime, 0.1);
+          return;
+        }
+        const baseFreq = stageFreqs[stageIndex] || stageFreqs[0];
+        const levelFactor = 1 + Math.min(0.7, (state.level - 1) * 0.02);
+        const targetFreq = baseFreq * levelFactor;
+        audioState.carrier.frequency.setTargetAtTime(targetFreq, ctxAudio.currentTime, 0.12);
+
+        const depth = 14 + state.level * 2.4;
+        const rate = 0.8 + Math.min(3, state.level * 0.08);
+        audioState.modGain.gain.setTargetAtTime(depth, ctxAudio.currentTime, 0.18);
+        audioState.modOsc.frequency.setTargetAtTime(rate, ctxAudio.currentTime, 0.18);
+
+        const dynamicAmp = audioState.volume * (0.35 + closeness * 0.65);
+        audioState.gain.gain.setTargetAtTime(dynamicAmp, ctxAudio.currentTime, 0.12);
+      }
+
+      if (audioToggle) {
+        audioToggle.addEventListener('click', function () {
+          setAudioEnabled(!audioState.enabled);
+        });
+        audioToggle.textContent = 'Enable Drone';
+      }
+
+      if (volumeInput) {
+        volumeInput.addEventListener('input', function (event) {
+          const value = parseFloat(event.target.value);
+          if (!Number.isNaN(value)) {
+            audioState.volume = value;
+            if (audioState.enabled && audioState.gain && audioState.ctx) {
+              audioState.gain.gain.setTargetAtTime(value, audioState.ctx.currentTime, 0.12);
+            }
+          }
+        });
+      }
+
+      function computeStageOrder(level) {
+        if (level <= 3) {
+          return [0, 1, 2, 3, 4, 5];
+        }
+        const order = [0, 1, 2, 3, 4, 5];
+        const shift = level % 6;
+        if (shift) {
+          for (let i = 0; i < shift; i += 1) {
+            order.push(order.shift());
+          }
+        }
+        const mixes = Math.min(3, Math.floor((level - 3) / 4) + 1);
+        for (let i = 0; i < mixes; i += 1) {
+          const idxA = (level + i * 2) % 6;
+          const idxB = (idxA + 2 + ((level + i) % 3)) % 6;
+          const temp = order[idxA];
+          order[idxA] = order[idxB];
+          order[idxB] = temp;
+        }
+        return order;
+      }
+
+      function computeNodeAngles(level) {
+        if (level < 42) {
+          return baseAngles.slice();
+        }
+        const intensity = Math.min(0.45, (level - 42) * 0.012);
+        return baseAngles.map(function (angle, idx) {
+          const wobble = Math.sin(level * 0.21 + idx * 1.17) * STEP * 0.32 * intensity;
+          const spiral = Math.cos(level * 0.33 + idx * 0.87) * STEP * 0.26 * intensity;
+          return normalize(angle + wobble + spiral);
+        });
+      }
+
+      function rebuildBoard(level) {
+        state.nodeAngles = computeNodeAngles(level);
+        state.stageOrder = computeStageOrder(level);
+        state.nodeColors = new Array(6);
+        state.nodeLabels = new Array(6);
+        for (let i = 0; i < 6; i += 1) {
+          const nodeIndex = state.stageOrder[i];
+          state.nodeColors[nodeIndex] = stageColors[i];
+          state.nodeLabels[nodeIndex] = stageGlyphs[i];
+        }
+      }
+
+      function updateIndicators() {
+        stageSpans.forEach(function (span, idx) {
+          span.classList.toggle('is-active', idx === state.stage);
+          span.classList.toggle('is-bound', idx < state.stage);
+        });
+      }
+
+      function updateScoreDisplay() {
+        if (!scoreEl) {
+          return;
+        }
+        scoreEl.textContent = 'Score: ' + state.score;
+        if (state.level >= 9) {
+          scoreEl.classList.remove('is-hidden');
+        } else {
+          scoreEl.classList.add('is-hidden');
+        }
+      }
+
+      function setLevel(level, options) {
+        state.level = level;
+        if (options && options.resetRotation) {
+          state.rotation = Math.random() * TAU;
+        }
+        state.speed = computeSpeed(level);
+        state.tolerance = computeTolerance(level);
+        rebuildBoard(level);
+        state.stage = 0;
+        state.stageStatus.fill(false);
+        state.flash = 0;
+        state.miss = 0;
+        if (levelEl) {
+          levelEl.textContent = 'Level ' + level;
+        }
+        if (stageEl) {
+          stageEl.textContent = 'Level ' + level + ' - Align ' + stageNames[0] + '.';
+        }
+        updateIndicators();
+        updateScoreDisplay();
+      }
+
+      function handleSuccess() {
+        const index = state.stage;
+        const boundStage = stageNames[index];
+        const reflection = stageReflections[index];
+        state.score += state.level;
+        state.stageStatus[index] = true;
+        state.flash = 0.9;
+        state.stage += 1;
+        if (state.stage >= stageNames.length) {
+          state.score += state.level * state.level;
+          updateScoreDisplay();
+          const nextLevel = state.level + 1;
+          setLevel(nextLevel);
+          if (stageEl) {
+            stageEl.textContent = 'Cycle sealed. Level ' + nextLevel + ' - Align ' + stageNames[0] + '.';
+          }
+          return;
+        }
+        updateScoreDisplay();
+        if (stageEl) {
+          stageEl.textContent =
+            boundStage + ' sealed (' + reflection + '). Next: ' + stageNames[state.stage] + ' - ' + stagePrompts[state.stage];
+        }
+        updateIndicators();
+      }
+
+      function handleMiss() {
+        state.stage = 0;
+        state.stageStatus.fill(false);
+        state.miss = 0.7;
+        state.score -= state.level;
+        updateIndicators();
+        updateScoreDisplay();
+        if (stageEl) {
+          stageEl.textContent = 'Missed alignment - reset to Unfold.';
+        }
+      }
+
+      function resize() {
+        const rect = canvas.getBoundingClientRect();
+        const dpr = Math.min(2.5, window.devicePixelRatio || 1);
+        const size = Math.max(220, Math.min(rect.width, rect.height));
+        canvas.width = size * dpr;
+        canvas.height = size * dpr;
+        canvas.style.width = size + 'px';
+        canvas.style.height = size + 'px';
+        ctx.setTransform(1, 0, 0, 1, 0, 0);
+      }
+
+      function update(dt) {
+        state.rotation = normalize(state.rotation + state.speed * dt);
+        state.flash = Math.max(0, state.flash - dt * 1.8);
+        state.miss = Math.max(0, state.miss - dt * 2.4);
+
+        const stageIndex = Math.min(state.stage, stageColors.length - 1);
+        const nodeIndex = state.stageOrder[stageIndex];
+        const targetAngle = state.nodeAngles[nodeIndex];
+        const diff = Math.abs(angleDiff(state.rotation, targetAngle));
+        const tolerance = Math.max(state.tolerance, 0.0001);
+        const closeness = Math.max(0, 1 - diff / tolerance);
+        state.phaseCloseness = closeness;
+        state.currentStageIndex = stageIndex;
+        updateAudioForStage(stageIndex, closeness);
+      }
+
+      function draw() {
+        const width = canvas.width;
+        const height = canvas.height;
+        const size = Math.min(width, height);
+        const centerX = width / 2;
+        const centerY = height / 2;
+
+        ctx.setTransform(1, 0, 0, 1, 0, 0);
+        ctx.clearRect(0, 0, width, height);
+
+        ctx.save();
+        ctx.translate(centerX, centerY);
+
+        const cycleRadius = size * 0.34;
+        const nodeRadius = size * 0.045;
+        const spiritRadius = size * 0.19;
+        const ouroRadius = size * 0.46;
+        const pointerLength = cycleRadius + size * 0.08;
+        const wedgeHalf = state.tolerance / 2;
+
+        const stageIdxForColor = state.currentStageIndex;
+        const rgb = hexToRgb(stageColors[stageIdxForColor] || stageColors[0]);
+        const closeness = state.phaseCloseness;
+        const levelGlow = state.level >= 2 ? Math.min(0.28, 0.06 + state.level * 0.012) : 0.05;
+        const gradientRadius = ouroRadius + size * (0.07 + levelGlow + closeness * 0.03);
+        const mid = {
+          r: Math.min(255, rgb.r + 40),
+          g: Math.min(255, rgb.g + 40),
+          b: Math.min(255, rgb.b + 40)
+        };
+        const innerAlpha = Math.min(0.7, (state.level >= 2 ? 0.18 : 0.12) + closeness * 0.35 + state.level * 0.01);
+        const midAlpha = Math.min(0.5, (state.level >= 2 ? 0.12 : 0.08) + closeness * 0.25 + state.level * 0.005);
+        const glow = ctx.createRadialGradient(0, 0, 0, 0, 0, gradientRadius);
+        glow.addColorStop(0, 'rgba(' + rgb.r + ', ' + rgb.g + ', ' + rgb.b + ', ' + innerAlpha + ')');
+        glow.addColorStop(0.7, 'rgba(' + mid.r + ', ' + mid.g + ', ' + mid.b + ', ' + midAlpha + ')');
+        glow.addColorStop(1, 'rgba(5, 8, 16, 0)');
+        ctx.fillStyle = glow;
+        ctx.beginPath();
+        ctx.arc(0, 0, gradientRadius, 0, TAU);
+        ctx.fill();
+
+        if (state.miss > 0) {
+          ctx.fillStyle = 'rgba(191, 29, 45, ' + (0.28 * state.miss) + ')';
+          ctx.fillRect(-centerX, -centerY, width, height);
+        }
+
+        if (state.flash > 0) {
+          ctx.fillStyle = 'rgba(15, 241, 206, ' + (0.18 * state.flash) + ')';
+          ctx.fillRect(-centerX, -centerY, width, height);
+        }
+
+        ctx.lineCap = 'round';
+        ctx.lineJoin = 'round';
+        for (let stageIndex = 0; stageIndex < 6; stageIndex += 1) {
+          const nodeIndex = state.stageOrder[stageIndex];
+          const angle = state.nodeAngles[nodeIndex];
+          const start = angle - wedgeHalf;
+          const end = angle + wedgeHalf;
+          ctx.globalAlpha = stageIndex < state.stage ? 0.35 : stageIndex === state.stage ? 1 : 0.45;
+          ctx.strokeStyle = stageColors[stageIndex];
+          ctx.lineWidth = stageIndex === state.stage ? size * 0.024 : size * 0.017;
+          ctx.beginPath();
+          ctx.arc(0, 0, cycleRadius, start, end);
+          ctx.stroke();
+        }
+        ctx.globalAlpha = 1;
+
+        for (let nodeIndex = 0; nodeIndex < 6; nodeIndex += 1) {
+          const angle = state.nodeAngles[nodeIndex];
+          const x = Math.cos(angle) * cycleRadius;
+          const y = Math.sin(angle) * cycleRadius;
+          const color = state.nodeColors[nodeIndex] || 'rgba(120, 160, 220, 0.6)';
+          const label = state.nodeLabels[nodeIndex] || '';
+          const stageIndex = state.stageOrder.indexOf(nodeIndex);
+          ctx.fillStyle = color;
+          ctx.globalAlpha = stageIndex < state.stage ? 0.85 : stageIndex === state.stage ? 0.7 : 0.35;
+          ctx.beginPath();
+          ctx.arc(x, y, nodeRadius, 0, TAU);
+          ctx.fill();
+          ctx.globalAlpha = 1;
+          ctx.fillStyle = '#05070d';
+          ctx.font = size * 0.05 + 'px \"Segoe UI\", sans-serif';
+          ctx.textAlign = 'center';
+          ctx.textBaseline = 'middle';
+          ctx.fillText(label, x, y);
+        }
+
+        ctx.save();
+        ctx.rotate(state.rotation);
+        const pointerColor = state.flash > 0 ? '#0ff1ce' : '#e8f1ff';
+        ctx.strokeStyle = pointerColor;
+        ctx.fillStyle = pointerColor;
+        ctx.lineWidth = size * 0.02;
+        ctx.beginPath();
+        ctx.moveTo(-size * 0.08, 0);
+        ctx.lineTo(pointerLength - size * 0.05, 0);
+        ctx.stroke();
+        ctx.beginPath();
+        ctx.moveTo(pointerLength, 0);
+        ctx.lineTo(pointerLength - size * 0.06, size * 0.04);
+        ctx.lineTo(pointerLength - size * 0.06, -size * 0.04);
+        ctx.closePath();
+        ctx.fill();
+        ctx.restore();
+
+        ctx.strokeStyle = '#0ff1ce';
+        ctx.lineWidth = size * 0.015;
+        ctx.beginPath();
+        ctx.arc(0, 0, spiritRadius, 0, TAU);
+        ctx.stroke();
+        ctx.fillStyle = '#0ff1ce';
+        ctx.beginPath();
+        ctx.arc(0, 0, size * 0.028, 0, TAU);
+        ctx.fill();
+
+        ctx.strokeStyle = '#ff3d81';
+        ctx.lineWidth = size * 0.01;
+        ctx.beginPath();
+        ctx.arc(0, 0, ouroRadius, 0, TAU);
+        ctx.stroke();
+
+        ctx.restore();
+      }
+
+      function frame(now) {
+        const dt = Math.min(0.12, (now - state.lastTime) / 1000);
+        state.lastTime = now;
+        update(dt);
+        draw();
+        requestAnimationFrame(frame);
+      }
+
+      function handleTap(event) {
+        prepareAudioContext();
+        event.preventDefault();
+        const nodeIndex = state.stageOrder[state.stage];
+        const target = state.nodeAngles[nodeIndex];
+        const diff = Math.abs(angleDiff(state.rotation, target));
+        if (Math.abs(diff) <= state.tolerance / 2) {
+          handleSuccess();
+        } else {
+          handleMiss();
+        }
+      }
+
+      canvas.addEventListener('pointerdown', handleTap);
+      canvas.style.touchAction = 'none';
+
+      resize();
+      window.addEventListener('resize', resize);
+      setLevel(1, { resetRotation: true });
+      requestAnimationFrame(frame);
+    })();
+
+    // Keyboard shortcuts and CRT controls
+    (function () {
+      const body = document.body;
+      const helpDialog = document.getElementById('helpDialog');
+      const helpBtn = document.getElementById('helpBtn');
+      const crtToggle = document.getElementById('crtToggle');
+
+      // Helper to navigate to sections
+      const go = function (id) {
+        const el = document.getElementById(id);
+        if (el) {
+          el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      };
+
+      // CRT effect toggle
+      const setCRT = function (on) {
+        body.classList.toggle('crt-effect', on);
+        localStorage.setItem('crt', on ? '1' : '0');
+        if (crtToggle) {
+          crtToggle.setAttribute('aria-pressed', String(on));
+          crtToggle.textContent = (on ? 'Disable' : 'Enable') + ' CRT Effect ';
+          const kbd = document.createElement('kbd');
+          kbd.textContent = 'c';
+          crtToggle.appendChild(kbd);
+        }
+      };
+
+      // Initialize from localStorage - CRT on by default
+      const savedCRT = localStorage.getItem('crt') !== '0';
+      setCRT(savedCRT);
+
+      // Event listeners for buttons
+      if (helpBtn) {
+        helpBtn.addEventListener('click', function () {
+          if (helpDialog) {
+            helpDialog.open ? helpDialog.close() : helpDialog.showModal();
+          }
+        });
+      }
+
+      if (crtToggle) {
+        crtToggle.addEventListener('click', function () {
+          setCRT(!body.classList.contains('crt-effect'));
+        });
+      }
+
+      // Keyboard shortcuts
+      document.addEventListener('keydown', function (e) {
+        // Ignore if user is typing in an input
+        if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') {
+          return;
+        }
+
+        switch (e.key) {
+          case '?':
+            if (helpDialog) {
+              helpDialog.open ? helpDialog.close() : helpDialog.showModal();
+            }
+            break;
+          case 'c':
+            setCRT(!body.classList.contains('crt-effect'));
+            break;
+          case 'h':
+            go('hero');
+            break;
+          case 'l':
+            window.location.href = 'library.html';
+            break;
+          case '1':
+            go('why');
+            break;
+          case '2':
+            go('streams');
+            break;
+          case '3':
+            go('symbolic');
+            break;
+          case '4':
+            go('collaborate');
+            break;
+          case 'Escape':
+            if (helpDialog && helpDialog.open) {
+              helpDialog.close();
+            }
+            break;
+        }
+      });
+    })();
+
+    // Fool's Cycle animation with sine wave pulse
+    (function () {
+      const stages = [
+        { id: 'dot1', text: 'Stage 1 · Unfold: expand possibility; seed options; map the field before commitment.' },
+        { id: 'dot2', text: 'Stage 2 · Disturb: introduce constructive tension; provoke sense-making; challenge assumptions.' },
+        { id: 'dot3', text: 'Stage 3 · Collapse: prune what fails in reality; free resources; accept graceful failure.' },
+        { id: 'dot4', text: 'Stage 4 · Bind: integrate survivors into coherent baseline; encode policy and standards.' },
+        { id: 'dot5', text: 'Stage 5 · Dissipate: release tension; distribute skills and learning to the commons.' },
+        { id: 'dot6', text: 'Stage 6 · Recur: close the loop with data; raise the baseline; prepare the next cycle.' }
+      ];
+
+      const caption = document.getElementById('cycleCaption');
+      const dots = stages.map(function (s) { return document.getElementById(s.id); });
+      const pulseRing = document.getElementById('pulseRing');
+
+      if (!caption || dots.some(function (d) { return !d; }) || !pulseRing) {
+        return;
+      }
+
+      let currentIndex = 0;
+      const radius = 220;
+      const TAU = Math.PI * 2;
+      const segments = 120; // Number of points for smooth curve
+      let pulseAngle = 0;
+
+      // Dot positions in radians (matching SVG layout and normalized to 0-TAU)
+      // SVG coordinates: (0,-220)=top, going clockwise every 60°
+      const dotAngles = [
+        -Math.PI / 2,                    // dot1: top (0, -220) - Unfold = -90° = 270°
+        -Math.PI / 6,                    // dot2: 60° clockwise (190.5, -110) - Disturb = -30° = 330°
+        Math.PI / 6,                     // dot3: 120° (190.5, 110) - Collapse = 30°
+        Math.PI / 2,                     // dot4: bottom (0, 220) - Bind = 90°
+        5 * Math.PI / 6,                 // dot5: 240° (-190.5, 110) - Dissipate = 150°
+        -5 * Math.PI / 6                 // dot6: 300° (-190.5, -110) - Recur = -150° = 210°
+      ].map(function(a) {
+        // Normalize all angles to 0-TAU range
+        let normalized = a;
+        while (normalized < 0) normalized += TAU;
+        while (normalized >= TAU) normalized -= TAU;
+        return normalized;
+      });
+
+      // Animate pulse wave deformation
+      const animatePulse = function () {
+        if (!pulseRing) return;
+
+        // Create path data for deformed circle
+        let pathData = 'M';
+
+        for (let i = 0; i <= segments; i++) {
+          const angle = (i / segments) * TAU - Math.PI / 2; // Start at top
+
+          // Calculate shortest distance from pulse position (safe normalization)
+          let angleDiff = angle - pulseAngle;
+          angleDiff = ((angleDiff + Math.PI) % TAU + TAU) % TAU - Math.PI;
+
+          // Single steep bump using exponential decay
+          const pulseWidth = 0.4; // Narrower pulse in radians
+          const amplitude = 12; // Height of bump
+          const steepness = 8; // Higher = steeper falloff
+          let distortion = 0;
+
+          const normalizedDist = Math.abs(angleDiff) / pulseWidth;
+          if (normalizedDist < 1) {
+            // Steep Gaussian-like bump
+            distortion = amplitude * Math.exp(-steepness * normalizedDist * normalizedDist);
+          }
+
+          const r = radius + distortion;
+          const x = Math.cos(angle) * r;
+          const y = Math.sin(angle) * r;
+
+          if (i === 0) {
+            pathData += x.toFixed(2) + ',' + y.toFixed(2);
+          } else {
+            pathData += ' L' + x.toFixed(2) + ',' + y.toFixed(2);
+          }
+        }
+
+        pathData += ' Z';
+        pulseRing.setAttribute('d', pathData);
+
+        // Check which dot the pulse peak is crossing
+        dots.forEach(function (dot, idx) {
+          const dotAngle = dotAngles[idx];
+
+          // Calculate shortest angular distance (handles wraparound properly)
+          let diff = dotAngle - pulseAngle;
+          // Normalize to -PI to PI range using modulo
+          diff = ((diff + Math.PI) % TAU + TAU) % TAU - Math.PI;
+
+          // Tight activation window - only when pulse peak is at dot
+          const activationRadius = 0.15; // ~8.6 degrees
+          if (Math.abs(diff) < activationRadius) {
+            dot.classList.add('cycle-active');
+            // Update caption when pulse peak crosses dot center
+            if (Math.abs(diff) < 0.03 && idx !== currentIndex) {
+              currentIndex = idx;
+              const stage = stages[idx];
+              const parts = stage.text.split(': ');
+              caption.innerHTML = '<strong>' + parts[0] + ':</strong> ' + (parts[1] || '');
+            }
+          } else {
+            dot.classList.remove('cycle-active');
+          }
+        });
+
+        // Move pulse forward (18 seconds for full rotation)
+        pulseAngle = (pulseAngle + TAU / (18 * 60)) % TAU;
+
+        requestAnimationFrame(animatePulse);
+      };
+
+      // Check for reduced motion preference
+      const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+      // Start pulse animation (drives the cycle)
+      if (!mediaQuery.matches) {
+        animatePulse();
+      }
+    })();
+  </script>
+
+
+</body>
+</html>

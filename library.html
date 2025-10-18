@@ -1,0 +1,883 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Entrogenics CORE Library</title>
+  <meta name="description" content="Entrogenics CORE Library: access to applied ecology, adaptive systems, KybernÅsis, OG3 archives, and Silo research in a unified ritual style." />
+  <link rel="stylesheet" href="assets/css/site.css" />
+</head>
+<body>
+  <div class="bg" aria-hidden="true"></div>
+  <div class="scan" aria-hidden="true"></div>
+  <main class="wrap">
+    <header class="hero">
+      <div class="brand"><span class="dot" aria-hidden="true"></span> ENTROGENICS / CORE</div>
+      <h1>Entrogenics CORE Library</h1>
+      <p class="home-intro">
+        Welcome to the living repository of adaptive rituals, manifestos, and research artifacts. Each work here is rendered in the Entrogenic web ritual: standard front matter, catalytic star safeguards, and a unified neon lattice. Enter at the stream most relevant to your work, or trace the full progression from Commons to KybernÅsis.
+      </p>
+      <div class="cta">
+        <a class="btn" href="pages/core-thesis.html">Read the Core Thesis</a>
+        <a class="btn-alt btn" href="https://ask.report" target="_blank" rel="noopener">ask.report</a>
+      </div>
+      <div class="pylon-interactive">
+        <canvas
+          id="pylon-gate-canvas"
+          width="380"
+          height="260"
+          aria-label="Pylon consent gate. Tap the gate when the incoming stage matches the next step in the cycle."
+          aria-describedby="pylon-status-text"
+        ></canvas>
+        <div class="pylon-panel">
+          <p class="pylon-caption">
+            Tap the gate when the drifting glyph matches the next stage of the Cyclic-6. Each consented pass lights the pylons and advances the ritual.
+          </p>
+          <p class="pylon-level" data-pylon-level>Level 1</p>
+          <p class="pylon-status" id="pylon-status-text" data-pylon-status aria-live="polite">Calibrating pylons...</p>
+          <p class="pylon-score is-hidden" data-pylon-score>Score: 0</p>
+          <div class="pylon-sequence" aria-hidden="true">
+            <span data-stage="0">Unfold</span>
+            <span data-stage="1">Disturb</span>
+            <span data-stage="2">Collapse</span>
+            <span data-stage="3">Bind</span>
+            <span data-stage="4">Dissipate</span>
+            <span data-stage="5">Recur</span>
+          </div>
+          <p class="pylon-hint">Hold for the right signal, then tap to open the gate when the symbol aligns.</p>
+          <div class="pylon-audio">
+            <button type="button" data-pylon-audio="toggle">Enable Drone</button>
+            <label>
+              <span>Volume</span>
+              <input type="range" min="0" max="1" step="0.01" value="0.5" data-pylon-volume />
+            </label>
+          </div>
+        </div>
+      </div>
+      <noscript>
+        <p class="pylon-noscript">
+          The consent gate ritual needs JavaScript. Review the static sigil pack in
+          <a href="LOGOGENS/pylon_sigil_kit_memetic_share_pack_svg_html.html">LOGOGENS - Pylon Sigil Kit</a>.
+        </p>
+      </noscript>
+    </header>
+
+    <section class="home-grid">
+      <article class="home-card">
+        <h3>Applied Ecology</h3>
+        <p>Entrogenic approaches to commons, soil, and systemic regeneration.</p>
+        <div class="home-links">
+          <a href="pages/commons-sense.html">Commons Sense (ASK Edition)</a>
+          <a href="pages/grounded-spirit.html">Grounded Spirit</a>
+          <a href="pages/integrating-commons.html">Integrating Commons &amp; Cybernetics</a>
+        </div>
+      </article>
+
+      <article class="home-card">
+        <h3>Adaptive Systems â€” ASP</h3>
+        <p>Accessible Symbolic Programming papers and onboarding audio.</p>
+        <div class="home-links">
+          <a href="pages/asp-formal-paper.html">ASP Formal Paper</a>
+          <a href="pages/asp-manifesto.html">ASP Manifesto</a>
+          <a href="pages/asp-explained.html">ASP Explained (Audio)</a>
+        </div>
+      </article>
+
+      <article class="home-card">
+        <h3>ClipCard Ritual</h3>
+        <p>Risk &amp; Recheck framework for installing structured friction onto operations.</p>
+        <div class="home-links">
+          <a href="pages/clipcard-risk-recheck.html">ClipCard Risk &amp; Recheck Whitepaper</a>
+          <a href="https://tohnjravolta.github.io/entrogenics-clipcard-seedpack/" target="_blank" rel="noopener">Explore the ClipCard Main Site</a>
+        </div>
+      </article>
+
+      <article class="home-card">
+        <h3>KybernÅsis Altar</h3>
+        <p>Codices and manifests for the KybernÅsis symbolic grammar.</p>
+        <div class="home-links">
+          <a href="pages/kybernosis-kollektive-integration.html">Kollektive Integration Process</a>
+          <a href="pages/kybernosis-master-codex.html">KybernÅsis Master Codex</a>
+          <a href="pages/kybernosis-nexus-codex.html">Nexus Codex (Unified)</a>
+          <a href="pages/kybernosis-nexus-manifesto.html">The Nexus Manifesto</a>
+        </div>
+      </article>
+
+      <article class="home-card">
+        <h3>CORE Thesis &amp; Appendices</h3>
+        <p>Foundational text and supporting appendices for Entrogenics.</p>
+        <div class="home-links">
+          <a href="pages/core-thesis.html">CORE Thesis</a>
+          <a href="pages/core-appendices.html">Appendices</a>
+          <a href="pages/core-appendices-report.html">Appendices Completion Report</a>
+        </div>
+      </article>
+
+      <article class="home-card">
+        <h3>CORE Operations</h3>
+        <p>Figures, citation scaffolding, and supporting references.</p>
+        <div class="home-links">
+          <a href="pages/core-citation-stubs.html">Citation Stubs</a>
+          <a href="pages/core-figure-map.html">Figure Map</a>
+        </div>
+      </article>
+
+      <article class="home-card">
+        <h3>OG3 Archive</h3>
+        <p>The original trilogy of Entrogenic frameworks and grammar.</p>
+        <div class="home-links">
+          <a href="pages/entrogenica-framework.html">Framework for Adaptive Transformation</a>
+          <a href="pages/entrogenica-manifesto.html">Entrogenica Manifesto</a>
+          <a href="pages/fools-cycle-grammar.html">The Foolâ€™s Cycle Grammar</a>
+        </div>
+      </article>
+
+      <article class="home-card">
+        <h3>Void Protocol</h3>
+        <p>Versioned manuscript for Void Protocol practices.</p>
+        <div class="home-links">
+          <a href="pages/void-protocol.html">Void Protocol v0.3.69</a>
+        </div>
+      </article>
+
+      <article class="home-card">
+        <h3>Silo: Data Intelligence</h3>
+        <p>Pebbling experiments and visualization scripts.</p>
+        <div class="home-links">
+          <a href="pages/pebbling-abstract.html">Pebbling Abstract</a>
+          <a href="pages/pebbling-visual-script.html">Pebbling Visual Script</a>
+        </div>
+      </article>
+    </section>
+
+    <footer class="site-footer">
+      Â© Adaptive Systems Kollektive Â· Entrogenics CORE Â· Self-contained release
+    </footer>
+  </main>
+    <script>
+    (function () {
+      const canvas = document.getElementById("pylon-gate-canvas");
+      const statusEl = document.querySelector("[data-pylon-status]");
+      const levelEl = document.querySelector("[data-pylon-level]");
+      const scoreEl = document.querySelector("[data-pylon-score]");
+      const audioToggle = document.querySelector("[data-pylon-audio='toggle']");
+      const volumeInput = document.querySelector("[data-pylon-volume]");
+      const badgeEls = Array.from(document.querySelectorAll(".pylon-sequence span"));
+      if (!canvas || !canvas.getContext) {
+        return;
+      }
+
+      const ctx = canvas.getContext("2d");
+      const TAU = Math.PI * 2;
+      const stageNames = ["Unfold", "Disturb", "Collapse", "Bind", "Dissipate", "Recur"];
+      const stageColors = ["#0ff1ce", "#ffb347", "#ff3d81", "#9d6cff", "#22aaff", "#2fe39e"];
+      const stageGlyphs = ["1", "2", "3", "4", "5", "6"];
+      const stageFrequencies = [96, 118, 142, 168, 192, 224];
+      const audioState = {
+        ctx: null,
+        masterGain: null,
+        noiseGain: null,
+        noiseSource: null,
+        carrier: null,
+        stageOscillators: null,
+        stageGains: null,
+        enabled: false,
+        volume: 0.5
+      };
+      const orderBase = [0, 1, 2, 3, 4, 5];
+
+      const config = {
+        gateY: 0.52,
+        gateTolerance: 0.05,
+        minSpacing: 0.22,
+        spawnStart: 1.05,
+        spawnStep: 0.19,
+        spawnRange: 0.32
+      };
+
+      const glyphs = [];
+      const state = {
+        level: 1,
+        score: 0,
+        channelScore: 0,
+        expectedIndex: 0,
+        stageOrder: orderBase.slice(),
+        gateOpen: false,
+        gateTimer: 0,
+        gatePulse: 0,
+        failFlash: 0,
+        horizonShift: 0,
+        shiftTimer: 0,
+        autoAssist: false,
+        activating: false,
+        lastInteraction: performance.now(),
+        lastAnnounce: performance.now(),
+        lastTime: performance.now(),
+        flowSpeed: 0.18,
+        phaseCloseness: 0,
+        closenessTotal: 0,
+        spawnBag: [],
+        spawnIndex: 0,
+        stageCloseness: orderBase.map(() => 0)
+      };
+
+      function colorWithAlpha(hex, alpha) {
+        const value = parseInt(hex.slice(1), 16);
+        const r = (value >> 16) & 255;
+        const g = (value >> 8) & 255;
+        const b = value & 255;
+        return "rgba(" + r + ", " + g + ", " + b + ", " + alpha + ")";
+      }
+
+      function normalize(angle) {
+        return ((angle % TAU) + TAU) % TAU;
+      }
+
+      function angleDiff(a, b) {
+        let diff = (a - b + Math.PI) % TAU;
+        if (diff < 0) {
+          diff += TAU;
+        }
+        return diff - Math.PI;
+      }
+
+      function computeStageOrder(level) {
+        return orderBase.slice();
+      }
+
+      function computeFlowSpeed(level) {
+        return 0.15 + Math.min(0.12, (level - 1) * 0.006);
+      }
+
+      function refillSpawnBag(level) {
+        state.spawnBag = orderBase.slice();
+        if (level > 3) {
+          const seed = Math.max(1, Math.floor(state.score) + level * 11);
+          for (let i = state.spawnBag.length - 1; i > 0; i -= 1) {
+            const j = (seed + i * 29) % (i + 1);
+            const temp = state.spawnBag[i];
+            state.spawnBag[i] = state.spawnBag[j];
+            state.spawnBag[j] = temp;
+          }
+        }
+        state.spawnIndex = 0;
+      }
+
+      function nextSpawnStage() {
+        if (!state.spawnBag || state.spawnIndex >= state.spawnBag.length) {
+          refillSpawnBag(state.level);
+        }
+        const stage = state.spawnBag[state.spawnIndex];
+        state.spawnIndex += 1;
+        return stage;
+      }
+
+      function updateLevelDisplay() {
+        if (levelEl) {
+          levelEl.textContent = "Level " + state.level;
+        }
+      }
+
+      function updateScoreDisplay() {
+        if (!scoreEl) {
+          return;
+        }
+        const totalScore = Math.round(state.score * 10) / 10;
+        const channelSnippet = state.channelScore > 0.05 ? "  (+" + (Math.round(state.channelScore * 10) / 10).toFixed(1) + " ch)" : "";
+        scoreEl.textContent = "Score: " + totalScore.toFixed(1) + channelSnippet;
+        if (state.level >= 9) {
+          scoreEl.classList.remove("is-hidden");
+        } else {
+          scoreEl.classList.add("is-hidden");
+        }
+      }
+
+      function announce(text) {
+        if (statusEl) {
+          statusEl.textContent = text;
+        }
+        state.lastAnnounce = performance.now();
+      }
+
+      function updateBadges() {
+        badgeEls.forEach(function (el, idx) {
+          const stage = state.stageOrder[idx];
+          el.textContent = (idx + 1) + ". " + stageNames[stage];
+          el.style.color = stageColors[stage];
+          el.classList.toggle("is-active", idx === state.expectedIndex);
+          el.classList.toggle("is-bound", idx < state.expectedIndex);
+        });
+      }
+
+      function spacingClear(candidateY) {
+        return glyphs.every(function (glyph) {
+          return Math.abs(glyph.y - candidateY) > config.minSpacing;
+        });
+      }
+
+      function spawnGlyph(initialY) {
+        let y = typeof initialY === "number" ? initialY : null;
+        if (y === null) {
+          const baseSpacing = config.spawnStep + Math.min(0.08, 0.02 * Math.max(0, state.level - 1));
+          let attempts = 0;
+          do {
+            y = config.spawnStart + attempts * baseSpacing + Math.random() * 0.04;
+            attempts += 1;
+          } while ((!spacingClear(y) || y > config.spawnStart + config.spawnRange) && attempts < 10);
+        }
+        let stage = null;
+        let isNoise = false;
+        const noiseChance = state.level > 3 ? Math.min(0.4, 0.08 + (state.level - 3) * 0.025 + state.closenessTotal * 0.015) : 0;
+        if (Math.random() < noiseChance) {
+          isNoise = true;
+        }
+        if (!isNoise) {
+          stage = nextSpawnStage();
+        }
+        const glyph = {
+          stage: isNoise ? -1 : stage,
+          y: y,
+          speed: 0.03 + state.level * 0.002,
+          offset: (Math.random() * 2 - 1) * 0.08,
+          swing: Math.random() * TAU,
+          resolved: false,
+          highlight: 0,
+          fail: 0,
+          noted: false,
+          color: isNoise ? "#647284" : stageColors[stage],
+          symbol: isNoise ? "NOISE" : stageGlyphs[stage] || ''
+        };
+        glyphs.push(glyph);
+      }
+
+      function seedGlyphs() {
+        glyphs.length = 0;
+        for (let i = 0; i < 6; i += 1) {
+          spawnGlyph(config.spawnStart + i * config.spawnStep);
+        }
+      }
+
+      function refreshStageOrder() {
+        state.stageOrder = computeStageOrder(state.level);
+        updateBadges();
+        updateAudioMix();
+      }
+
+      function configureLevel(level, options) {
+        state.level = level;
+        state.expectedIndex = 0;
+        state.gateOpen = false;
+        state.gateTimer = 0;
+        state.gatePulse = 0;
+        state.failFlash = 0;
+        state.autoAssist = false;
+        state.activating = false;
+        state.horizonShift = 0;
+        state.shiftTimer = 0;
+        state.flowSpeed = computeFlowSpeed(level);
+        state.phaseCloseness = 0;
+        state.closenessTotal = 0;
+        state.channelScore = 0;
+        state.stageCloseness = orderBase.map(() => 0);
+        state.lastInteraction = performance.now();
+        state.lastAnnounce = performance.now();
+        refreshStageOrder();
+        state.spawnBag = [];
+        state.spawnIndex = 0;
+        refillSpawnBag(level);
+        seedGlyphs();
+        updateLevelDisplay();
+        updateScoreDisplay();
+        announce("Level " + level + " — awaiting " + stageNames[state.stageOrder[0]] + ".");
+        updateAudioMix();
+      }
+
+      function resize() {
+        const rect = canvas.getBoundingClientRect();
+        const dpr = Math.min(2.5, window.devicePixelRatio || 1);
+        canvas.width = rect.width * dpr;
+        canvas.height = rect.height * dpr;
+        ctx.setTransform(1, 0, 0, 1, 0, 0);
+      }
+
+      function openGate() {
+        state.gateOpen = true;
+        state.gateTimer = 0;
+        state.gatePulse = 1;
+      }
+
+      function activateChannel() {
+        if (state.activating) {
+          return;
+        }
+        state.channelScore = 0;
+        state.activating = true;
+        state.autoAssist = false;
+        state.lastInteraction = performance.now();
+        openGate();
+        updateScoreDisplay();
+        updateAudioMix();
+      }
+
+      function deactivateChannel() {
+        if (!state.activating && !state.gateOpen) {
+          return;
+        }
+        state.activating = false;
+        state.gateOpen = false;
+        state.gateTimer = 0;
+        state.channelScore = 0;
+        updateScoreDisplay();
+        updateAudioMix();
+      }
+
+      function handleSuccess(glyph) {
+        glyph.resolved = true;
+        glyph.highlight = 1;
+        state.score += state.channelScore;
+        state.channelScore = 0;
+        state.expectedIndex += 1;
+        updateScoreDisplay();
+        state.lastInteraction = performance.now();
+        nudgeStageFrequency(glyph.stage, 1);
+        if (state.expectedIndex >= state.stageOrder.length) {
+          const nextLevel = state.level + 1;
+          state.score += state.level * state.level;
+          state.shiftTimer = 1;
+          state.horizonShift = Math.random() * TAU;
+          announce("Cycle sealed. Advancing to Level " + nextLevel + ".");
+          updateScoreDisplay();
+          configureLevel(nextLevel);
+          return;
+        }
+        announce(
+          stageNames[glyph.stage] + " bound. Next: " + stageNames[state.stageOrder[state.expectedIndex]] + "."
+        );
+        updateBadges();
+        updateAudioMix();
+      }
+
+      function handleMiss(failedStage) {
+        state.expectedIndex = 0;
+        state.score -= state.channelScore;
+        state.channelScore = 0;
+        state.failFlash = 1;
+        state.autoAssist = false;
+        state.shiftTimer = 0.6;
+        state.horizonShift = Math.random() * TAU;
+        state.lastInteraction = performance.now();
+        updateScoreDisplay();
+        updateBadges();
+        announce("Mismatch at the gate. Reset to Unfold.");
+        deactivateChannel();
+        nudgeStageFrequency(typeof failedStage === "number" ? failedStage : state.stageOrder[0], 0.5);
+        updateAudioMix();
+      }
+
+      function update(dt) {
+        state.flowSpeed = computeFlowSpeed(state.level);
+        const now = performance.now();
+        state.shiftTimer = Math.max(0, state.shiftTimer - dt * 0.45);
+        let bestCloseness = 0;
+        let totalCloseness = 0;
+
+        if (state.activating) {
+          state.channelScore += dt * state.level;
+          if (!state.gateOpen) {
+            openGate();
+          }
+        } else if (state.gateOpen) {
+          state.gateOpen = false;
+        }
+
+        for (let i = glyphs.length - 1; i >= 0; i -= 1) {
+          const glyph = glyphs[i];
+          glyph.y -= (state.flowSpeed + glyph.speed) * dt;
+          if (glyph.highlight > 0) {
+            glyph.highlight = Math.max(0, glyph.highlight - dt * 1.2);
+          }
+          if (glyph.fail > 0) {
+            glyph.fail = Math.max(0, glyph.fail - dt * 1.8);
+          }
+          if (glyph.y < -0.2) {
+            glyphs.splice(i, 1);
+            continue;
+          }
+          const delta = Math.abs(glyph.y - config.gateY);
+          const closeness = Math.max(0, 1 - delta / config.gateTolerance);
+          if (!glyph.resolved) {
+            totalCloseness += closeness;
+          }
+          if (!glyph.resolved && glyph.stage === state.stageOrder[state.expectedIndex]) {
+            if (closeness > bestCloseness) {
+              bestCloseness = closeness;
+            }
+          }
+          if (!glyph.resolved && delta < config.gateTolerance && state.gateOpen) {
+            glyph.resolved = true;
+            if (glyph.stage === state.stageOrder[state.expectedIndex]) {
+              handleSuccess(glyph);
+            } else {
+              glyph.fail = 1;
+              handleMiss(glyph.stage);
+            }
+          } else if (
+            !glyph.resolved &&
+            !state.gateOpen &&
+            glyph.stage === state.stageOrder[state.expectedIndex] &&
+            !glyph.noted &&
+            delta < config.gateTolerance * 1.1
+          ) {
+            glyph.noted = true;
+            if (now - state.lastAnnounce > 1200) {
+              announce("Gate ready for " + stageNames[glyph.stage] + ".");
+            }
+          }
+        }
+
+        while (glyphs.length < 6) {
+          spawnGlyph();
+        }
+
+        state.gatePulse = state.gateOpen
+          ? Math.min(1, state.gatePulse + dt * 4)
+          : Math.max(0, state.gatePulse - dt * 3.4);
+        state.failFlash = Math.max(0, state.failFlash - dt * 2.6);
+
+        state.phaseCloseness = state.gateOpen ? 1 : Math.max(state.phaseCloseness * 0.92, bestCloseness);
+        state.closenessTotal = Math.max(0, Math.min(6, totalCloseness));
+        if (!state.activating && state.channelScore > 0) {
+          state.channelScore = Math.max(0, state.channelScore - dt * state.level * 0.6);
+        }
+        updateScoreDisplay();
+      }
+
+      function ensureAudio() {
+        if (audioState.ctx) {
+          return;
+        }
+        const AudioContext = window.AudioContext || window.webkitAudioContext;
+        if (!AudioContext) {
+          return;
+        }
+        const ctxAudio = new AudioContext();
+        const masterGain = ctxAudio.createGain();
+        const noiseGain = ctxAudio.createGain();
+        const noiseBuffer = ctxAudio.createBuffer(1, ctxAudio.sampleRate * 4, ctxAudio.sampleRate);
+        const data = noiseBuffer.getChannelData(0);
+        let last = 0;
+        for (let i = 0; i < data.length; i += 1) {
+          const white = Math.random() * 2 - 1;
+          last = (last + 0.02 * white) / 1.02;
+          data[i] = last * 0.6;
+        }
+        const noiseSource = ctxAudio.createBufferSource();
+        noiseSource.buffer = noiseBuffer;
+        noiseSource.loop = true;
+
+        const carrier = ctxAudio.createOscillator();
+        carrier.type = "sine";
+        carrier.frequency.value = 120;
+
+        const stageOscillators = stageNames.map(function (_, idx) {
+          const osc = ctxAudio.createOscillator();
+          osc.type = "sine";
+          osc.frequency.value = stageFrequencies[idx];
+          return osc;
+        });
+        const stageGains = stageNames.map(function () {
+          const gain = ctxAudio.createGain();
+          gain.gain.value = 0;
+          return gain;
+        });
+
+        noiseSource.connect(noiseGain);
+        stageOscillators.forEach(function (osc, idx) {
+          const gain = stageGains[idx];
+          osc.connect(gain);
+          gain.connect(masterGain);
+        });
+        carrier.connect(masterGain);
+        noiseGain.connect(masterGain);
+        masterGain.connect(ctxAudio.destination);
+
+        masterGain.gain.value = audioState.enabled ? audioState.volume : 0;
+        noiseGain.gain.value = 0.12;
+
+        noiseSource.start();
+        carrier.start();
+        stageOscillators.forEach(function (osc) { osc.start(); });
+
+        audioState.ctx = ctxAudio;
+        audioState.masterGain = masterGain;
+        audioState.noiseGain = noiseGain;
+        audioState.noiseSource = noiseSource;
+        audioState.carrier = carrier;
+        audioState.stageOscillators = stageOscillators;
+        audioState.stageGains = stageGains;
+        updateAudioMix();
+      }
+
+      function setAudioEnabled(flag) {
+        audioState.enabled = !!flag;
+        ensureAudio();
+        if (audioState.ctx && audioState.masterGain) {
+          const target = audioState.enabled ? audioState.volume : 0;
+          audioState.masterGain.gain.setTargetAtTime(target, audioState.ctx.currentTime, 0.12);
+        }
+        if (audioToggle) {
+          audioToggle.textContent = audioState.enabled ? "Mute Drone" : "Enable Drone";
+        }
+        updateAudioMix();
+      }
+
+      function setVolume(value) {
+        audioState.volume = value;
+        if (audioState.enabled && audioState.ctx && audioState.masterGain) {
+          audioState.masterGain.gain.setTargetAtTime(value, audioState.ctx.currentTime, 0.12);
+        }
+        updateAudioMix();
+      }
+
+      function nudgeStageFrequency(stage, strength) {
+        if (!audioState.ctx || !audioState.stageOscillators || !audioState.stageGains) {
+          return;
+        }
+        const osc = audioState.stageOscillators[stage];
+        const gain = audioState.stageGains[stage];
+        if (!osc || !gain) {
+          return;
+        }
+        const baseFreq = stageFrequencies[stage];
+        const nudgeAmount = strength > 0.7 ? 12 : -8;
+        osc.frequency.setTargetAtTime(baseFreq + nudgeAmount, audioState.ctx.currentTime, 0.05);
+        gain.gain.setTargetAtTime(Math.min(0.6, strength), audioState.ctx.currentTime, 0.05);
+        setTimeout(function () {
+          if (audioState.ctx && osc && gain) {
+            osc.frequency.setTargetAtTime(baseFreq, audioState.ctx.currentTime, 0.2);
+            gain.gain.setTargetAtTime(0.08, audioState.ctx.currentTime, 0.2);
+          }
+        }, 200);
+      }
+
+      function updateAudioMix() {
+        if (!audioState.ctx || !audioState.stageGains || !audioState.noiseGain) {
+          return;
+        }
+        const targetStage = state.stageOrder[state.expectedIndex % state.stageOrder.length] || 0;
+        const activeStrength = Math.min(1, state.phaseCloseness);
+        const layerNoise = 0.12 + Math.min(0.35, state.closenessTotal * 0.25);
+        audioState.noiseGain.gain.setTargetAtTime(layerNoise, audioState.ctx.currentTime, 0.12);
+        audioState.stageGains.forEach(function (gain, idx) {
+          const base = idx === targetStage ? 0.08 + activeStrength * 0.45 : Math.max(0.02, 0.1 - state.phaseCloseness * 0.08);
+          gain.gain.setTargetAtTime(base, audioState.ctx.currentTime, 0.15);
+        });
+        if (audioState.carrier) {
+          const targetFreq = 110 + state.level * 2 + activeStrength * 6;
+          audioState.carrier.frequency.setTargetAtTime(targetFreq, audioState.ctx.currentTime, 0.2);
+        }
+      }
+
+      function draw() {
+        const width = canvas.width;
+        const height = canvas.height;
+        const size = Math.min(width, height);
+        const centerX = width / 2;
+        const centerY = height / 2;
+
+        ctx.setTransform(1, 0, 0, 1, 0, 0);
+        ctx.clearRect(0, 0, width, height);
+
+        ctx.save();
+        ctx.translate(centerX, centerY);
+
+        const horizonY = height * 0.62;
+        const eyeY = height * 0.46;
+        const cycleRadius = size * 0.34;
+        const nodeRadius = size * 0.075;
+        const spiritRadius = size * 0.19;
+        const ouroRadius = size * 0.46;
+        const pointerLength = size * 0.28;
+
+        const stageIdx = state.stageOrder[Math.min(state.expectedIndex, 5)];
+        const color = stageColors[stageIdx];
+        const rgbValue = parseInt(color.slice(1), 16);
+        const r = (rgbValue >> 16) & 255;
+        const g = (rgbValue >> 8) & 255;
+        const b = rgbValue & 255;
+        const closeness = Math.max(state.phaseCloseness, state.gateOpen ? 1 : 0.15);
+        const gradient = ctx.createRadialGradient(0, 0, 0, 0, 0, ouroRadius + size * 0.08 + state.level * 0.01);
+        gradient.addColorStop(0, "rgba(" + r + ", " + g + ", " + b + ", " + (0.12 + closeness * 0.25) + ")");
+        gradient.addColorStop(0.7, "rgba(" + r + ", " + g + ", " + b + ", " + (0.08 + state.level * 0.01) + ")");
+        gradient.addColorStop(1, "rgba(5, 8, 16, 0)");
+        ctx.fillStyle = gradient;
+        ctx.beginPath();
+        ctx.arc(0, 0, ouroRadius + size * 0.1 + state.level * 0.02, 0, TAU);
+        ctx.fill();
+
+        if (state.failFlash > 0) {
+          ctx.fillStyle = "rgba(191, 29, 45, " + (0.25 * state.failFlash) + ")";
+          ctx.fillRect(-centerX, -centerY, width, height);
+        }
+
+        ctx.lineCap = "round";
+        ctx.lineJoin = "round";
+
+        ctx.strokeStyle = "rgba(191, 29, 45, 0.9)";
+        ctx.lineWidth = size * 0.012;
+        ctx.beginPath();
+        ctx.arc(0, eyeY - centerY, ouroRadius, 0, TAU);
+        ctx.stroke();
+
+        const horizonOffset = Math.sin(performance.now() * 0.0015 + state.horizonShift) * size * 0.018 * Math.max(0, state.shiftTimer);
+        ctx.strokeStyle = "#00b3ff";
+        ctx.lineWidth = size * 0.006;
+        ctx.beginPath();
+        ctx.moveTo(-width * 0.28, horizonY - centerY + horizonOffset);
+        ctx.quadraticCurveTo(0, horizonY - centerY - horizonOffset, width * 0.28, horizonY - centerY + horizonOffset);
+        ctx.stroke();
+
+        ctx.strokeStyle = "#f7f3e8";
+        ctx.lineWidth = size * 0.012;
+        ctx.beginPath();
+        ctx.moveTo(-width * 0.18, -height * 0.14);
+        ctx.lineTo(-width * 0.22, height * 0.2);
+        ctx.lineTo(-width * 0.14, height * 0.2);
+        ctx.lineTo(-width * 0.1, -height * 0.14);
+        ctx.closePath();
+        ctx.stroke();
+
+        ctx.beginPath();
+        ctx.moveTo(width * 0.1, -height * 0.14);
+        ctx.lineTo(width * 0.14, height * 0.2);
+        ctx.lineTo(width * 0.22, height * 0.2);
+        ctx.lineTo(width * 0.18, -height * 0.14);
+        ctx.closePath();
+        ctx.stroke();
+
+        ctx.setLineDash([size * 0.015, size * 0.04]);
+        ctx.beginPath();
+        ctx.moveTo(-width * 0.18, -height * 0.14);
+        ctx.quadraticCurveTo(0, -height * 0.2, width * 0.18, -height * 0.14);
+        ctx.stroke();
+        ctx.setLineDash([]);
+
+        const gateWidth = size * 0.14;
+        const gateHeight = size * 0.32;
+        const gateLeft = -gateWidth / 2;
+        const gateTop = config.gateY * height - gateHeight / 2 - centerY;
+        ctx.fillStyle = "#121416";
+        ctx.strokeStyle = state.gateOpen ? "#00a86b" : "#2f373b";
+        ctx.lineWidth = size * 0.01;
+        ctx.fillRect(gateLeft, gateTop, gateWidth, gateHeight);
+        ctx.strokeRect(gateLeft, gateTop, gateWidth, gateHeight);
+
+        if (state.gatePulse > 0) {
+          ctx.save();
+          ctx.globalAlpha = 0.25 * state.gatePulse;
+          ctx.fillStyle = "#00a86b";
+          ctx.fillRect(gateLeft - gateWidth * 0.2, gateTop - gateHeight * 0.18, gateWidth * 1.4, gateHeight * 1.36);
+          ctx.restore();
+        }
+
+        ctx.strokeStyle = "#f7f3e8";
+        ctx.lineWidth = size * 0.007;
+        ctx.beginPath();
+        ctx.ellipse(0, horizonY - centerY - size * 0.02, size * 0.18, size * 0.09, 0, 0, TAU);
+        ctx.stroke();
+        ctx.fillStyle = "#00a86b";
+        ctx.beginPath();
+        ctx.arc(0, horizonY - centerY - size * 0.02, size * 0.055, 0, TAU);
+        ctx.fill();
+
+        ctx.textAlign = "center";
+        ctx.fillStyle = stageColors[state.stageOrder[state.expectedIndex]];
+        ctx.font = Math.round(size * 0.06) + "px 'Segoe UI', sans-serif";
+        ctx.fillText("Next: " + stageNames[state.stageOrder[state.expectedIndex]], 0, -height * 0.34);
+
+        const now = performance.now();
+        ctx.font = Math.round(size * 0.04) + "px 'Segoe UI', sans-serif";
+        glyphs.forEach(function (glyph) {
+          const wobble = Math.sin(now * 0.0015 + glyph.swing) * 0.02;
+          const x = glyph.offset * width * 0.25;
+          const y = glyph.y * height - centerY;
+          const boxW = size * 0.26;
+          const boxH = size * 0.085;
+          const stageIndex = glyph.stage;
+          const isNoise = stageIndex < 0;
+          const baseColor = glyph.color || stageColors[stageIndex] || "#647284";
+          const label = glyph.symbol || (isNoise ? "NOISE" : stageGlyphs[stageIndex]);
+          const stageName = isNoise ? "Noise" : stageNames[stageIndex];
+          let fill = colorWithAlpha(baseColor, stageIndex === state.stageOrder[state.expectedIndex] ? 0.65 : 0.4);
+          if (glyph.highlight > 0) {
+            fill = colorWithAlpha("#00a86b", 0.4 + 0.4 * glyph.highlight);
+          }
+          if (glyph.fail > 0) {
+            fill = colorWithAlpha("#bf1d2d", 0.35 + 0.45 * glyph.fail);
+          }
+          ctx.fillStyle = fill;
+          ctx.fillRect(x - boxW / 2, y - boxH / 2, boxW, boxH);
+          ctx.strokeStyle = colorWithAlpha(baseColor, 0.8);
+          ctx.lineWidth = size * 0.006;
+          ctx.strokeRect(x - boxW / 2, y - boxH / 2, boxW, boxH);
+
+          ctx.fillStyle = "#05070d";
+          ctx.fillText(label, x, y - boxH * 0.1);
+          ctx.font = Math.round(size * 0.032) + "px 'Segoe UI', sans-serif";
+          ctx.fillStyle = baseColor;
+          ctx.fillText(stageName, x, y + boxH * 0.24);
+          ctx.font = Math.round(size * 0.04) + "px 'Segoe UI', sans-serif";
+        });
+
+        ctx.restore();
+      }
+
+      function frame(time) {
+        const dt = Math.min(0.12, (time - state.lastTime) / 1000);
+        state.lastTime = time;
+        update(dt);
+        draw();
+        updateAudioMix();
+        requestAnimationFrame(frame);
+      }
+
+      canvas.addEventListener("pointerdown", function (event) {
+        event.preventDefault();
+        ensureAudio();
+        activateChannel();
+      });
+      canvas.addEventListener("pointerup", function () {
+        deactivateChannel();
+      });
+      canvas.addEventListener("pointerleave", function () {
+        deactivateChannel();
+      });
+      canvas.addEventListener("pointercancel", function () {
+        deactivateChannel();
+      });
+      canvas.style.touchAction = "none";
+      if (audioToggle) {
+        audioToggle.addEventListener("click", function () {
+          setAudioEnabled(!audioState.enabled);
+        });
+        audioToggle.textContent = audioState.enabled ? "Mute Drone" : "Enable Drone";
+      }
+      if (volumeInput) {
+        volumeInput.value = audioState.volume;
+        volumeInput.addEventListener("input", function (event) {
+          const value = parseFloat(event.target.value);
+          if (!Number.isNaN(value)) {
+            setVolume(value);
+          }
+        });
+      }
+
+      resize();
+      window.addEventListener("resize", resize);
+      configureLevel(1);
+      requestAnimationFrame(frame);
+    })();
+  </script>
+</body>
+</html>
+

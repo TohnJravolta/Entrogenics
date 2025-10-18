@@ -1,0 +1,183 @@
+/* core-theme.css - Entrogenic Paper Standard */
+
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;600&family=Inter:wght@400;600;700&display=swap');
+
+:root {
+  --bg-color: #0a0a0a;
+  --fg-color: #e0e0e0;
+  --header-color: #ffffff;
+  --accent-color: #00ff99;
+  --accent-hover: #80ffcc;
+  --meta-color: #999;
+  --border-color: #333;
+  --code-bg: #1a1a1a;
+  --pre-bg: #111;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: var(--bg-color);
+  color: var(--fg-color);
+  line-height: 1.7;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+#toc-container {
+  position: sticky;
+  top: 0;
+  width: 250px;
+  height: 100vh;
+  overflow-y: auto;
+  padding: 2rem 1rem;
+  border-right: 1px solid var(--border-color);
+}
+
+#toc-container h2 {
+    font-size: 1.2rem;
+    color: var(--accent-color);
+    margin-top: 0;
+}
+
+#toc {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+#toc a {
+  color: var(--fg-color);
+  text-decoration: none;
+  display: block;
+  padding: 0.25rem 0;
+  font-size: 0.9rem;
+  transition: color 0.2s ease;
+}
+
+#toc a:hover, #toc a.active {
+  color: var(--accent-color);
+}
+
+main {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 3rem 2rem;
+  flex-grow: 1;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--header-color);
+  font-weight: 600;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 0.5rem;
+}
+
+h1 {
+  font-size: 2.8rem;
+  border-bottom: 2px solid var(--accent-color);
+}
+
+h2 {
+  font-size: 2rem;
+}
+
+h3 {
+  font-size: 1.5rem;
+  border-bottom: none;
+}
+
+
+blockquote {
+  border-left: 3px solid var(--accent-color);
+  margin-left: 0;
+  padding-left: 1.5rem;
+  color: var(--meta-color);
+  font-style: italic;
+}
+
+code {
+  font-family: 'Fira Code', monospace;
+  background-color: var(--code-bg);
+  color: var(--accent-color);
+  padding: 0.2em 0.4em;
+  border-radius: 3px;
+  font-size: 0.9em;
+}
+
+pre {
+  background-color: var(--pre-bg);
+  border: 1px solid var(--border-color);
+  padding: 1rem;
+  border-radius: 5px;
+  overflow-x: auto;
+}
+
+pre code {
+  background: none;
+  padding: 0;
+}
+
+a {
+  color: var(--accent-color);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: var(--accent-hover);
+  text-decoration: underline;
+}
+
+.metadata {
+    border: 1px solid var(--border-color);
+    padding: 1rem;
+    margin-bottom: 2rem;
+    border-radius: 5px;
+}
+
+.metadata p {
+    margin: 0.5rem 0;
+    color: var(--meta-color);
+}
+
+.metadata strong {
+    color: var(--fg-color);
+}
+
+/* Print styles */
+@media print {
+  body {
+    background-color: #fff;
+    color: #000;
+  }
+
+  #toc-container {
+    display: none;
+  }
+
+  main {
+    max-width: 100%;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    color: #000;
+    border-color: #ccc;
+  }
+
+  a {
+    color: #000;
+    text-decoration: underline;
+  }
+
+  code {
+    color: #000;
+    background: #eee;
+  }
+
+  blockquote {
+    color: #555;
+    border-color: #ccc;
+  }
+}
