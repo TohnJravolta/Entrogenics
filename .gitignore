@@ -59,6 +59,36 @@ coverage/
 .Spotlight-V100
 .fseventsd
 
+# Claude Code and AI agent files
+.claude/
+CLAUDE.md
+AGENTS.md
+.geminiignore
+
+# Other AI assistant and agent files
+.cursor/
+.continue/
+.aider*
+.copilot/
+**/prompts/
+**/agent-*.md
+**/GEMINI*.md
+**/CODEX*.md
+**/GPT*.md
+**/CHATGPT*.md
+
+# Personal planning and development files
+TODO.md
+NOTES.md
+SCRATCH.md
+DRAFT*.md
+WORKLOG.md
+**/plan.md
+**/planning/
+**/notes/
+**/scratch/
+**/drafts/
+
 # Keep these files (negate ignore)
 !.gitignore
 !.gitattributes
